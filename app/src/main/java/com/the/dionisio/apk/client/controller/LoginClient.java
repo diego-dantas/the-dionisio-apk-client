@@ -1,13 +1,17 @@
-package com.the.dionisio.apk.client;
+package com.the.dionisio.apk.client.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.the.dionisio.apk.client.R;
+
+public class LoginClient extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.login_client);
+
+
     }
 }
