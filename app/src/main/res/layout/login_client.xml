@@ -1,63 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.the.dionisio.apk.client.controller.LoginClient">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteY="49dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+    tools:context="com.the.dionisio.apk.client.controller.LoginClient"
+    tools:layout_editor_absoluteY="25dp"
+    tools:layout_editor_absoluteX="0dp">
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="280dp"
         android:layout_height="43dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_x="42dp"
+        android:layout_y="169dp"
         android:ems="10"
         android:hint="Login"
         android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="181dp" />
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="171dp" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="280dp"
         android:layout_height="44dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_x="42dp"
+        android:layout_y="214dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="223dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="135dp"
-        android:layout_height="wrap_content"
-        android:text="SING UP"
-        tools:layout_editor_absoluteX="197dp"
-        tools:layout_editor_absoluteY="275dp" />
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="222dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="135dp"
         android:layout_height="wrap_content"
+        android:layout_x="43dp"
+        android:layout_y="263dp"
         android:text="LOG IN"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="52dp"
         tools:layout_editor_absoluteY="275dp" />
-</android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_x="187dp"
+        android:layout_y="263dp"
+        android:text="SING UP"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="198dp"
+        tools:layout_editor_absoluteY="275dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="108dp"
+        android:layout_y="40dp"
+        android:visibility="visible"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="48dp" />
+
+</AbsoluteLayout>
