@@ -2,6 +2,8 @@
 <resources>
     <color name="colorPrimary">#f79710</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#489169</color>
+    <color name="colorAccent">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="googlePlus">#db4437</color>
+    <color name="facebook">#3b5998</color>
 </resources>

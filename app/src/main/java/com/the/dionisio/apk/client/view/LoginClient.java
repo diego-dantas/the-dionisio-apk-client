@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.controller;
+package com.the.dionisio.apk.client.view;
 
 import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
