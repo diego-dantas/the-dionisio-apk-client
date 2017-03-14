@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.the.dionisio.apk.client.view.CreateAccount"
-    tools:showIn="@menu/bar_create_account">
+    tools:showIn="@layout/bar_create_account">
 
     <EditText
         android:id="@+id/editText3"
