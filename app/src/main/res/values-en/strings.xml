@@ -1,0 +1,11 @@
+<resources>
+    <!-- Strings related to legend (english) -->
+    <string name="btn_createAccount">Create account</string>
+    <string name="btn_login">Login</string>
+    <string name="hnt_user">User</string>
+    <string name="hnt_password">Password</string>
+    <string name="txv_forgotPassword">Forgot password</string>
+    <string name="hnt_fullName">Full name</string>
+    <string name="hnt_email">Email address</string>
+    <string name="btn_next">Next step</string>
+</resources>

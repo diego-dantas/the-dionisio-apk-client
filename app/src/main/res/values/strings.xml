@@ -19,4 +19,15 @@
     <string name="facebook_app_id">1892473640964077</string>
     <string name="cancel_loginFacebook">Login with facebook canceled</string>
     <string name="error_loginFacebook">An error occurred while trying to sign in with Facebook</string>
+
+    <!-- Strings related to legend default(portuguese) -->
+    <string name="btn_createAccount">Criar Conta</string>
+    <string name="btn_login">Entrar</string>
+    <string name="hnt_user">Usuário</string>
+    <string name="hnt_password">Senha</string>
+    <string name="txv_forgotPassword">Esqueci a senha</string>
+    <string name="hnt_fullName">Nome completo</string>
+    <string name="hnt_email">Endereço de email</string>
+    <string name="btn_next">Próximo Passo</string>
+
 </resources>
