@@ -3,8 +3,6 @@ package com.the.dionisio.apk.client.view;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
