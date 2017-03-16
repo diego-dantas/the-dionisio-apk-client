@@ -1,24 +1,16 @@
 package com.the.dionisio.apk.client.view;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import com.the.dionisio.apk.client.R;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton btnBackLogin;
+    private TextView forgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +18,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.bar_login);
 
         btnBackLogin = (ImageButton) findViewById(R.id.btnBackLogin);
+        forgotPassword = (TextView) findViewById(R.id.forgotPassword) ;
 
         btnBackLogin.setOnClickListener(this);
+        forgotPassword.setOnClickListener(this);
     }
 
     public void onClick(View v){
         if (v == btnBackLogin){
-            Intent it = new Intent(this, PreLogin.class);
-            startActivity(it);
+            Intent itBackLogin = new Intent(this, PreLogin.class);
+            itBackLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(itBackLogin);
+        }
+
+        if (v == forgotPassword){
+            Intent itForgotPassword = new Intent(this, ForgotPassword.class);
+            startActivity(itForgotPassword);
         }
     }
 }

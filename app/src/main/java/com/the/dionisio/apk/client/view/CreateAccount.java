@@ -23,8 +23,9 @@ public class CreateAccount extends AppCompatActivity implements View.OnClickList
 
     public void onClick(View v){
         if(v == btnBackCreate){
-            Intent it = new Intent(this, PreLogin.class);
-            startActivity(it);
+            Intent itBackCreate = new Intent(this, PreLogin.class);
+            itBackCreate.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(itBackCreate);
         }
     }
 

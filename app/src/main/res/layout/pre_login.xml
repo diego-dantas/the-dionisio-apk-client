@@ -10,7 +10,7 @@
     <Button
         android:id="@+id/btnPreLogin"
         android:layout_width="360dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="55dp"
         android:layout_marginEnd="14dp"
         android:layout_marginLeft="14dp"
@@ -29,7 +29,7 @@
     <Button
         android:id="@+id/btnPreCreateAccount"
         android:layout_width="360dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="119dp"
         android:layout_marginEnd="14dp"
         android:layout_marginLeft="14dp"
