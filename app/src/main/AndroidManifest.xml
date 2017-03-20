@@ -36,6 +36,10 @@
         <activity
             android:name=".view.ForgotPassword"
             android:label="@string/title_activity_forgot_password"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.CreateAccountStepGenre"
+            android:label="@string/title_activity_create_account_step_genre"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

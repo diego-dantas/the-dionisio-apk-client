@@ -32,5 +32,6 @@
     <string name="btn_send">Enviar</string>
 
     <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string name="title_activity_create_account_step_genre">CreateAccountStepGenre</string>
 
 </resources>
