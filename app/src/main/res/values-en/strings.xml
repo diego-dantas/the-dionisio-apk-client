@@ -9,4 +9,9 @@
     <string name="btn_next">Next step</string>
     <string name="txv_descriptionForgotPassword">Enter your email address to send a recovery password.</string>
     <string name="btn_send">Send</string>
+    <string name="genreRock">Rock</string>
+    <string name="genreElectronics">Electronics</string>
+    <string name="genrePagoda">Pagoda</string>
+    <string name="genreSertanejo">Sertanejo</string>
+    <string name="genreFinish">Finish</string>
 </resources>

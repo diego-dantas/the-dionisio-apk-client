@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class LoginFacebook extends Activity {
 
-    private LoginButton loginFacebook;
+    private LoginButton btnLoginFacebook;
     private CallbackManager callbackManager;
 
     protected void onCreate(final Bundle savedInstanceState) {
@@ -27,11 +27,11 @@ public class LoginFacebook extends Activity {
 
         callbackManager = CallbackManager.Factory.create();
 
-        loginFacebook = (LoginButton) findViewById(R.id.loginFacebook);
+        btnLoginFacebook = (LoginButton) findViewById(R.id.btnLoginFacebook);
 
-        loginFacebook.setReadPermissions(Arrays.asList("email", "public_profile", "user_friends"));
+        btnLoginFacebook.setReadPermissions(Arrays.asList("email", "public_profile", "user_friends"));
 
-        loginFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        btnLoginFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 /*Aqui tenho que verificar se o amiguinho já é cadastrado, caso não mando ele para

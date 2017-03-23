@@ -11,7 +11,7 @@ import com.the.dionisio.apk.client.R;
 public class CreateAccount extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton btnBackCreate;
-    private Button nextStepCreateAccount;
+    private Button btnNextStepCreateAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +19,10 @@ public class CreateAccount extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.bar_create_account);
 
         btnBackCreate = (ImageButton) findViewById(R.id.btnBackCreate);
-        nextStepCreateAccount = (Button) findViewById(R.id.nextStepCreateAccount);
+        btnNextStepCreateAccount = (Button) findViewById(R.id.btnNextStepCreateAccount);
 
         btnBackCreate.setOnClickListener(this);
-        nextStepCreateAccount.setOnClickListener(this);
+        btnNextStepCreateAccount.setOnClickListener(this);
     }
 
     public void onClick(View v){
@@ -32,7 +32,7 @@ public class CreateAccount extends AppCompatActivity implements View.OnClickList
             startActivity(itBackCreate);
         }
 
-        if(v == nextStepCreateAccount){
+        if(v == btnNextStepCreateAccount){
             Intent itNextStepCreateAccount = new Intent(this, CreateAccountStepGenre.class);
             startActivity(itNextStepCreateAccount);
         }

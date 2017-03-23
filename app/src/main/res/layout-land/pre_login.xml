@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/btnPreLogin"
-        android:layout_width="385dp"
+        android:layout_width="591dp"
         android:layout_height="60dp"
         android:layout_marginBottom="34dp"
         android:layout_marginEnd="14dp"
@@ -20,17 +20,19 @@
         android:text="@string/btn_login"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_editor_absoluteX="-102dp"
+        tools:layout_editor_absoluteY="194dp" />
 
     <Button
         android:id="@+id/btnPreCreateAccount"
-        android:layout_width="386dp"
-        android:layout_height="58dp"
+        android:layout_width="600dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="94dp"
         android:layout_marginEnd="14dp"
         android:layout_marginLeft="14dp"
@@ -44,14 +46,13 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintHorizontal_bias="0.5" />
+        tools:layout_constraintRight_creator="1" />
 
     <ImageView
         android:id="@+id/imgPreLogin"
         android:layout_width="0dp"
         android:layout_height="130dp"
-        android:layout_marginTop="-18dp"
+        android:layout_marginTop="-21dp"
         android:src="@drawable/td"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

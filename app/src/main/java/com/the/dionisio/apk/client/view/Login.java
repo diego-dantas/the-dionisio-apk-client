@@ -18,7 +18,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.bar_login);
 
         btnBackLogin = (ImageButton) findViewById(R.id.btnBackLogin);
-        forgotPassword = (TextView) findViewById(R.id.forgotPassword) ;
+        forgotPassword = (TextView) findViewById(R.id.forgotPassword);
 
         btnBackLogin.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
