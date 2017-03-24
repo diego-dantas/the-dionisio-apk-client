@@ -55,10 +55,10 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     public void checkCardRock(View v){
         if(imgCheckElectronics.getVisibility() == View.INVISIBLE){
             cardRock.setCardBackgroundColor(Color.GREEN);
-            imgCheckElectronics.setVisibility(View.VISIBLE);
+            imgCheckRock.setVisibility(View.VISIBLE);
         } else{
             cardRock.setCardBackgroundColor(Color.WHITE);
-            imgCheckElectronics.setVisibility(View.INVISIBLE);
+            imgCheckRock.setVisibility(View.INVISIBLE);
         }
     }
 
