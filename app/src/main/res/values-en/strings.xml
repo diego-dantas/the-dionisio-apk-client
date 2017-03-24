@@ -11,7 +11,7 @@
     <string name="btn_send">Send</string>
     <string name="genreRock">Rock</string>
     <string name="genreElectronics">Electronics</string>
-    <string name="genrePagoda">Pagoda</string>
+    <string name="genrePagoda">Pagode</string>
     <string name="genreSertanejo">Sertanejo</string>
     <string name="genreFinish">Finish</string>
 </resources>
