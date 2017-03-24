@@ -53,7 +53,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     }
 
     public void checkCardRock(View v){
-        if(imgCheckElectronics.getVisibility() == View.INVISIBLE){
+        if(imgCheckRock.getVisibility() == View.INVISIBLE){
             cardRock.setCardBackgroundColor(Color.GREEN);
             imgCheckRock.setVisibility(View.VISIBLE);
         } else{
@@ -63,7 +63,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     }
 
     public void checkCardSertanejo(View v){
-        if(imgCheckElectronics.getVisibility() == View.INVISIBLE){
+        if(imgCheckSertanejo.getVisibility() == View.INVISIBLE){
             cardSertanejo.setCardBackgroundColor(Color.rgb(8,148,0));
             imgCheckSertanejo.setVisibility(View.VISIBLE);
         } else{
