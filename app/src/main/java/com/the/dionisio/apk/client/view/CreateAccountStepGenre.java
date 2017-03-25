@@ -8,13 +8,14 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.the.dionisio.apk.client.R;
 
 public class CreateAccountStepGenre extends AppCompatActivity {
 
     private ImageButton btnBackCreateGenre;
-    private CardView cardElectronic, cardRock, cardSertanejo, cardPagode;
+    private CardView cardCheck, cardElectronic, cardRock, cardSertanejo, cardPagode;
     private ImageView imgCheckElectronics, imgCheckRock, imgCheckSertanejo;
 
     @Override
@@ -42,33 +43,18 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         startActivity(itBackCreateGenre);
     }
 
-    public void checkCardElectronics(View v){
+    public void checkCard(View v){
+
+        /*switch(v){
+            case :
+                break;
+            default:
+        }*/
+
         if(imgCheckElectronics.getVisibility() == View.INVISIBLE){
-            cardElectronic.setCardBackgroundColor(Color.argb(1,8,148,0));
             imgCheckElectronics.setVisibility(View.VISIBLE);
         } else{
-            cardElectronic.setCardBackgroundColor(Color.WHITE);
             imgCheckElectronics.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    public void checkCardRock(View v){
-        if(imgCheckRock.getVisibility() == View.INVISIBLE){
-            cardRock.setCardBackgroundColor(Color.GREEN);
-            imgCheckRock.setVisibility(View.VISIBLE);
-        } else{
-            cardRock.setCardBackgroundColor(Color.WHITE);
-            imgCheckRock.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    public void checkCardSertanejo(View v){
-        if(imgCheckSertanejo.getVisibility() == View.INVISIBLE){
-            cardSertanejo.setCardBackgroundColor(Color.rgb(8,148,0));
-            imgCheckSertanejo.setVisibility(View.VISIBLE);
-        } else{
-            cardSertanejo.setCardBackgroundColor(Color.WHITE);
-            imgCheckSertanejo.setVisibility(View.INVISIBLE);
         }
     }
 }
