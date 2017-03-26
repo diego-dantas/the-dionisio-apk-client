@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.model.API.DataConverter;
+
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
@@ -21,6 +25,12 @@ public class PreLogin extends Activity implements View.OnClickListener{
 
         btnPreLogin.setOnClickListener(this);
         btnPreCreateAccount.setOnClickListener(this);
+
+
+        //Calling the service of connection of API
+        DataConverter dc = new DataConverter();
+        dc.getDataConverter("58d3210412137c1150bb5386");
+
     }
 
     public void onClick(View v){
