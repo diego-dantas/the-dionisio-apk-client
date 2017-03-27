@@ -16,7 +16,7 @@
         android:layout_marginLeft="14dp"
         android:layout_marginRight="14dp"
         android:layout_marginStart="14dp"
-        android:background="@color/btnLogin"
+        android:background="@color/transparent"
         android:text="@string/btn_login"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

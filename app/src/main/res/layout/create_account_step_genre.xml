@@ -19,7 +19,7 @@
         android:layout_marginTop="16dp"
         android:onClick="checkCard"
         android:visibility="visible"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/transparent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1">
@@ -27,6 +27,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/bg_eletronic"
             app:layout_constraintBottom_toTopOf="@+id/card_view"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@+id/card_view"
@@ -52,7 +53,7 @@
                 android:padding="8dp"
                 android:text="@string/genreElectronics"
                 android:textAlignment="center"
-                android:textColor="#222"
+                android:textColor="@color/halfTransparent"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 
@@ -76,6 +77,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="16dp"
         android:onClick="checkCard"
+        app:cardBackgroundColor="@color/transparent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1">
@@ -83,6 +85,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/bg_rock"
             app:layout_constraintBottom_toTopOf="@+id/card_view"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@+id/card_view"
@@ -95,7 +98,7 @@
                 android:layout_height="135dp"
                 android:layout_alignParentTop="true"
                 android:paddingTop="10dp"
-                android:src="@drawable/ic_rock_02" />
+                android:src="@drawable/ic_rock" />
 
             <TextView
                 android:id="@+id/txtRock"
@@ -108,7 +111,7 @@
                 android:padding="8dp"
                 android:text="@string/genreRock"
                 android:textAlignment="center"
-                android:textColor="#222"
+                android:textColor="@color/halfTransparent"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 
@@ -116,11 +119,11 @@
                 android:id="@+id/imgCheckRock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_check"
                 android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:visibility="invisible"
+                app:srcCompat="@drawable/ic_check" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -132,6 +135,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="16dp"
         android:onClick="checkCard"
+        app:cardBackgroundColor="@color/transparent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardElectronics"
         tools:layout_constraintLeft_creator="1">
@@ -139,6 +143,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/bg_country"
             app:layout_constraintBottom_toTopOf="@+id/card_view"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@+id/card_view"
@@ -164,7 +169,7 @@
                 android:padding="8dp"
                 android:text="@string/genreSertanejo"
                 android:textAlignment="center"
-                android:textColor="#222"
+                android:textColor="@color/halfTransparent"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 
@@ -188,6 +193,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="16dp"
         android:onClick="checkCard"
+        app:cardBackgroundColor="@color/transparent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardRock"
         tools:layout_constraintLeft_creator="1">
@@ -195,6 +201,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/bg_pagode"
             app:layout_constraintBottom_toTopOf="@+id/card_view"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@+id/card_view"
@@ -220,7 +227,7 @@
                 android:padding="8dp"
                 android:text="@string/genrePagoda"
                 android:textAlignment="center"
-                android:textColor="#222"
+                android:textColor="@color/white"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 

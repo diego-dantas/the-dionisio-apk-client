@@ -16,7 +16,7 @@
             android:layout_width="48dp"
             android:layout_height="54dp"
             android:layout_weight="1"
-            android:background="@color/btnLogin"
+            android:background="@color/transparent"
             android:onClick="backCreateGenre"
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
