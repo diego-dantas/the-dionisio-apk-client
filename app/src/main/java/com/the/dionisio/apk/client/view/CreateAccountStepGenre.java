@@ -16,7 +16,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
 
     private ImageButton btnBackCreateGenre;
     private CardView cardCheck, cardElectronic, cardRock, cardSertanejo, cardPagode;
-    private ImageView imgCheckElectronics, imgCheckRock, imgCheckSertanejo;
+    private ImageView imgCheckElectronics, imgCheckRock, imgCheckSertanejo, imgCheckPagode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         imgCheckSertanejo = (ImageView) findViewById(R.id.imgCheckSertanejo);
 
         cardPagode = (CardView) findViewById(R.id.cardPagode);
+        imgCheckPagode = (ImageView) findViewById(R.id.imgCheckPagode);
     }
 
     public void backCreateGenre(View v){
@@ -44,17 +45,31 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     }
 
     public void checkCard(View v){
-
-        /*switch(v){
-            case :
-                break;
-            default:
-        }*/
-
-        if(imgCheckElectronics.getVisibility() == View.INVISIBLE){
-            imgCheckElectronics.setVisibility(View.VISIBLE);
-        } else{
-            imgCheckElectronics.setVisibility(View.INVISIBLE);
+        if(v == cardElectronic){
+            if(imgCheckElectronics.getVisibility() == View.INVISIBLE){
+                imgCheckElectronics.setVisibility(View.VISIBLE);
+            } else{
+                imgCheckElectronics.setVisibility(View.INVISIBLE);
+            }
+        } else if (v == cardRock){
+            if(imgCheckRock.getVisibility() == View.INVISIBLE){
+                imgCheckRock.setVisibility(View.VISIBLE);
+            } else{
+                imgCheckRock.setVisibility(View.INVISIBLE);
+            }
+        } else if(v == cardSertanejo){
+            if(imgCheckSertanejo.getVisibility() == View.INVISIBLE){
+                imgCheckSertanejo.setVisibility(View.VISIBLE);
+            } else{
+                imgCheckSertanejo.setVisibility(View.INVISIBLE);
+            }
+        } else if(v == cardPagode){
+            if(imgCheckPagode.getVisibility() == View.INVISIBLE){
+                imgCheckPagode.setVisibility(View.VISIBLE);
+            } else{
+                imgCheckPagode.setVisibility(View.INVISIBLE);
+            }
         }
+
     }
 }
