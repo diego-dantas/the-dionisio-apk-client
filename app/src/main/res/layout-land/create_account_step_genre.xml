@@ -13,10 +13,10 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardElectronics"
-        android:layout_width="135dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="checkCard"
         app:cardBackgroundColor="@color/transparent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -47,7 +47,7 @@
             <ImageView
                 android:id="@+id/imgElectronics"
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:paddingTop="10dp"
                 android:src="@drawable/ic_eletro" />
@@ -64,7 +64,7 @@
                 android:text="@string/genreElectronics"
                 android:textAlignment="center"
                 android:textColor="@color/halfTransparent"
-                android:textSize="22dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -72,10 +72,10 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardRock"
-        android:layout_width="135dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="checkCard"
         app:cardBackgroundColor="@color/transparent"
         app:layout_constraintLeft_toRightOf="@+id/cardElectronics"
@@ -104,7 +104,7 @@
             <ImageView
                 android:id="@+id/imgRock"
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:paddingTop="10dp"
                 android:src="@drawable/ic_rock" />
@@ -121,7 +121,7 @@
                 android:text="Rock"
                 android:textAlignment="center"
                 android:textColor="@color/halfTransparent"
-                android:textSize="22dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -129,10 +129,10 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardSertanejo"
-        android:layout_width="135dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="checkCard"
         app:cardBackgroundColor="@color/transparent"
         app:layout_constraintLeft_toRightOf="@+id/cardRock"
@@ -162,7 +162,7 @@
             <ImageView
                 android:id="@+id/imgSertanejo"
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:paddingTop="10dp"
                 android:src="@drawable/ic_sertanejo" />
@@ -179,7 +179,7 @@
                 android:text="Sertanejo"
                 android:textAlignment="center"
                 android:textColor="@color/halfTransparent"
-                android:textSize="22dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -187,10 +187,10 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardPagode"
-        android:layout_width="135dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="138dp"
+        android:layout_height="138dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="checkCard"
         app:cardBackgroundColor="@color/transparent"
         app:layout_constraintLeft_toRightOf="@+id/cardSertanejo"
@@ -221,7 +221,7 @@
             <ImageView
                 android:id="@+id/imgPagode"
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:paddingTop="10dp"
                 android:src="@drawable/ic_pagode" />
@@ -238,7 +238,7 @@
                 android:text="Pagode"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="22dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -246,21 +246,17 @@
 
     <Button
         android:id="@+id/genreFinish"
-        android:layout_width="598dp"
+        android:layout_width="593dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/genreFinish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardElectronics"
-        app:layout_constraintVertical_bias="1.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_editor_absoluteY="215dp" />
+        tools:layout_constraintTop_creator="1" />
 
 </android.support.constraint.ConstraintLayout>
