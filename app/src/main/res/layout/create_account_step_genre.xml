@@ -25,6 +25,7 @@
         tools:layout_constraintLeft_creator="1">
 
         <RelativeLayout
+            android:id="@+id/bgElectronic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_eletronic"
@@ -83,6 +84,7 @@
         tools:layout_constraintLeft_creator="1">
 
         <RelativeLayout
+            android:id="@+id/bgRock"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_rock"
@@ -141,6 +143,7 @@
         tools:layout_constraintLeft_creator="1">
 
         <RelativeLayout
+            android:id="@+id/bgCountry"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_country"
@@ -199,6 +202,7 @@
         tools:layout_constraintLeft_creator="1">
 
         <RelativeLayout
+            android:id="@+id/bgPagode"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_pagode"

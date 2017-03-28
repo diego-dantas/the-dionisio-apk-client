@@ -2,6 +2,8 @@ package com.the.dionisio.apk.client.view;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -17,7 +19,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     private ImageButton btnBackCreateGenre;
     private CardView cardCheck, cardElectronic, cardRock, cardSertanejo, cardPagode;
     private ImageView imgCheckElectronics, imgCheckRock, imgCheckSertanejo, imgCheckPagode;
-
+    private View bgElectronic,bgRock, bgPagode, bgCountry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,33 @@ public class CreateAccountStepGenre extends AppCompatActivity {
 
         cardPagode = (CardView) findViewById(R.id.cardPagode);
         imgCheckPagode = (ImageView) findViewById(R.id.imgCheckPagode);
+
+        //I worked here! (byDaniel)
+        //this is filter in black color and opacity is the setAlpha()
+
+        //filter and opacity electronic genre
+        View bgElectronic = findViewById(R.id.bgElectronic);
+        Drawable backgroundElectronic = bgElectronic.getBackground();
+        backgroundElectronic.setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);
+        backgroundElectronic.setAlpha(50);
+
+        //filter and opacity rock genre
+        View bgRock = findViewById(R.id.bgRock);
+        Drawable backgroundRock = bgRock.getBackground();
+        backgroundRock.setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);
+        backgroundRock.setAlpha(50);
+
+        //filter and opacity pagode genre
+        View bgPagode = findViewById(R.id.bgPagode);
+        Drawable backgroundPagode = bgPagode.getBackground();
+        backgroundPagode.setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);
+        backgroundPagode.setAlpha(50);
+
+        //filter and opacity country genre
+        View bgCountry = findViewById(R.id.bgCountry);
+        Drawable backgroundCountry = bgCountry.getBackground();
+        backgroundCountry.setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);
+        backgroundCountry.setAlpha(50);
     }
 
     public void backCreateGenre(View v){
