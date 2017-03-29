@@ -10,7 +10,6 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.the.dionisio.apk.client.R;
 
@@ -39,32 +38,30 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         cardPagode = (CardView) findViewById(R.id.cardPagode);
         imgCheckPagode = (ImageView) findViewById(R.id.imgCheckPagode);
 
-        //I worked here! (byDaniel)
         //this is filter in black color and opacity is the setAlpha()
-
         //filter and opacity electronic genre
-        View bgElectronic = findViewById(R.id.bgElectronic);
+        bgElectronic = findViewById(R.id.bgElectronic);
         Drawable backgroundElectronic = bgElectronic.getBackground();
         backgroundElectronic.setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);
-        backgroundElectronic.setAlpha(50);
+        backgroundElectronic.setAlpha(150);
 
         //filter and opacity rock genre
-        View bgRock = findViewById(R.id.bgRock);
+        bgRock = findViewById(R.id.bgRock);
         Drawable backgroundRock = bgRock.getBackground();
         backgroundRock.setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);
-        backgroundRock.setAlpha(50);
+        backgroundRock.setAlpha(150);
 
         //filter and opacity pagode genre
-        View bgPagode = findViewById(R.id.bgPagode);
+        bgPagode = findViewById(R.id.bgPagode);
         Drawable backgroundPagode = bgPagode.getBackground();
         backgroundPagode.setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);
-        backgroundPagode.setAlpha(50);
+        backgroundPagode.setAlpha(150);
 
         //filter and opacity country genre
-        View bgCountry = findViewById(R.id.bgCountry);
+        bgCountry = findViewById(R.id.bgCountry);
         Drawable backgroundCountry = bgCountry.getBackground();
         backgroundCountry.setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);
-        backgroundCountry.setAlpha(50);
+        backgroundCountry.setAlpha(150);
     }
 
     public void backCreateGenre(View v){
@@ -74,6 +71,8 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     }
 
     public void checkCard(View v){
+
+        //verify which CarView was clicked to selecting
         if(v == cardElectronic){
             if(imgCheckElectronics.getVisibility() == View.INVISIBLE){
                 imgCheckElectronics.setVisibility(View.VISIBLE);
