@@ -5,9 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.API.DataConverter;
+import com.the.dionisio.apk.client.model.DTO.Person;
 
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
@@ -27,9 +26,15 @@ public class PreLogin extends Activity implements View.OnClickListener{
         btnPreCreateAccount.setOnClickListener(this);
 
 
+        Person p = new Person();
+        p.setName("Nome");
+        p.setEmail("email");
+        p.setPassword("senha");
+
         //Calling the service of connection of API
         DataConverter dc = new DataConverter();
-        dc.getDataConverter("58d3210412137c1150bb5386");
+        //dc.getDataConverter("58db0f4c12137c2f282ef4df");
+        //dc.postDataConverter(p);
 
     }
 

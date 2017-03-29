@@ -11,9 +11,9 @@ import java.util.List;
 
 public class CatalogAPI {
 
-    private List<Person> peoples;
+    private List<Person> people;
 
     public List<Person> getPeoples(){
-        return this.peoples;
+        return this.people;
     }
 }
