@@ -50,7 +50,7 @@
                 android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:paddingTop="10dp"
-                android:src="@drawable/ic_eletro" />
+                android:src="@drawable/ic_eletro_not_check" />
 
             <TextView
                 android:id="@+id/txtElectronics"
@@ -107,7 +107,7 @@
                 android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:paddingTop="10dp"
-                android:src="@drawable/ic_rock" />
+                android:src="@drawable/ic_rock_not_check" />
 
             <TextView
                 android:id="@+id/txtRock"
@@ -165,7 +165,7 @@
                 android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:paddingTop="10dp"
-                android:src="@drawable/ic_sertanejo" />
+                android:src="@drawable/ic_sertanejo_not_check" />
 
             <TextView
                 android:id="@+id/txtSertanejo"
@@ -224,7 +224,7 @@
                 android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:paddingTop="10dp"
-                android:src="@drawable/ic_pagode" />
+                android:src="@drawable/ic_pagode_not_check" />
 
             <TextView
                 android:id="@+id/txtPagode"

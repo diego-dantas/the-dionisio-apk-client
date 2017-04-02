@@ -8,35 +8,39 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.the.dionisio.apk.client.R;
 
 public class CreateAccountStepGenre extends AppCompatActivity {
 
-    private ImageButton btnBackCreateGenre;
-    private CardView cardCheck, cardElectronic, cardRock, cardSertanejo, cardPagode;
-    private ImageView imgCheckElectronics, imgCheckRock, imgCheckSertanejo, imgCheckPagode;
+    private CardView cardElectronics, cardRock, cardSertanejo, cardPagode;
+    private ImageView imgElectronics, imgRock, imgSertanejo, imgPagode;
     private View bgElectronic,bgRock, bgPagode, bgCountry;
+    private TextView txtElectronics, txtRock, txtSertanejo, txtPagode;
+    private String controlCheck;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bar_create_account_step_genre);
 
-        btnBackCreateGenre = (ImageButton) findViewById(R.id.btnBackCreateGenre);
-
-        cardElectronic = (CardView) findViewById(R.id.cardElectronics);
-        imgCheckElectronics = (ImageView) findViewById(R.id.imgCheckElectronics);
+        cardElectronics = (CardView) findViewById(R.id.cardElectronics);
+        imgElectronics = (ImageView) findViewById(R.id.imgElectronics);
+        txtElectronics = (TextView) findViewById(R.id.txtElectronics);
 
         cardRock = (CardView) findViewById(R.id.cardRock);
-        imgCheckRock = (ImageView) findViewById(R.id.imgCheckRock);
+        imgRock = (ImageView) findViewById(R.id.imgRock);
+        txtRock = (TextView) findViewById(R.id.txtRock);
 
         cardSertanejo = (CardView) findViewById(R.id.cardSertanejo);
-        imgCheckSertanejo = (ImageView) findViewById(R.id.imgCheckSertanejo);
+        imgSertanejo = (ImageView) findViewById(R.id.imgSertanejo);
+        txtSertanejo = (TextView) findViewById(R.id.txtSertanejo);
 
         cardPagode = (CardView) findViewById(R.id.cardPagode);
-        imgCheckPagode = (ImageView) findViewById(R.id.imgCheckPagode);
+        imgPagode = (ImageView) findViewById(R.id.imgPagode);
+        txtPagode = (TextView) findViewById(R.id.txtPagode);
 
         //this is filter in black color and opacity is the setAlpha()
         //filter and opacity electronic genre
@@ -62,6 +66,12 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         Drawable backgroundCountry = bgCountry.getBackground();
         backgroundCountry.setColorFilter(Color.BLACK, PorterDuff.Mode.LIGHTEN);
         backgroundCountry.setAlpha(150);
+
+        controlCheck = "NOT_CHECK";
+        cardElectronics.setTag(controlCheck);
+        cardRock.setTag(controlCheck);
+        cardSertanejo.setTag(controlCheck);
+        cardPagode.setTag(controlCheck);
     }
 
     public void backCreateGenre(View v){
@@ -73,31 +83,52 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     public void checkCard(View v){
 
         //verify which CarView was clicked to selecting
-        if(v == cardElectronic){
-            if(imgCheckElectronics.getVisibility() == View.INVISIBLE){
-                imgCheckElectronics.setVisibility(View.VISIBLE);
-            } else{
-                imgCheckElectronics.setVisibility(View.INVISIBLE);
-            }
-        } else if (v == cardRock){
-            if(imgCheckRock.getVisibility() == View.INVISIBLE){
-                imgCheckRock.setVisibility(View.VISIBLE);
-            } else{
-                imgCheckRock.setVisibility(View.INVISIBLE);
-            }
-        } else if(v == cardSertanejo){
-            if(imgCheckSertanejo.getVisibility() == View.INVISIBLE){
-                imgCheckSertanejo.setVisibility(View.VISIBLE);
-            } else{
-                imgCheckSertanejo.setVisibility(View.INVISIBLE);
-            }
-        } else if(v == cardPagode){
-            if(imgCheckPagode.getVisibility() == View.INVISIBLE){
-                imgCheckPagode.setVisibility(View.VISIBLE);
-            } else{
-                imgCheckPagode.setVisibility(View.INVISIBLE);
-            }
+        int idCard = v.getId();
+        switch (idCard){
+            case R.id.cardElectronics:
+                if(cardElectronics.getTag() == controlCheck){
+                    imgElectronics.setImageResource(R.drawable.ic_eletro_checked);
+                    txtElectronics.setTextColor(Color.parseColor("#FFFFFF"));
+                    cardElectronics.setTag("CHECKED");
+                } else{
+                    imgElectronics.setImageResource(R.drawable.ic_eletro_not_check);
+                    txtElectronics.setTextColor(Color.parseColor("#A0FFFFFF"));
+                    cardElectronics.setTag(controlCheck);
+                }
+                break;
+            case R.id.cardRock:
+                if(cardRock.getTag() == controlCheck){
+                    imgRock.setImageResource(R.drawable.ic_rock_checked);
+                    txtRock.setTextColor(Color.parseColor("#FFFFFF"));
+                    cardRock.setTag("CHECKED");
+                } else{
+                    imgRock.setImageResource(R.drawable.ic_rock_not_check);
+                    txtRock.setTextColor(Color.parseColor("#A0FFFFFF"));
+                    cardRock.setTag(controlCheck);
+                }
+                break;
+            case R.id.cardSertanejo:
+                if(cardSertanejo.getTag() == controlCheck){
+                    imgSertanejo.setImageResource(R.drawable.ic_sertanejo_checked);
+                    txtSertanejo.setTextColor(Color.parseColor("#FFFFFF"));
+                    cardSertanejo.setTag("CHECKED");
+                } else{
+                    imgSertanejo.setImageResource(R.drawable.ic_sertanejo_not_check);
+                    txtSertanejo.setTextColor(Color.parseColor("#A0FFFFFF"));
+                    cardSertanejo.setTag(controlCheck);
+                }
+                break;
+            case R.id.cardPagode:
+                if(cardPagode.getTag() == controlCheck){
+                    imgPagode.setImageResource(R.drawable.ic_pagode_checked);
+                    txtPagode.setTextColor(Color.parseColor("#FFFFFF"));
+                    cardPagode.setTag("CHECKED");
+                } else{
+                    imgPagode.setImageResource(R.drawable.ic_pagode_not_check);
+                    txtPagode.setTextColor(Color.parseColor("#A0FFFFFF"));
+                    cardPagode.setTag(controlCheck);
+                }
+                break;
         }
-
     }
 }

@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:paddingTop="5dp"
-                android:src="@drawable/ic_eletro"
+                android:src="@drawable/ic_eletro_not_check"
                 android:layout_above="@+id/imgCheckElectronics"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -59,18 +59,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="11dp" />
-
-            <ImageView
-                android:id="@+id/imgCheckElectronics"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_check" />
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -104,7 +93,7 @@
                 android:layout_height="130dp"
                 android:paddingBottom="20dp"
                 android:paddingTop="5dp"
-                android:src="@drawable/ic_rock"
+                android:src="@drawable/ic_rock_not_check"
                 android:layout_above="@+id/imgCheckRock"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -122,19 +111,8 @@
                 android:textColor="@color/halfTransparent"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:layout_marginBottom="12dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true" />
-
-            <ImageView
-                android:id="@+id/imgCheckRock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_check" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -167,11 +145,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:paddingTop="5dp"
-                android:src="@drawable/ic_sertanejo"
+                android:src="@drawable/ic_sertanejo_not_check"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="12dp" />
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/txtSertanejo"
@@ -186,18 +163,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="13dp" />
-
-            <ImageView
-                android:id="@+id/imgCheckSertanejo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_check" />
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -230,11 +196,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:paddingTop="5dp"
-                android:src="@drawable/ic_pagode"
+                android:src="@drawable/ic_pagode_not_check"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="11dp" />
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/txtPagode"
@@ -249,29 +214,18 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="13dp" />
-
-            <ImageView
-                android:id="@+id/imgCheckPagode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_check" />
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
     <Button
         android:id="@+id/btnFinish"
-        android:layout_width="380dp"
+        android:layout_width="317dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/genreFinish"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-16dp" />
+        tools:layout_editor_absoluteX="2dp" />
 
 </android.support.constraint.ConstraintLayout>
