@@ -225,11 +225,11 @@
 
     <Button
         android:id="@+id/btnFinish"
-        android:layout_width="385dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="59dp"
+        android:layout_width="359dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/genreFinish"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="1dp" />
 
 </android.support.constraint.ConstraintLayout>

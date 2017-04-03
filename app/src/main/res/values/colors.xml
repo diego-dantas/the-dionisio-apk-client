@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#ff4000</color>
     <color name="colorAccent">#000000</color>
     <color name="white">#ffffff</color>
-    <color name="googlePlus">#db4437</color>
     <color name="facebook">#3b5998</color>
+    <color name="google">#4683ec</color>
     <color name="transparent">#00000000</color>
     <color name="halfTransparent">#a0ffffff</color>
     <color name="checkGenre">#089400</color>
