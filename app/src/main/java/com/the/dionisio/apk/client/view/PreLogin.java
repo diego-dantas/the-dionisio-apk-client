@@ -27,14 +27,17 @@ public class PreLogin extends Activity implements View.OnClickListener{
 
 
         Person p = new Person();
-        p.setName("Nome");
-        p.setEmail("email");
-        p.setPassword("senha");
+        //p.set_id("58db0dc712137c2f282ef4d8");
+        //p.setName("Testedecriação");
+        //p.setEmail("kgiuig@ada.com");
+        //p.setPassword("gafdga");
 
         //Calling the service of connection of API
         DataConverter dc = new DataConverter();
-        //dc.getDataConverter("58db0f4c12137c2f282ef4df");
+        //dc.getDataConverter("58dc5d5c12137c0dcd76b91f");
         //dc.postDataConverter(p);
+        //dc.deleteDataConverter(p);
+        //dc.updateDataConverter(p);
 
     }
 

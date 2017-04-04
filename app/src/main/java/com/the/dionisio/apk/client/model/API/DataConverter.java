@@ -52,7 +52,7 @@ public class DataConverter {
     public void postDataConverter(Person p) {
 
         ServiceAPI serviceAPI = ServiceGenerator.createService(ServiceAPI.class);
-        final Call<CatalogAPI> requestCatalog = serviceAPI.postPeople(p);
+        Call<CatalogAPI> requestCatalog = serviceAPI.postPeople(p);
 
        requestCatalog.enqueue(new Callback<CatalogAPI>() {
             @Override
@@ -60,6 +60,52 @@ public class DataConverter {
 
                 if(response.isSuccessful()){
                     Log.i(TAG, "Deus certo");
+                }else{
+                    Log.e(TAG, "Deu merda: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CatalogAPI> call, Throwable t) {
+                Log.e(TAG, "Erro: aqui " + t.getMessage());
+            }
+        });
+    }
+
+    public void deleteDataConverter(Person p) {
+
+        ServiceAPI serviceAPI = ServiceGenerator.createService(ServiceAPI.class);
+        Call<CatalogAPI> requestCatalog = serviceAPI.deletePerson();
+        Log.i(TAG, "Chamei o metodo");
+        requestCatalog.enqueue(new Callback<CatalogAPI>() {
+            @Override
+            public void onResponse(Call<CatalogAPI> call, Response<CatalogAPI> response) {
+
+                if(response.isSuccessful()){
+                    Log.i(TAG, "Deus certo METODO DELETE");
+                }else{
+                    Log.e(TAG, "Deu merda: DELETE" + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CatalogAPI> call, Throwable t) {
+                Log.e(TAG, "Erro: aqui " + t.getMessage());
+            }
+        });
+    }
+
+    public void updateDataConverter(Person p) {
+
+        ServiceAPI serviceAPI = ServiceGenerator.createService(ServiceAPI.class);
+        Call<CatalogAPI> requestCatalog = serviceAPI.updatePerson(p);
+
+        requestCatalog.enqueue(new Callback<CatalogAPI>() {
+            @Override
+            public void onResponse(Call<CatalogAPI> call, Response<CatalogAPI> response) {
+
+                if(response.isSuccessful()){
+                    Log.i(TAG, "Deus certo METODO de update");
                 }else{
                     Log.e(TAG, "Deu merda: " + response.code());
                 }

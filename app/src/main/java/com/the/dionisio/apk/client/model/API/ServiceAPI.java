@@ -4,8 +4,11 @@ import com.the.dionisio.apk.client.model.DTO.Person;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -18,14 +21,17 @@ public interface ServiceAPI {
     @GET("person/{id}")
     Call<CatalogAPI> getPeople(@Path("id") String id);
 
-    /*
-    @POST("people")
-    Call<CatalogAPI> postPeople(@Field("name") String name,
-                                @Field("email") String email,
-                                @Field("password") String password);*/
-
     @POST("person")
     Call<CatalogAPI> postPeople(@Body Person p);
+
+    @DELETE("person")
+    Call<CatalogAPI> deletePerson();
+
+    @PUT("person")
+    Call<CatalogAPI> updatePerson(@Body Person p);
+
+    @HTTP(method = "DELETE", path = "person, hasBody = true")
+    Call<CatalogAPI>  deletepe(@Body Person p);
 
 
 }
