@@ -67,45 +67,28 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
-        app:layout_constraintHorizontal_bias="0.505"
-        tools:layout_editor_absoluteY="304dp" />
+        app:layout_constraintHorizontal_bias="0.505" />
 
-    <Button
+    <com.facebook.login.widget.LoginButton
         android:id="@+id/loginFacebook"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="9dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/facebook"
-        android:drawableLeft="@drawable/com_facebook_button_icon_blue"
+        android:layout_height="wrap_content"
         android:paddingBottom="20dp"
+        android:paddingLeft="10dp"
         android:paddingTop="20dp"
-        android:text="@string/btn_loginFacebook"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
         app:layout_constraintBottom_toTopOf="@+id/btnLoginGoogle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgotPassword"
-        app:layout_constraintVertical_bias="0.538"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintLeft_creator="1" />
 
-    <Button
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/btnLoginGoogle"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="36dp"
-        android:background="@color/google"
-        android:drawableLeft="@drawable/common_google_signin_btn_icon_dark"
-        android:text="@string/btn_loginGoogle"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
