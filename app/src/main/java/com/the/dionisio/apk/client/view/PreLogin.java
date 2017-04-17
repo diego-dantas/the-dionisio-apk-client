@@ -1,30 +1,19 @@
 package com.the.dionisio.apk.client.view;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.API.DataConverter;
 import com.the.dionisio.apk.client.model.DTO.Person;
+import com.the.dionisio.apk.client.util.Util;
 
-import android.view.*;
-import android.widget.*;
-
-public class PreLogin extends Activity implements View.OnClickListener{
-
-    private Button btnPreLogin, btnPreCreateAccount;
+public class PreLogin extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pre_login);
-
-        btnPreLogin = (Button) findViewById(R.id.btnPreLogin);
-        btnPreCreateAccount = (Button) findViewById(R.id.btnPreCreateAccount);
-
-        btnPreLogin.setOnClickListener(this);
-        btnPreCreateAccount.setOnClickListener(this);
-
 
         Person p = new Person();
         //p.set_id("58db0dc712137c2f282ef4d8");
@@ -41,14 +30,13 @@ public class PreLogin extends Activity implements View.OnClickListener{
 
     }
 
-    public void onClick(View v){
-        if(v == btnPreLogin){
-            Intent itLogin = new Intent(this, Login.class);
-            startActivity(itLogin);
-        }
-        if(v == btnPreCreateAccount){
-            Intent itCreate = new Intent(this, CreateAccount.class);
-            startActivity(itCreate);
-        }
+    public void goCreateAccount(View v)
+    {
+        Util.moviment.go(this, CreateAccount.class);
+    }
+
+    public void goLogin(View v)
+    {
+        Util.moviment.go(this, Login.class);
     }
 }

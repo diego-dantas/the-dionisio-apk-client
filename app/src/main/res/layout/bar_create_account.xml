@@ -17,6 +17,7 @@
             android:layout_height="54dp"
             android:layout_weight="1"
             android:background="@color/transparent"
+            android:onClick="backCreateAccount"
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
     </android.support.design.widget.AppBarLayout>

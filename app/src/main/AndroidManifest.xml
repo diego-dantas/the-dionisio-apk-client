@@ -40,6 +40,11 @@
         <activity
             android:name=".view.CreateAccountStepGenre"
             android:label="@string/title_activity_create_account_step_genre"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="res.layout.view_main" />
+        <activity
+            android:name=".view.ViewMain"
+            android:label="@string/title_activity_view_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

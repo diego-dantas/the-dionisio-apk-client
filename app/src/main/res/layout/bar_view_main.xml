@@ -4,26 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.the.dionisio.apk.client.view.ForgotPassword">
+    tools:context="com.the.dionisio.apk.client.view.ViewMain">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <ImageButton
-            android:id="@+id/btnBackForgot"
-            android:layout_width="48dp"
-            android:layout_height="54dp"
-            android:layout_weight="1"
-            android:background="@color/transparent"
-            android:onClick="backForgotPassword"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include
-        android:id="@+id/include2"
-        layout="@layout/forgot_password" />
+    <include layout="@layout/view_main" />
 
 </android.support.design.widget.CoordinatorLayout>
