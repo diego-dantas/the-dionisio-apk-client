@@ -6,6 +6,10 @@ import android.view.View;
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.util.Util;
 
+/**
+ * Created by igorm on 23/04/2017.
+ */
+
 public class CreateAccount extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -20,4 +20,15 @@ public class MovingActivity
         Intent intent = new Intent(context, classDestiny);
         context.startActivity(intent);
     }
+
+    public void goClear(Context context, Class classDestiny, String name, String email, String img_url, String tipoLogin)
+    {
+        Intent intent = new Intent(context, classDestiny);
+        intent.putExtra("NAME", name);
+        intent.putExtra("EMAIL", email);
+        intent.putExtra("IMG_URL", img_url);
+        intent.putExtra("TIPO_LOGIN", tipoLogin);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
 }

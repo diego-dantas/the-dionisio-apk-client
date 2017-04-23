@@ -8,7 +8,11 @@ import com.the.dionisio.apk.client.model.API.DataConverter;
 import com.the.dionisio.apk.client.model.DTO.Person;
 import com.the.dionisio.apk.client.util.Util;
 
-public class PreLogin extends Activity{
+/**
+ * Created by igorm on 23/04/2017.
+ */
+
+public class PreLogin extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +31,6 @@ public class PreLogin extends Activity{
         //dc.postDataConverter(p);
         //dc.deleteDataConverter(p);
         //dc.updateDataConverter(p);
-
     }
 
     public void goCreateAccount(View v)

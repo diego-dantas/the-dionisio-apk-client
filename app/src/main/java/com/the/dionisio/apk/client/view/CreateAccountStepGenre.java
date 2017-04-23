@@ -12,6 +12,10 @@ import android.widget.TextView;
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.util.Util;
 
+/**
+ * Created by igorm on 23/04/2017.
+ */
+
 public class CreateAccountStepGenre extends AppCompatActivity {
 
     private CardView cardElectronics, cardRock, cardSertanejo, cardPagode;

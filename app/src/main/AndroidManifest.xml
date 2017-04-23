@@ -6,46 +6,48 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".view.TheDionisioApp"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="The Dionisio"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
 
         <activity android:name=".view.PreLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".view.Login"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".view.CreateAccount"
-            android:label="@string/title_activity_creat_account"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".view.ForgotPassword"
-            android:label="@string/title_activity_forgot_password"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".view.CreateAccountStepGenre"
-            android:label="@string/title_activity_create_account_step_genre"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="res.layout.view_main" />
+
         <activity
             android:name=".view.ViewMain"
-            android:label="@string/title_activity_view_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
