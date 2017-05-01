@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.model.API;
+package com.the.dionisio.apk.client.dao.api;
 
 import com.google.gson.Gson;
 

@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.view;
+package com.the.dionisio.apk.client.model.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

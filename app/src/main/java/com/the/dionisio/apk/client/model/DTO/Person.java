@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.model.DTO;
+package com.the.dionisio.apk.client.model.dto;
 
 /**
  * Created by Dantas on 3/25/17.

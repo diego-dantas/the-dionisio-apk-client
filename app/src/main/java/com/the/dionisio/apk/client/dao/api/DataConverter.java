@@ -1,8 +1,8 @@
-package com.the.dionisio.apk.client.model.API;
+package com.the.dionisio.apk.client.dao.api;
 
 import android.util.Log;
 
-import com.the.dionisio.apk.client.model.DTO.Person;
+import com.the.dionisio.apk.client.model.dto.Person;
 
 import retrofit2.Call;
 import retrofit2.Callback;

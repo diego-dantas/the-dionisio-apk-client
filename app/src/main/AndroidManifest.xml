@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".view.TheDionisioApp"
+        android:name=".model.view.TheDionisioApp"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="The Dionisio"
@@ -20,26 +20,26 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".view.PreLogin">
+        <activity android:name=".model.view.PreLogin">
 
         </activity>
         <activity
-            android:name=".view.Login"
+            android:name=".model.view.Login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.CreateAccount"
+            android:name=".model.view.CreateAccount"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.ForgotPassword"
+            android:name=".model.view.ForgotPassword"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.CreateAccountStepGenre"
+            android:name=".model.view.CreateAccountStepGenre"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.ViewMain"
+            android:name=".ViewMain"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.SplashScreen"
+            android:name=".model.view.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

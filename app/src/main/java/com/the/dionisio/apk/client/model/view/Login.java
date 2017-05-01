@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.view;
+package com.the.dionisio.apk.client.model.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +31,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.ViewMain;
 import com.the.dionisio.apk.client.util.Util;
 
 import java.util.Arrays;

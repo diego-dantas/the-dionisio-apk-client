@@ -1,11 +1,11 @@
-package com.the.dionisio.apk.client.view;
+package com.the.dionisio.apk.client.model.view;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import com.the.dionisio.apk.client.R;
-import com.the.dionisio.apk.client.model.API.DataConverter;
-import com.the.dionisio.apk.client.model.DTO.Person;
+import com.the.dionisio.apk.client.dao.api.DataConverter;
+import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.util.Util;
 
 /**
