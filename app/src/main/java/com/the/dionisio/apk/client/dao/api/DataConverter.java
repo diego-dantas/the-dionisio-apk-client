@@ -30,8 +30,8 @@ public class DataConverter {
 
                 CatalogAPI catalogAPI = response.body();
                 if(response.isSuccessful()){
-                    for(Person p : catalogAPI.getPeoples()){
-                        Log.i(TAG, String.format("%s: %s", p.getName(), p.getEmail()));
+                    for(Person person : catalogAPI.getPeoples()){
+                        Log.i(TAG, String.format("%s: %s", person.name, person.email));
                         Log.i(TAG, "----------------------");
 
                     }
@@ -49,10 +49,10 @@ public class DataConverter {
     }
 
 
-    public void postDataConverter(Person p) {
+    public void postDataConverter(Person person) {
 
         ServiceAPI serviceAPI = ServiceGenerator.createService(ServiceAPI.class);
-        Call<CatalogAPI> requestCatalog = serviceAPI.postPeople(p);
+        Call<CatalogAPI> requestCatalog = serviceAPI.postPeople(person);
 
        requestCatalog.enqueue(new Callback<CatalogAPI>() {
             @Override
@@ -72,10 +72,10 @@ public class DataConverter {
         });
     }
 
-    public void deleteDataConverter(Person p) {
+    public void deleteDataConverter(String id) {
 
         ServiceAPI serviceAPI = ServiceGenerator.createService(ServiceAPI.class);
-        Call<CatalogAPI> requestCatalog = serviceAPI.deletePerson();
+        Call<CatalogAPI> requestCatalog = serviceAPI.deletePerson(id);
         Log.i(TAG, "Chamei o metodo");
         requestCatalog.enqueue(new Callback<CatalogAPI>() {
             @Override
@@ -95,10 +95,10 @@ public class DataConverter {
         });
     }
 
-    public void updateDataConverter(Person p) {
+    public void updateDataConverter(Person person) {
 
         ServiceAPI serviceAPI = ServiceGenerator.createService(ServiceAPI.class);
-        Call<CatalogAPI> requestCatalog = serviceAPI.updatePerson(p);
+        Call<CatalogAPI> requestCatalog = serviceAPI.updatePerson(person);
 
         requestCatalog.enqueue(new Callback<CatalogAPI>() {
             @Override

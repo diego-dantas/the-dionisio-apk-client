@@ -20,6 +20,6 @@ public class ForgotPassword extends AppCompatActivity{
 
     public void backForgotPassword(View v)
     {
-        Util.moviment.back(this);
+        Util.moviment.backView(this);
     }
 }

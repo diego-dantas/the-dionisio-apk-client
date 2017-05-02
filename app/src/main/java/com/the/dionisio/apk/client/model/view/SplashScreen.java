@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.util.Util;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -21,8 +22,7 @@ public class SplashScreen extends AppCompatActivity {
                 catch(InterruptedException e){
                     e.printStackTrace();
                 } finally {
-                    Intent intent = new Intent(SplashScreen.this, PreLogin.class);
-                    startActivity(intent);
+                    Util.moviment.goViewClear(getApplicationContext(), PreLogin.class);
                 }
             }
         };

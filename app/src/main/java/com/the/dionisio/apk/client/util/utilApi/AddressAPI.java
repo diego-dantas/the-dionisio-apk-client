@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.dao.api;
+package com.the.dionisio.apk.client.util.utilApi;
 
 /**
  * Created by Dantas on 3/25/17.
@@ -6,7 +6,7 @@ package com.the.dionisio.apk.client.dao.api;
 
 public class AddressAPI {
 
-    private static final String BASE_URL = "http://192.168.0.13:4212/";
+    private static final String BASE_URL = "http://192.168.32.2:4212";
 
     public AddressAPI(){}
 

@@ -63,7 +63,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
 
     public void backCreateAccountStepGenre(View v)
     {
-        Util.moviment.back(this);
+        Util.moviment.backView(this);
     }
 
     public void checkCard(View v)

@@ -15,23 +15,21 @@ import retrofit2.http.Path;
  * Created by Dantas on 3/25/17.
  */
 
-public interface ServiceAPI {
-
-
-    @GET("person/{id}")
+public interface ServiceAPI
+{
+    @GET("/person/{id}")
     Call<CatalogAPI> getPeople(@Path("id") String id);
 
-    @POST("person")
+    @POST("/person")
     Call<CatalogAPI> postPeople(@Body Person p);
 
-    @DELETE("person")
-    Call<CatalogAPI> deletePerson();
+    @DELETE("/person")
+    Call<CatalogAPI> deletePerson(@Body String id);
 
-    @PUT("person")
+    @PUT("/person")
     Call<CatalogAPI> updatePerson(@Body Person p);
 
     @HTTP(method = "DELETE", path = "person, hasBody = true")
     Call<CatalogAPI>  deletepe(@Body Person p);
-
 
 }

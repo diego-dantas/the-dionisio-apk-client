@@ -35,11 +35,11 @@ public class PreLogin extends Activity {
 
     public void goCreateAccount(View v)
     {
-        Util.moviment.go(this, CreateAccount.class);
+        Util.moviment.goView(this, CreateAccount.class);
     }
 
     public void goLogin(View v)
     {
-        Util.moviment.go(this, Login.class);
+        Util.moviment.goView(this, Login.class);
     }
 }

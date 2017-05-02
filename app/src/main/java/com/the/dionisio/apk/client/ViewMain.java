@@ -27,7 +27,7 @@ import com.the.dionisio.apk.client.model.view.PreLogin;
 
 public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
-    private TextView txtName, txtEmail;
+    private TextView txtName, txtEmail, txtId;
     private ImageView imgPhoto;
     private GoogleApiClient googleApiClient;
     private String tipo_login;
@@ -37,6 +37,7 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bar_view_main);
 
+        txtId = (TextView) findViewById(R.id.txtId);
         txtName = (TextView) findViewById(R.id.txtName);
         txtEmail = (TextView) findViewById(R.id.txtEmail);
 
@@ -44,6 +45,7 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
 
         Bundle bundle = getIntent().getExtras();
 
+        txtId.setText(bundle.getString("ID"));
         txtName.setText(bundle.getString("NAME"));
         txtEmail.setText(bundle.getString("EMAIL"));
         Glide.with(this).load(bundle.getString("IMG_URL")).into(imgPhoto);

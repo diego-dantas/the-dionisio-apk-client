@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.util;
+package com.the.dionisio.apk.client.util.utilView;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;

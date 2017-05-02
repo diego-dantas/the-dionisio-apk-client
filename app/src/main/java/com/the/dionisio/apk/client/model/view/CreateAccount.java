@@ -19,12 +19,12 @@ public class CreateAccount extends AppCompatActivity{
 
     public void backCreateAccount(View v)
     {
-        Util.moviment.back(this);
+        Util.moviment.backView(this);
     }
 
     public void goCreateAccountStepGenre(View v)
     {
-        Util.moviment.go(this, CreateAccountStepGenre.class);
+        Util.moviment.goView(this, CreateAccountStepGenre.class);
     }
 
 }
