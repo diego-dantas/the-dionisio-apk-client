@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -17,6 +18,10 @@ import retrofit2.http.Path;
 
 public interface ServiceAPI
 {
+    /* Possible method for include the token in request
+    @Headers({
+            "X-Auth-Token : value of key (token)"
+    })*/
     @GET("/person/{id}")
     Call<CatalogAPI> getPeople(@Path("id") String id);
 

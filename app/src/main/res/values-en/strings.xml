@@ -6,6 +6,11 @@
     <string name="txv_forgotPassword">Forgot password</string>
     <string name="hnt_fullName">Full name</string>
     <string name="hnt_email">Email address</string>
+    <string name="htn_birth">Birth</string>
+    <string name="txt_sex">Sex:</string>
+    <string name="txt_man">Man</string>
+    <string name="txt_woman">Woman</string>
+
     <string name="btn_next">Next step</string>
     <string name="txv_descriptionForgotPassword">Enter your email address to send a recovery password.</string>
     <string name="btn_send">Send</string>
