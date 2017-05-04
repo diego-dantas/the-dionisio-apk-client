@@ -10,7 +10,7 @@
     >
 
     <EditText
-        android:id="@+id/edtLogin"
+        android:id="@+id/inputEmailLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -25,7 +25,7 @@
         app:layout_constraintHorizontal_bias="0.0" />
 
     <EditText
-        android:id="@+id/edtPassword"
+        android:id="@+id/inputPasswordLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,7 +34,7 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtLogin"
+        app:layout_constraintTop_toBottomOf="@+id/inputEmailLogin"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHorizontal_bias="0.0" />
@@ -53,7 +53,7 @@
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="90dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/edtLogin"
+        app:layout_constraintTop_toTopOf="@+id/inputEmailLogin"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="0.104" />
 
@@ -85,7 +85,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/inputPasswordLogin"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"

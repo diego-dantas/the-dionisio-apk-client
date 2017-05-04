@@ -3,6 +3,7 @@ package com.the.dionisio.apk.client.model.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -55,7 +56,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
 
     //This is components this view
     private ProgressBar progressBarLoginAccount;
-    private EditText edtLogin, edtPassword;
+    private TextInputLayout inputLayoutEmailLogin, inputLayoutPasswordLogin;
+    private EditText inputEmailLogin, inputPasswordLogin;
     private TextView txtForgotPassword;
     private Button btnLogin;
 
@@ -95,8 +97,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
 
         //Components of view
         progressBarLoginAccount = (ProgressBar) findViewById(R.id.progressBarLoginAccount);
-        edtLogin = (EditText) findViewById(R.id.edtLogin);
-        edtPassword = (EditText) findViewById(R.id.edtPassword);
+
+        inputLayoutEmailLogin = (TextInputLayout) findViewById(R.id.inputLayoutEmailLogin);
+        inputLayoutPasswordLogin = (TextInputLayout) findViewById(R.id.inputLayoutPasswordLogin);
+        inputEmailLogin = (EditText) findViewById(R.id.inputEmailLogin);
+        inputPasswordLogin = (EditText) findViewById(R.id.inputPasswordLogin);
+
         txtForgotPassword = (TextView) findViewById(R.id.txtForgotPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
     }
@@ -241,6 +247,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void goLogin(View v)
+    {
+        if(Util.validationInput.emptyInput(inputEmailLogin, inputLayoutEmailLogin) == false)
+        {
+            return;
+        }
+        else if(Util.validationInput.emptyInput(inputPasswordLogin, inputLayoutPasswordLogin) == false)
+        {
+            return;
+        }
+        else
+        {
+
+        }
+    }
+
     public void backLogin(View view)
     {
         Util.moviment.backView(this);
@@ -254,8 +276,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
     public void loadProgressBar()
     {
         progressBarLoginAccount.setVisibility(View.VISIBLE);
-        edtLogin.setVisibility(View.INVISIBLE);
-        edtPassword.setVisibility(View.INVISIBLE);
+        inputLayoutEmailLogin.setVisibility(View.INVISIBLE);
+        inputLayoutPasswordLogin.setVisibility(View.INVISIBLE);
+        inputEmailLogin.setVisibility(View.INVISIBLE);
+        inputPasswordLogin.setVisibility(View.INVISIBLE);
         txtForgotPassword.setVisibility(View.INVISIBLE);
         btnLogin.setVisibility(View.INVISIBLE);
         btnLoginFacebook.setVisibility(View.INVISIBLE);

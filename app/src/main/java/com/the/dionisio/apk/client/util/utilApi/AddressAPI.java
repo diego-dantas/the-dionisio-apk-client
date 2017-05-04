@@ -6,7 +6,7 @@ package com.the.dionisio.apk.client.util.utilApi;
 
 public class AddressAPI {
 
-    private static final String BASE_URL = "http://192.168.32.2:4212";
+    private static final String BASE_URL = "http://192.168.0.17:4212";
 
     public AddressAPI(){}
 

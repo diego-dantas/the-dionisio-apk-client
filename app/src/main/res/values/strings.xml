@@ -22,11 +22,10 @@
     <string name="btn_loginGoogle">Entre com o Google</string>
     <string name="hnt_fullName">Nome completo</string>
     <string name="hnt_email">Endereço de email</string>
-    <string name="htn_birth">Nascimento</string>
+    <string name="hnt_birth">Nascimento</string>
     <string name="txt_sex">Sexo:</string>
     <string name="txt_man">Homem</string>
     <string name="txt_woman">Mulher</string>
-
     <string name="btn_next">Próximo Passo</string>
     <string name="txv_descriptionForgotPassword">Digite seu endereço de email para enviar uma senha de recuperação.</string>
     <string name="btn_send">Enviar</string>
@@ -35,5 +34,12 @@
     <string name="genrePagoda">Pagode</string>
     <string name="genreSertanejo">Sertanejo</string>
     <string name="genreFinish">Finalizar</string>
+
+    <!-- Strings related of error of field -->
+    <string name="field_email">Favor inserir um e-mail válido</string>
+    <string name="field_required">Campo obrigatório!</string>
+    <string name="field_nameFull">Favor inserir o nome</string>
+    <string name="field_password">Favor inserir a senha</string>
+    <string name="field_birth">Favor inserir a data de nascimento</string>
 
 </resources>

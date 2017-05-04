@@ -6,11 +6,10 @@
     <string name="txv_forgotPassword">Forgot password</string>
     <string name="hnt_fullName">Full name</string>
     <string name="hnt_email">Email address</string>
-    <string name="htn_birth">Birth</string>
+    <string name="hnt_birth">Birth</string>
     <string name="txt_sex">Sex:</string>
     <string name="txt_man">Man</string>
     <string name="txt_woman">Woman</string>
-
     <string name="btn_next">Next step</string>
     <string name="txv_descriptionForgotPassword">Enter your email address to send a recovery password.</string>
     <string name="btn_send">Send</string>
@@ -19,4 +18,11 @@
     <string name="genrePagoda">Pagode</string>
     <string name="genreSertanejo">Sertanejo</string>
     <string name="genreFinish">Finish</string>
+
+    <!-- Strings related of error of field -->
+    <string name="field_email">Please insert a email valid</string>
+    <string name="field_required">Valid field required!</string>
+    <string name="field_nameFull">Please insert your name</string>
+    <string name="field_password">Please insert your password</string>
+    <string name="field_birth">Please insert your birth</string>
 </resources>
