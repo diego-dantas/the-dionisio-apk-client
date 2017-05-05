@@ -23,8 +23,8 @@ public class ForgotPassword extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bar_forgot_password);
 
-        inputLayoutEmailForgotPassword = (TextInputLayout) findViewById(R.id.inputLayoutPasswordLogin);
-        inputEmailForgotPassword = (EditText) findViewById(R.id.inputEmailLogin);
+        inputLayoutEmailForgotPassword = (TextInputLayout) findViewById(R.id.inputLayoutEmailForgotPassword);
+        inputEmailForgotPassword = (EditText) findViewById(R.id.inputEmailForgotPassword);
     }
 
     public void toRecover(View v)

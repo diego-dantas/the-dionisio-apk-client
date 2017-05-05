@@ -1,6 +1,8 @@
 package com.the.dionisio.apk.client.util.utilView;
 
 import android.support.design.widget.TextInputLayout;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.EditText;
 
 import com.the.dionisio.apk.client.R;
@@ -13,42 +15,58 @@ public class ValidationInput
 {
     public Boolean emptyInput(EditText editText, TextInputLayout textInputLayout)
     {
+        final int inputEmail = 33,
+                  inputBirth = 20,
+                  inputName = 97,
+                  inputPassword = 129;
+
         if(editText.getText().toString().trim().isEmpty())
         {
-            switch (editText.getId())
+            switch (editText.getInputType())
             {
-                case R.id.inputNameFullCreateAccount:
-                    editText.setError(editText.getResources().getString(R.string.field_nameFull));
+                case inputName:
+                    textInputLayout.setError(editText.getResources().getString(R.string.field_nameFull));
                     break;
-                case R.id.inputEmailCreateAccount:
-                    editText.setError(editText.getResources().getString(R.string.field_email));
+                case inputEmail:
+                    textInputLayout.setError(editText.getResources().getString(R.string.field_email));
                     break;
-                case R.id.inputPasswordCreateAccount:
-                    editText.setError(editText.getResources().getString(R.string.field_password));
+                case inputPassword:
+                    textInputLayout.setError(editText.getResources().getString(R.string.field_password));
                     break;
-                case R.id.inputBirthCreateAccount:
-                    editText.setError(editText.getResources().getString(R.string.field_birth));
-                    break;
-                case R.id.inputEmailLogin:
-                    editText.setError(editText.getResources().getString(R.string.field_email));
-                    break;
-                case R.id.inputPasswordLogin:
-                    editText.setError(editText.getResources().getString(R.string.field_password));
-                    break;
-                case R.id.inputEmailForgotPassword:
-                    editText.setError(editText.getResources().getString(R.string.field_email));
+                case inputBirth:
+                    textInputLayout.setError(editText.getResources().getString(R.string.field_birth));
                     break;
             }
 
             textInputLayout.setErrorEnabled(true);
-            textInputLayout.setError(editText.getResources().getString(R.string.field_required));
+            editText.setError(editText.getResources().getString(R.string.field_required));
 
             editText.requestFocus();
             return false;
+        }
+        else if(editText.getInputType() == 33)
+        {
+            if(!isValidEmail(editText))
+            {
+                textInputLayout.setError(editText.getResources().getString(R.string.field_email));
+                textInputLayout.setErrorEnabled(true);
+
+                editText.setError(editText.getResources().getString(R.string.field_required));
+
+                editText.requestFocus();
+                return false;
+            }
         }
 
         editText.setError(null);
         textInputLayout.setErrorEnabled(false);
         return true;
+    }
+
+    private Boolean isValidEmail(EditText editText)
+    {
+        String email = editText.getText().toString().trim();
+
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
