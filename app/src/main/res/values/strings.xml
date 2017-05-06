@@ -22,7 +22,7 @@
     <string name="btn_loginGoogle">Entre com o Google</string>
     <string name="hnt_fullName">Nome completo</string>
     <string name="hnt_email">Endereço de email</string>
-    <string name="hnt_birth">Nascimento</string>
+    <string name="hnt_birth">Nascimento - Exemplo: dd/MM/yyyy</string>
     <string name="txt_sex">Sexo:</string>
     <string name="txt_man">Homem</string>
     <string name="txt_woman">Mulher</string>
@@ -40,6 +40,6 @@
     <string name="field_required">Campo obrigatório!</string>
     <string name="field_nameFull">Favor inserir o nome</string>
     <string name="field_password">Favor inserir a senha</string>
-    <string name="field_birth">Favor inserir a data de nascimento</string>
+    <string name="field_birth">Favor inserir uma data de nascimento válida</string>
 
 </resources>

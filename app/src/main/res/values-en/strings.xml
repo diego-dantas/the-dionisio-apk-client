@@ -6,7 +6,7 @@
     <string name="txv_forgotPassword">Forgot password</string>
     <string name="hnt_fullName">Full name</string>
     <string name="hnt_email">Email address</string>
-    <string name="hnt_birth">Birth</string>
+    <string name="hnt_birth">Birth - Exemplo: dd/MM/yyyy</string>
     <string name="txt_sex">Sex:</string>
     <string name="txt_man">Man</string>
     <string name="txt_woman">Woman</string>
@@ -24,5 +24,5 @@
     <string name="field_required">Valid field required!</string>
     <string name="field_nameFull">Please insert your name</string>
     <string name="field_password">Please insert your password</string>
-    <string name="field_birth">Please insert your birth</string>
+    <string name="field_birth">Please insert a date birth valid</string>
 </resources>

@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-
 import com.the.dionisio.apk.client.R;
-import com.the.dionisio.apk.client.ViewMain;
+import com.the.dionisio.apk.client.model.view.maskForField.MaskForField;
 import com.the.dionisio.apk.client.util.Util;
 
 /**
@@ -39,6 +37,9 @@ public class CreateAccount extends AppCompatActivity
 
         radioManCreateAccount = (RadioButton) findViewById(R.id.radioManCreateAccount);
         radioWomanCreateAccount = (RadioButton) findViewById(R.id.radioWomanCreateAccount);
+
+        MaskForField maskBirth = new MaskForField("##/##/####", inputBirthCreateAccount);
+        inputBirthCreateAccount.addTextChangedListener(maskBirth);
     }
 
     public void backCreateAccount(View v)

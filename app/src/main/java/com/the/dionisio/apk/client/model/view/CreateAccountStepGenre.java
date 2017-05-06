@@ -1,6 +1,5 @@
 package com.the.dionisio.apk.client.model.view;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -11,7 +10,6 @@ import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.util.Util;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +24,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     private View bgElectronic,bgRock, bgPagode, bgSertanejo;
     private TextView txtElectronics, txtRock, txtSertanejo, txtPagode;
     private String controlCheck;
+    private List<String> genres = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -76,16 +75,16 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         switch (v.getId())
         {
             case R.id.cardElectronics:
-                Util.cardGenre.checkCard(v, cardElectronics, txtElectronics, imgElectronics, controlCheck);
+                genres = Util.cardGenre.checkCard(v, cardElectronics, txtElectronics, imgElectronics, controlCheck, genres);
                 break;
             case R.id.cardRock:
-                Util.cardGenre.checkCard(v, cardRock, txtRock, imgRock, controlCheck);
+                genres = Util.cardGenre.checkCard(v, cardRock, txtRock, imgRock, controlCheck, genres);
                 break;
             case R.id.cardSertanejo:
-                Util.cardGenre.checkCard(v, cardSertanejo, txtSertanejo, imgSertanejo, controlCheck);
+                genres = Util.cardGenre.checkCard(v, cardSertanejo, txtSertanejo, imgSertanejo, controlCheck, genres);
                 break;
             case R.id.cardPagode:
-                Util.cardGenre.checkCard(v, cardPagode, txtPagode, imgPagode, controlCheck);
+                genres = Util.cardGenre.checkCard(v, cardPagode, txtPagode, imgPagode, controlCheck, genres);
                 break;
         }
     }
@@ -98,12 +97,9 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         person.name = bundle.getString("NAME");
         person.email = bundle.getString("EMAIL");
         person.password = bundle.getString("PASSWORD");
-        //person.birth = bundle.getString("BIRTH");
+        person.birth = Util.transformDate.getDateIntoList(bundle);
         person.sex = bundle.getString("SEX");
-        List<String> genre = new ArrayList<String>();
-        genre.add("ROCK");
-        genre.add("ELETRÔNIC");
-        person.genres = genre;
+        person.genres = genres;
 
         Presenter.personAction.createPerson(person);
     }
