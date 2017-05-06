@@ -3,6 +3,7 @@ package com.the.dionisio.apk.client.dao.sqlite;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.the.dionisio.apk.client.model.dto.Person;
 
@@ -18,7 +19,7 @@ public class PersonDAO {
         db = auxBd.getWritableDatabase();
     }
 
-    public void createPerson(Person person){
+    public void createPerson(Person person, Context context){
         ContentValues values = new ContentValues();
 
         values.put("name", person.name);
@@ -26,8 +27,11 @@ public class PersonDAO {
         values.put("password", person.password);
         values.put("cpf", person.cpf);
         values.put("sex", person.sex);
+        values.put("picture", person.picture);
         values.put("isActive", person.isActive);
+
         db.insert("person", null,values);
+        Toast.makeText(context, "Successfully registered! ", Toast.LENGTH_SHORT).show();
     }
 
 }
