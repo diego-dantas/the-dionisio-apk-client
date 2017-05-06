@@ -24,17 +24,11 @@ public class DataBase extends SQLiteOpenHelper {
                 + "name text not null,"
                 + "email text not null,"
                 + "password text not null,"
+                + "birth text,"
                 + "cpf integer,"
                 + "sex text,"
                 + "isActive text,"
                 + "picture text);"
-        );
-
-        db.execSQL("create table birth("
-                + "_idBirth integer primary key autoincrement,"
-                + "_idPerson integer not null,"
-                + "birth text,"
-                + "FOREIGN KEY(_idPerson) REFERENCES person(_idPerson));"
         );
 
         db.execSQL("create table genre("

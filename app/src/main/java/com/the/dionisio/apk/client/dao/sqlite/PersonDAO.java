@@ -27,7 +27,7 @@ public class PersonDAO {
         values.put("email", person.email);
         values.put("password", person.password);
         values.put("cpf", person.cpf);
-        //values.put("birth", Util.transformDate.getDateIntoString(person.birth));
+        values.put("birth", Util.transformDate.getDateIntoString(person.birth));
         values.put("sex", person.sex);
         values.put("picture", person.picture);
         values.put("isActive", person.isActive);
