@@ -102,7 +102,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         person.sex = bundle.getString("SEX");
         person.genres = genres;
 
-        Presenter.personAction.createPerson(person);
+        //Presenter.personAction.createPerson(person);
 
         PersonDAO personDAO = new PersonDAO(this);
         personDAO.createPerson(person, this);

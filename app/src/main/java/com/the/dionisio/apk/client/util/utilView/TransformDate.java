@@ -9,7 +9,7 @@ import java.util.List;
  * Created by igorm on 06/05/2017.
  */
 
-public class TransformDateIntoList
+public class TransformDate
 {
     public List getDateIntoList(Bundle bundle)
     {
@@ -25,5 +25,21 @@ public class TransformDateIntoList
         birth.add(year);
 
         return birth;
+    }
+
+    public String getDateIntoString(List<Integer> birth)
+    {
+        String convertBirth = "";
+
+        for(Integer b: birth)
+        {
+            convertBirth += b.toString();
+            if(convertBirth.length() < 6)
+            {
+                convertBirth += "/";
+            }
+        }
+
+        return convertBirth;
     }
 }
