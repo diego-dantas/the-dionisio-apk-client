@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.dao.api.DataConverter;
-import com.the.dionisio.apk.client.model.cleaningUp.Person;
+import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.util.Util;
 
 /**

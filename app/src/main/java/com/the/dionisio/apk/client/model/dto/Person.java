@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.model.cleaningUp;
+package com.the.dionisio.apk.client.model.dto;
 
 import java.util.List;
 
