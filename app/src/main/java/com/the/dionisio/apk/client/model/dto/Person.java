@@ -15,6 +15,7 @@ public class Person
     public List<Integer> birth;
     public String cpf;
     public String sex;
+    public String picture;
     public List<String> genres;
     //public List<Card> card;
     public Boolean isActive;
