@@ -49,10 +49,10 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         bgPagode = findViewById(R.id.bgPagode);
 
         //this is filter in black color and opacity
-        Util.alpha.setAlpha(bgElectronic);
-        Util.alpha.setAlpha(bgRock);
-        Util.alpha.setAlpha(bgPagode);
-        Util.alpha.setAlpha(bgSertanejo);
+        Util.cardGenre.setAlpha(bgElectronic);
+        Util.cardGenre.setAlpha(bgRock);
+        Util.cardGenre.setAlpha(bgPagode);
+        Util.cardGenre.setAlpha(bgSertanejo);
 
         controlCheck = "NOT_CHECK";
         cardElectronics.setTag(controlCheck);
@@ -68,65 +68,19 @@ public class CreateAccountStepGenre extends AppCompatActivity {
 
     public void checkCard(View v)
     {
-        //verify which CarView was clicked to selecting
-        int idCard = v.getId();
-        switch (idCard)
+        switch (v.getId())
         {
             case R.id.cardElectronics:
-                if(cardElectronics.getTag() == controlCheck)
-                {
-                    imgElectronics.setImageResource(R.drawable.ic_eletro_checked);
-                    txtElectronics.setTextColor(Color.parseColor("#FFFFFF"));
-                    cardElectronics.setTag("CHECKED");
-                }
-                else
-                {
-                    imgElectronics.setImageResource(R.drawable.ic_eletro_not_check);
-                    txtElectronics.setTextColor(Color.parseColor("#A0FFFFFF"));
-                    cardElectronics.setTag(controlCheck);
-                }
+                Util.cardGenre.checkCard(v, cardElectronics, txtElectronics, imgElectronics, controlCheck);
                 break;
             case R.id.cardRock:
-                if(cardRock.getTag() == controlCheck)
-                {
-                    imgRock.setImageResource(R.drawable.ic_rock_checked);
-                    txtRock.setTextColor(Color.parseColor("#FFFFFF"));
-                    cardRock.setTag("CHECKED");
-                }
-                else
-                {
-                    imgRock.setImageResource(R.drawable.ic_rock_not_check);
-                    txtRock.setTextColor(Color.parseColor("#A0FFFFFF"));
-                    cardRock.setTag(controlCheck);
-                }
+                Util.cardGenre.checkCard(v, cardRock, txtRock, imgRock, controlCheck);
                 break;
             case R.id.cardSertanejo:
-                if(cardSertanejo.getTag() == controlCheck)
-                {
-                    imgSertanejo.setImageResource(R.drawable.ic_sertanejo_checked);
-                    txtSertanejo.setTextColor(Color.parseColor("#FFFFFF"));
-                    cardSertanejo.setTag("CHECKED");
-                }
-                else
-                {
-                    imgSertanejo.setImageResource(R.drawable.ic_sertanejo_not_check);
-                    txtSertanejo.setTextColor(Color.parseColor("#A0FFFFFF"));
-                    cardSertanejo.setTag(controlCheck);
-                }
+                Util.cardGenre.checkCard(v, cardSertanejo, txtSertanejo, imgSertanejo, controlCheck);
                 break;
             case R.id.cardPagode:
-                if(cardPagode.getTag() == controlCheck)
-                {
-                    imgPagode.setImageResource(R.drawable.ic_pagode_checked);
-                    txtPagode.setTextColor(Color.parseColor("#FFFFFF"));
-                    cardPagode.setTag("CHECKED");
-                }
-                else
-                {
-                    imgPagode.setImageResource(R.drawable.ic_pagode_not_check);
-                    txtPagode.setTextColor(Color.parseColor("#A0FFFFFF"));
-                    cardPagode.setTag(controlCheck);
-                }
+                Util.cardGenre.checkCard(v, cardPagode, txtPagode, imgPagode, controlCheck);
                 break;
         }
     }

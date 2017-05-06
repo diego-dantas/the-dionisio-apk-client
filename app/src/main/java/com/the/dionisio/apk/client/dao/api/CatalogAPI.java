@@ -1,6 +1,6 @@
 package com.the.dionisio.apk.client.dao.api;
 
-import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.cleaningUp.Person;
 
 import java.util.List;
 
