@@ -34,7 +34,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.ViewMain;
 import com.the.dionisio.apk.client.util.Util;
-
 import java.util.Arrays;
 
 /**

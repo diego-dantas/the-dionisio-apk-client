@@ -1,9 +1,7 @@
 package com.the.dionisio.apk.client.model.view;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.util.Util;
 

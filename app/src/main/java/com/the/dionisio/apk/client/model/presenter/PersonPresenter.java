@@ -1,7 +1,6 @@
 package com.the.dionisio.apk.client.model.presenter;
 
 import com.the.dionisio.apk.client.dao.api.Api;
-import com.the.dionisio.apk.client.dao.api.DataConverter;
 import com.the.dionisio.apk.client.model.dto.Person;
 
 /**

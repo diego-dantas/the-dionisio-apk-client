@@ -5,7 +5,6 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.util.Util;
 
