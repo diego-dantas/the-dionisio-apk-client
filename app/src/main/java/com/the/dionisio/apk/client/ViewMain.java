@@ -27,29 +27,31 @@ import com.the.dionisio.apk.client.model.view.PreLogin;
 
 public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
-    private TextView txtName, txtEmail, txtId;
+    private TextView txtName, txtEmail, txtPassword, txtBirth, txtSex;
     private ImageView imgPhoto;
     private GoogleApiClient googleApiClient;
-    private String tipo_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bar_view_main);
 
-        txtId = (TextView) findViewById(R.id.txtId);
+        txtPassword = (TextView) findViewById(R.id.txtPassword);
         txtName = (TextView) findViewById(R.id.txtName);
         txtEmail = (TextView) findViewById(R.id.txtEmail);
+        txtBirth = (TextView) findViewById(R.id.txtBirth);
+        txtSex = (TextView) findViewById(R.id.txtSex);
 
         imgPhoto = (ImageView) findViewById(R.id.imgPhoto);
 
         Bundle bundle = getIntent().getExtras();
 
-        txtId.setText(bundle.getString("ID"));
         txtName.setText(bundle.getString("NAME"));
         txtEmail.setText(bundle.getString("EMAIL"));
+        txtPassword.setText(bundle.getString("PASSWORD"));
+        txtBirth.setText(bundle.getString("BIRTH"));
+        txtSex.setText(bundle.getString("SEX"));
         Glide.with(this).load(bundle.getString("IMG_URL")).into(imgPhoto);
-        tipo_login = bundle.getString("TIPO_LOGIN");
 
         GoogleSignInOptions signInOptions = new
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -64,25 +66,20 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
 
     public void logOut(View view)
     {
-        if(tipo_login.equalsIgnoreCase("GOOGLE"))
-        {
-            Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
-                @Override
-                public void onResult(@NonNull Status status) {
-                    if (status.isSuccess()) {
-                        logOutAccount();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-                    }
+        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+            @Override
+             public void onResult(@NonNull Status status) {
+                if (status.isSuccess()) {
+                    logOutAccount();
+                } else {
+                   Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
                 }
-            });
-        }
-        else if(tipo_login.equalsIgnoreCase("FACEBOOK"))
-        {
-            FirebaseAuth.getInstance().signOut();
-            LoginManager.getInstance().logOut();
-            logOutAccount();
-        }
+             }
+        });
+
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+        logOutAccount();
     }
 
     public void logOutAccount()

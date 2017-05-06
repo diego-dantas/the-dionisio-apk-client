@@ -168,12 +168,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
     private void goViewMain()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String id = user.getUid();
         String name = user.getDisplayName();
         String email = user.getEmail();
-        String img_url = user.getPhotoUrl().toString();
-        String tipoLogin = "FACEBOOK";
-        Util.moviment.goViewClearWithData(this, ViewMain.class, id, name, email, img_url, tipoLogin);
+        String password = user.getUid();
+        String image_url = user.getPhotoUrl().toString();
+        String birth = "";
+        String sex = "";
+        Util.moviment.goViewClearWithData(this, ViewMain.class, name, email, password, image_url, birth, sex);
     }
 
     protected void onStart()
@@ -220,12 +221,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         if(result.isSuccess())
         {
             GoogleSignInAccount account = result.getSignInAccount();
-            String id = account.getId();
             String name = account.getDisplayName();
             String email = account.getEmail();
-            String img_url = account.getPhotoUrl().toString();
-            String tipoLogin = "GOOGLE";
-            Util.moviment.goViewClearWithData(this, ViewMain.class, id, name, email, img_url, tipoLogin);
+            String password = account.getId();
+            String image_url = account.getPhotoUrl().toString();
+            String birth = "";
+            String sex = "";
+            Util.moviment.goViewClearWithData(this, ViewMain.class, name, email, password, image_url, birth, sex);
         }
         else
         {

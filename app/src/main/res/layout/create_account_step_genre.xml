@@ -238,6 +238,7 @@
         android:layout_width="385dp"
         android:layout_height="60dp"
         android:layout_marginBottom="59dp"
+        android:onClick="finalize"
         android:text="@string/genreFinish"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />

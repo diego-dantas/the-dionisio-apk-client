@@ -59,7 +59,7 @@ public class DataConverter {
             public void onResponse(Call<CatalogAPI> call, Response<CatalogAPI> response) {
 
                 if(response.isSuccessful()){
-                    Log.i(TAG, "Deus certo");
+                Log.i(TAG, "Deus certo, code: " + response.code());
                 }else{
                     Log.e(TAG, "Deu merda: " + response.code());
                 }

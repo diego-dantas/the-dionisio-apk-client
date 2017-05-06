@@ -19,4 +19,5 @@ public class Person
     public List<String> genres;
     //public List<Card> card;
     public Boolean isActive;
+
 }

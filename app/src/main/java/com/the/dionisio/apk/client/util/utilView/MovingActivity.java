@@ -21,15 +21,15 @@ public class MovingActivity
         context.startActivity(intent);
     }
 
-    public void goViewClearWithData(Context context, Class classDestiny, String id, String name, String email, String img_url, String tipoLogin)
+    public void goViewClearWithData(Context context, Class classDestiny, String name, String email, String password, String image_url, String birth, String sex)
     {
         Intent intent = new Intent(context, classDestiny);
-        intent.putExtra("ID", id);
         intent.putExtra("NAME", name);
         intent.putExtra("EMAIL", email);
-        intent.putExtra("IMG_URL", img_url);
-        intent.putExtra("TIPO_LOGIN", tipoLogin);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("IMAGE_URL", image_url);
+        intent.putExtra("PASSWORD", password);
+        intent.putExtra("BIRTH", birth);
+        intent.putExtra("SEX", sex);
         context.startActivity(intent);
     }
 

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.ViewMain;
 import com.the.dionisio.apk.client.util.Util;
 
 /**
@@ -35,6 +36,9 @@ public class CreateAccount extends AppCompatActivity
         inputEmailCreateAccount = (EditText) findViewById(R.id.inputEmailCreateAccount);
         inputPasswordCreateAccount = (EditText) findViewById(R.id.inputPasswordCreateAccount);
         inputBirthCreateAccount = (EditText) findViewById(R.id.inputBirthCreateAccount);
+
+        radioManCreateAccount = (RadioButton) findViewById(R.id.radioManCreateAccount);
+        radioWomanCreateAccount = (RadioButton) findViewById(R.id.radioWomanCreateAccount);
     }
 
     public void backCreateAccount(View v)
@@ -64,7 +68,22 @@ public class CreateAccount extends AppCompatActivity
         }
         else
         {
-            Util.moviment.goView(this, CreateAccountStepGenre.class);
+            String name = inputNameFullCreateAccount.getText().toString();
+            String email = inputEmailCreateAccount.getText().toString();
+            String password = inputPasswordCreateAccount.getText().toString();
+            String image_url = "";
+            String birth = inputBirthCreateAccount.getText().toString();
+            String sex;
+            if(radioManCreateAccount.isChecked())
+            {
+                sex = "MAN";
+            }
+            else
+            {
+                sex = "WOMAN";
+            }
+
+            Util.moviment.goViewClearWithData(this, CreateAccountStepGenre.class, name, email, password, image_url, birth, sex);
         }
     }
 }

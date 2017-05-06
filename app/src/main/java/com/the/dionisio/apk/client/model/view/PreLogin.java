@@ -18,19 +18,6 @@ public class PreLogin extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pre_login);
-
-        Person p = new Person();
-        //p.set_id("58db0dc712137c2f282ef4d8");
-        //p.setName("Testedecriação");
-        //p.setEmail("kgiuig@ada.com");
-        //p.setPassword("gafdga");
-
-        //Calling the service of connection of API
-        DataConverter dc = new DataConverter();
-        //dc.getDataConverter("58dc5d5c12137c0dcd76b91f");
-        //dc.postDataConverter(p);
-        //dc.deleteDataConverter(p);
-        //dc.updateDataConverter(p);
     }
 
     public void goCreateAccount(View v)

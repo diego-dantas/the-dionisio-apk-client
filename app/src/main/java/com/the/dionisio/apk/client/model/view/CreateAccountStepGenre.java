@@ -8,7 +8,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by igorm on 23/04/2017.
@@ -83,5 +88,23 @@ public class CreateAccountStepGenre extends AppCompatActivity {
                 Util.cardGenre.checkCard(v, cardPagode, txtPagode, imgPagode, controlCheck);
                 break;
         }
+    }
+
+    public void finalize(View v)
+    {
+        Bundle bundle = getIntent().getExtras();
+
+        Person person = new Person();
+        person.name = bundle.getString("NAME");
+        person.email = bundle.getString("EMAIL");
+        person.password = bundle.getString("PASSWORD");
+        //person.birth = bundle.getString("BIRTH");
+        person.sex = bundle.getString("SEX");
+        List<String> genre = new ArrayList<String>();
+        genre.add("ROCK");
+        genre.add("ELETRÔNIC");
+        person.genres = genre;
+
+        Presenter.personAction.createPerson(person);
     }
 }
