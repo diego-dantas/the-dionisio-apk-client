@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class DataBase extends SQLiteOpenHelper {
+
     private static final String NOME_BD = "dbTheDionisio";
     private static final int VERSAO_BD = 1;
 
@@ -31,12 +32,17 @@ public class DataBase extends SQLiteOpenHelper {
 
         db.execSQL("create table birth("
                 + "_idBirth integer primary key autoincrement,"
-                + "_idPerson integer foreign key"
+                + "_idPerson integer not null,"
                 + "birth text,"
-                + "FOREIGN KEY(_idPerson) REFERENCES person(_idPerson)"
+                + "FOREIGN KEY(_idPerson) REFERENCES person(_idPerson));"
         );
 
-
+        db.execSQL("create table genre("
+                + "_idGenre integer primary key autoincrement,"
+                + "_idPerson integer not null,"
+                + "genre text,"
+                + "FOREIGN KEY(_idPerson) REFERENCES person(_idPerson));"
+        );
     }
 
     @Override
