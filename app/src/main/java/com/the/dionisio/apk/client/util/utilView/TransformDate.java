@@ -20,9 +20,9 @@ public class TransformDate
         Integer month = Integer.parseInt(date[1]);
         Integer year = Integer.parseInt(date[2]);
 
-        birth.add(day);
-        birth.add(month);
         birth.add(year);
+        birth.add(month);
+        birth.add(day);
 
         return birth;
     }
@@ -31,10 +31,10 @@ public class TransformDate
     {
         String convertBirth = "";
 
-        for(Integer b: birth)
+        for(int i = 2; i>=0; i--)
         {
-            convertBirth += b.toString();
-            if(convertBirth.length() < 6)
+            convertBirth += birth.get(i).toString();
+            if(i>0)
             {
                 convertBirth += "/";
             }

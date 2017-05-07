@@ -57,11 +57,10 @@ public class DataConverter {
        requestCatalog.enqueue(new Callback<CatalogAPI>() {
             @Override
             public void onResponse(Call<CatalogAPI> call, Response<CatalogAPI> response) {
-
                 if(response.isSuccessful()){
-                Log.i(TAG, "Deus certo, code: " + response.code());
+                Log.i(TAG, "Deus certo, code: " + response.code() + " response: " + response.raw().body());
                 }else{
-                    Log.e(TAG, "Deu merda: " + response.code());
+                    Log.e(TAG, "Deu merda: " + response.code() + " response: ");
                 }
             }
 
