@@ -20,7 +20,7 @@ public class DataBase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table person("
-                + "_idPerson integer primary key,"
+                + "_idPerson text primary key,"
                 + "name text not null,"
                 + "email text not null,"
                 + "password text not null,"
@@ -33,7 +33,7 @@ public class DataBase extends SQLiteOpenHelper {
 
         db.execSQL("create table genre("
                 + "_idGenre integer primary key autoincrement,"
-                + "_idPerson integer not null,"
+                + "_idPerson text not null,"
                 + "genre text,"
                 + "FOREIGN KEY(_idPerson) REFERENCES person(_idPerson));"
         );

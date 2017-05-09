@@ -20,9 +20,10 @@ public class PersonDAO {
         db = auxBd.getWritableDatabase();
     }
 
-    public void createPerson(Person person, Context context){
+    public void createPerson(Person person){
         ContentValues values = new ContentValues();
 
+        values.put("_idPerson", person._id);
         values.put("name", person.name);
         values.put("email", person.email);
         values.put("password", person.password);
@@ -33,7 +34,16 @@ public class PersonDAO {
         values.put("isActive", person.isActive);
 
         db.insert("person", null,values);
-        Toast.makeText(context, "Successfully registered! ", Toast.LENGTH_SHORT).show();
+
     }
 
+    public void createGenre(Person person, Context context){
+        ContentValues values = new ContentValues();
+
+        values.put("_idPerson", person._id);
+        values.put("genre", String.valueOf(person.genres));
+
+        db.insert("genre", null, values);
+        Toast.makeText(context, "Successfully registered! ", Toast.LENGTH_SHORT).show();
+    }
 }
