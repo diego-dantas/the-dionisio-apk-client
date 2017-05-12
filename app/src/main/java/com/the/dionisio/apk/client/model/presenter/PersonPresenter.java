@@ -2,6 +2,7 @@ package com.the.dionisio.apk.client.model.presenter;
 
 import com.the.dionisio.apk.client.dao.api.Api;
 import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.dto.Validation;
 
 /**
  * Created by igorm on 06/05/2017.

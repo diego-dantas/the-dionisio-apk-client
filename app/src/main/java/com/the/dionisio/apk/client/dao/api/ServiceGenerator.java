@@ -15,10 +15,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator
 {
+    private static final String API_BASE_URL = Util.addressApi.getAddressAPI();
+
     public static <S> S createService(Class<S> serviceClass)
     {
-        String API_BASE_URL = Util.addressApi.getAddressAPI();
-
         //Instancia do interceptador das requisições
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

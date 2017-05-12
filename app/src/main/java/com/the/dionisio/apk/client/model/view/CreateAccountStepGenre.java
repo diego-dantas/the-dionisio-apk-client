@@ -101,13 +101,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         person.birth = Util.transformDate.getDateIntoList(bundle);
         person.sex = bundle.getString("SEX");
         person.genres = genres;
-        person._id = "2";
-        Presenter.personAction.createPerson(person);
 
-        /* tests sqlite..
-        PersonDAO personDAO = new PersonDAO(this);
-        personDAO.createPerson(person);
-        personDAO.createGenre(person, this);
-        */
+        Presenter.personAction.createPerson(person);
     }
 }

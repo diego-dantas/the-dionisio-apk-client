@@ -3,6 +3,7 @@ package com.the.dionisio.apk.client.dao.api;
 import android.util.Log;
 
 import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.dto.Validation;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,23 +50,29 @@ public class DataConverter {
     }
 
 
-    public void postDataConverter(Person person) {
-
+    public void postDataConverter(Person person)
+    {
         ServiceAPI serviceAPI = ServiceGenerator.createService(ServiceAPI.class);
-        Call<CatalogAPI> requestCatalog = serviceAPI.postPeople(person);
+        Call<Validation> request = serviceAPI.postPeople(person);
 
-       requestCatalog.enqueue(new Callback<CatalogAPI>() {
+        request.enqueue(new Callback<Validation>() {
             @Override
-            public void onResponse(Call<CatalogAPI> call, Response<CatalogAPI> response) {
-                if(response.isSuccessful()){
-                Log.i(TAG, "Deus certo, code: " + response.code() + " response: " + response.raw().body());
-                }else{
+            public void onResponse(Call<Validation> call, Response<Validation> response)
+            {
+                if(response.isSuccessful())
+                {
+                    Validation validation = response.body();
+
+                    Log.i(TAG, "Deus certo, code: " + response.code() + " response: " + validation.additional);
+                }
+                else
+                {
                     Log.e(TAG, "Deu merda: " + response.code() + " response: ");
                 }
             }
 
             @Override
-            public void onFailure(Call<CatalogAPI> call, Throwable t) {
+            public void onFailure(Call<Validation> call, Throwable t) {
                 Log.e(TAG, "Erro: aqui " + t.getMessage());
             }
         });
