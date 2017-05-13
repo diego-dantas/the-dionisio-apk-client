@@ -25,4 +25,5 @@
     <string name="field_nameFull">Please insert your name</string>
     <string name="field_password">Please insert your password</string>
     <string name="field_birth">Please insert a date birth valid</string>
+    <string name="field_genre">Please choose at least one musical taste</string>
 </resources>

@@ -41,5 +41,6 @@
     <string name="field_nameFull">Favor inserir o nome</string>
     <string name="field_password">Favor inserir a senha</string>
     <string name="field_birth">Favor inserir uma data de nascimento válida</string>
+    <string name="field_genre">Escolha pelo menos um gosto musical</string>
 
 </resources>

@@ -10,12 +10,29 @@ import com.the.dionisio.apk.client.model.dto.Validation;
 
 public class PersonPresenter
 {
+    public void searchPerson(Person person)
+    {
+        //Calling the service of connection of API
+        Api.personDataConverter.getPerson(person._id);
+    }
+
+
     public void createPerson(Person person)
     {
         //Calling the service of connection of API
-        Api.dataConverter.postDataConverter(person);
-        //dc.getDataConverter("58dc5d5c12137c0dcd76b91f");
-        //dc.deleteDataConverter(p);
-        //dc.updateDataConverter(p);
+        Api.personDataConverter.postPerson(person);
+    }
+
+    public void updatePerson(Person person)
+    {
+        //Calling the service of connection of API
+        Api.personDataConverter.updatePerson(person);
+
+    }
+
+    public void deletePerson(Person person)
+    {
+        //Calling the service of connection of API
+        Api.personDataConverter.deletePerson(person._id);
     }
 }

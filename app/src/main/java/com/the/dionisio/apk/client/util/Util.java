@@ -1,6 +1,7 @@
 package com.the.dionisio.apk.client.util;
 
 import com.the.dionisio.apk.client.util.utilApi.AddressAPI;
+import com.the.dionisio.apk.client.util.utilView.BundlePerson;
 import com.the.dionisio.apk.client.util.utilView.CardGenre;
 import com.the.dionisio.apk.client.util.utilView.MovingActivity;
 import com.the.dionisio.apk.client.util.utilView.TransformDate;
@@ -17,4 +18,5 @@ public interface Util
     AddressAPI addressApi = new AddressAPI();
     ValidationInput validationInput = new ValidationInput();
     TransformDate transformDate = new TransformDate();
+    BundlePerson getBundle = new BundlePerson();
 }

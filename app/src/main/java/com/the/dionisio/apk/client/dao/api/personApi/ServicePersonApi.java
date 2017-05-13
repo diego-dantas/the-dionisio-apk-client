@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.dao.api;
+package com.the.dionisio.apk.client.dao.api.personApi;
 
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Validation;
@@ -18,25 +18,22 @@ import retrofit2.http.Path;
  * Created by Dantas on 3/25/17.
  */
 
-public interface ServiceAPI
+public interface ServicePersonApi
 {
     /* Possible method for include the token in request
     @Headers({
             "X-Auth-Token : value of key (token)"
     })*/
     @GET("/person/{id}")
-    Call<CatalogAPI> getPeople(@Path("id") String id);
+    Call<Person> getPerson(@Path("id") String id);
 
     @POST("/person")
-    Call<Validation> postPeople(@Body Person p);
+    Call<Validation> postPerson(@Body Person p);
 
     @DELETE("/person")
-    Call<CatalogAPI> deletePerson(@Body String id);
+    Call<Validation> deletePerson(@Body String id);
 
     @PUT("/person")
-    Call<CatalogAPI> updatePerson(@Body Person p);
-
-    @HTTP(method = "DELETE", path = "person, hasBody = true")
-    Call<CatalogAPI>  deletepe(@Body Person p);
+    Call<Validation> updatePerson(@Body Person p);
 
 }

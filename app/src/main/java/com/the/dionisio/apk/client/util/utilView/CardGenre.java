@@ -1,5 +1,6 @@
 package com.the.dionisio.apk.client.util.utilView;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -7,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.the.dionisio.apk.client.R;
 
@@ -95,5 +97,16 @@ public class CardGenre
         }
 
         return genres;
+    }
+
+    public Boolean validGenre(List<String> genres, Context context)
+    {
+        if(genres.size() != 0)
+        {
+            return true;
+        }
+
+        Toast.makeText(context, R.string.field_genre, Toast.LENGTH_SHORT).show();
+        return false;
     }
 }
