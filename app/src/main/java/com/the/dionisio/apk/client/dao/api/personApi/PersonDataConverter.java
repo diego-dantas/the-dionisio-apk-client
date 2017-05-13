@@ -1,11 +1,9 @@
 package com.the.dionisio.apk.client.dao.api.personApi;
 
 import android.util.Log;
-
 import com.the.dionisio.apk.client.dao.api.ServiceGenerator;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Validation;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,6 +63,7 @@ public class PersonDataConverter {
             @Override
             public void onResponse(Call<Validation> call, Response<Validation> response)
             {
+                String[] _id;
                 Validation validation = response.body();
 
                 if(validation != null)
@@ -72,6 +71,10 @@ public class PersonDataConverter {
                     if(response.isSuccessful())
                     {
                         Log.i(TAG, "Sucessfull - code: " + response.code() + " additional: " + validation.additional);
+                        _id = validation.additional.toString().trim().split("=");
+                        person._id = _id[1];
+                        Log.i(TAG, "_id: " + person._id);
+                        //SQLite.actionPerson.createPerson(person);
                     }
                     else
                     {

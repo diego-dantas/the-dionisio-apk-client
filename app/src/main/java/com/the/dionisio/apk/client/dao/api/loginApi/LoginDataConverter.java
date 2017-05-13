@@ -1,13 +1,9 @@
 package com.the.dionisio.apk.client.dao.api.loginApi;
 
 import android.util.Log;
-
 import com.the.dionisio.apk.client.dao.api.ServiceGenerator;
-import com.the.dionisio.apk.client.dao.api.personApi.ServicePersonApi;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
-import com.the.dionisio.apk.client.model.dto.Validation;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
