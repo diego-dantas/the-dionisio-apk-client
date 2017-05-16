@@ -17,12 +17,11 @@ public class PersonDAO {
     private SQLiteDatabase db;
 
     public PersonDAO(Context context){
-        DataBase auxBd = new DataBase(context);
-        db = auxBd.getWritableDatabase();
+        DataBase dataBase = new DataBase(context);
+        db = dataBase.getWritableDatabase();
     }
 
     public void createPerson(Person person){
-        db.isOpen();
         ContentValues values = new ContentValues();
 
         values.put("_idPerson", person._id);
@@ -39,20 +38,7 @@ public class PersonDAO {
         db.close();
     }
 
-    public void createGenre(Person person, Context context){
-        db.isOpen();
-        ContentValues values = new ContentValues();
-
-        values.put("_idPerson", person._id);
-        values.put("genre", String.valueOf(person.genres));
-
-        db.insert("genre", null, values);
-        db.close();
-        Toast.makeText(context, "Successfully registered! ", Toast.LENGTH_SHORT).show();
-    }
-
     public void updatePerson(Person person){
-        db.isOpen();
         ContentValues values = new ContentValues();
 
         values.put("name", person.name);
@@ -68,30 +54,12 @@ public class PersonDAO {
         db.close();
     }
 
-    public void updateGenre(Person person){
-        db.isOpen();
-        ContentValues values = new ContentValues();
-
-        values.put("genre", String.valueOf(person.genres));
-
-        db.update("genre", values, "_idPerson = ?", new String[]{"" + person._id});
-        db.close();
-    }
-
     public void deletePerson(Person person){
-        db.isOpen();
         db.delete("person", "_idPerson = " + person._id, null);
         db.close();
     }
 
-    public void deleteGenre(Person person){
-        db.isOpen();
-        db.delete("genre", "_idPerson = " + person._id, null);
-        db.close();
-    }
-
     public void searchPerson(Person person){
-        db.isOpen();
          String name;
          String email;
          String password;
@@ -113,19 +81,6 @@ public class PersonDAO {
             sex = findPerson.getString(findPerson.getColumnIndex("sex"));
             picture = findPerson.getString(findPerson.getColumnIndex("picture"));
             isActive = findPerson.getString(findPerson.getColumnIndex("isActive"));
-        }
-        db.close();
-    }
-
-    public void searchGenre(Person person){
-        db.isOpen();
-        String genre;
-
-        Cursor findGenre = db.rawQuery("SELECT * FROM genre WHERE _idPerson = " + person._id, null);
-
-        if(findGenre.moveToNext())
-        {
-            genre = findGenre.getString(findGenre.getColumnIndex("genre"));
         }
         db.close();
     }
