@@ -1,9 +1,6 @@
 package com.the.dionisio.apk.client.dao.api.loginApi;
 
-import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
-import com.the.dionisio.apk.client.model.dto.Validation;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -15,6 +12,5 @@ import retrofit2.http.POST;
 public interface ServiceLoginApi
 {
     @POST("/login")
-    Call<Token> postLogin(@Body String username,
-                          @Body String password);
+    Call<Token> postLogin(@Body String username, String password);
 }

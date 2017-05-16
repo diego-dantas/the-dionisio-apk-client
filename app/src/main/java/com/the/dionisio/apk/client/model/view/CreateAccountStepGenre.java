@@ -90,10 +90,10 @@ public class CreateAccountStepGenre extends AppCompatActivity {
 
     public void finalize(View v)
     {
-        if(Util.cardGenre.validGenre(genres, getApplicationContext()) == true)
+        if(Util.cardGenre.validGenre(genres, getApplicationContext()))
         {
             Bundle bundle = getIntent().getExtras();
-            Presenter.personAction.createPerson(Util.getBundle.getBundle(bundle, genres));
+            Presenter.personAction.createPerson(Util.getBundle.getBundle(bundle, genres), this);
         }
     }
 }

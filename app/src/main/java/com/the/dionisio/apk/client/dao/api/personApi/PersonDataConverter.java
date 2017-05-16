@@ -1,12 +1,15 @@
 package com.the.dionisio.apk.client.dao.api.personApi;
 
+import android.content.Context;
 import android.util.Log;
 import com.the.dionisio.apk.client.dao.api.ServiceGenerator;
+import com.the.dionisio.apk.client.dao.sqlite.PersonDAO;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Validation;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import java.util.List;
 
 /**
  * Created by Dantas on 3/25/17.
@@ -16,24 +19,25 @@ public class PersonDataConverter {
 
     public static final String TAG = "Person";
 
-    public void getPerson(String id)
+    public void getPerson(String token, String _id)
     {
         ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
-        Call<Person> request = ServicePersonApi.getPerson(id);
+        Call<List<Person>> request = ServicePersonApi.getPerson(token, _id);
 
-        request.enqueue(new Callback<Person>()
+        request.enqueue(new Callback<List<Person>>()
         {
             @Override
-            public void onResponse(Call<Person> call, Response<Person> response)
+            public void onResponse(Call<List<Person>> call, Response<List<Person>> response)
             {
-                Person person = response.body();
+                List<Person> person = response.body();
 
                 if(person != null)
                 {
                     if(response.isSuccessful())
                     {
-                        Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + person.email + "; _id: " + person._id);
-                    }
+                        person.forEach(p ->{
+                            Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + p.email + "; _id: " + p._id);
+                        });                    }
                     else
                     {
                         Log.e(TAG, "Failed - code: " + response.code());
@@ -46,14 +50,14 @@ public class PersonDataConverter {
             }
 
             @Override
-            public void onFailure(Call<Person> call, Throwable t)
+            public void onFailure(Call<List<Person>> call, Throwable t)
             {
                 Log.e(TAG, "Failure to communication with the server!");
             }
         });
     }
 
-    public void postPerson(Person person)
+    public void postPerson(Person person, Context context)
     {
         ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
         Call<Validation> request = ServicePersonApi.postPerson(person);
@@ -71,10 +75,12 @@ public class PersonDataConverter {
                     if(response.isSuccessful())
                     {
                         Log.i(TAG, "Sucessfull - code: " + response.code() + " additional: " + validation.additional);
-                        _id = validation.additional.toString().trim().split("=");
-                        person._id = _id[1];
+                        _id = validation.additional.toString().split("=");
+                        person._id = _id[1].trim();
                         Log.i(TAG, "_id: " + person._id);
-                        //SQLite.actionPerson.createPerson(person);
+
+                        PersonDAO personDAO = new PersonDAO(context);
+                        personDAO.createPerson(person);
                     }
                     else
                     {

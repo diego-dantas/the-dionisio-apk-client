@@ -1,8 +1,10 @@
 package com.the.dionisio.apk.client.model.presenter;
 
+import android.content.Context;
+
 import com.the.dionisio.apk.client.dao.api.Api;
 import com.the.dionisio.apk.client.model.dto.Person;
-import com.the.dionisio.apk.client.model.dto.Validation;
+import com.the.dionisio.apk.client.model.dto.Token;
 
 /**
  * Created by igorm on 06/05/2017.
@@ -10,17 +12,17 @@ import com.the.dionisio.apk.client.model.dto.Validation;
 
 public class PersonPresenter
 {
-    public void searchPerson(Person person)
+    public void getPerson(Token token, Person person)
     {
         //Calling the service of connection of API
-        Api.personDataConverter.getPerson(person._id);
+        Api.personDataConverter.getPerson(token.token,person._id);
     }
 
 
-    public void createPerson(Person person)
+    public void createPerson(Person person, Context context)
     {
         //Calling the service of connection of API
-        Api.personDataConverter.postPerson(person);
+        Api.personDataConverter.postPerson(person, context);
     }
 
     public void updatePerson(Person person)

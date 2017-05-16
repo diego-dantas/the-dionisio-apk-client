@@ -9,10 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.the.dionisio.apk.client.R;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

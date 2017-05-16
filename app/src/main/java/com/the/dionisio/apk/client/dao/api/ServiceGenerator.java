@@ -2,7 +2,6 @@ package com.the.dionisio.apk.client.dao.api;
 
 import com.google.gson.Gson;
 import com.the.dionisio.apk.client.util.Util;
-import com.the.dionisio.apk.client.util.utilApi.AddressAPI;
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
