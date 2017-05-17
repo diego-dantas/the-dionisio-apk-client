@@ -18,6 +18,8 @@
     <string name="genrePagoda">Pagode</string>
     <string name="genreSertanejo">Sertanejo</string>
     <string name="genreFinish">Finish</string>
+    <string name="buyTicket">Buy Ticket</string>
+    <string name="localeEvent">Event Place</string>
 
     <!-- Strings related of error of field -->
     <string name="field_email">Please insert a email valid</string>
