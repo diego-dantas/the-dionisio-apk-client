@@ -12,5 +12,5 @@ public interface Api
     PersonDataConverter personDataConverter = new PersonDataConverter();
     LoginDataConverter loginDataConverter = new LoginDataConverter();
 
-    BeforeCreatePerson actionPerson = new BeforeCreatePerson();
+    //BeforeCreatePerson actionPerson = new BeforeCreatePerson();
 }
