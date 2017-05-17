@@ -15,7 +15,7 @@ public class PersonPresenter
     public void getPerson(Token token, Person person)
     {
         //Calling the service of connection of API
-        Api.personDataConverter.getPerson(token.token,person._id);
+        Api.personDataConverter.getDataConverter(token.token,person._id);
     }
 
 

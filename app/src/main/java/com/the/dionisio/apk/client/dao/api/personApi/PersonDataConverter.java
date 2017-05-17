@@ -9,7 +9,6 @@ import com.the.dionisio.apk.client.model.dto.Validation;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import java.util.List;
 
 /**
  * Created by Dantas on 3/25/17.
@@ -18,7 +17,7 @@ import java.util.List;
 public class PersonDataConverter {
 
     public static final String TAG = "Person";
-
+    /*
     public void getPerson(String token, String _id)
     {
         ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
@@ -52,7 +51,38 @@ public class PersonDataConverter {
             @Override
             public void onFailure(Call<List<Person>> call, Throwable t)
             {
-                Log.e(TAG, "Failure to communication with the server!");
+                Log.e(TAG, "Failure to communication with the server! alteração de texto");
+            }
+        });
+    }*/
+
+
+    public void getDataConverter(String tken, String id){
+
+        ServicePersonApi serviceAPI = ServiceGenerator.createService(ServicePersonApi.class);
+        Call<CatalogApi> requestCatalog = serviceAPI.getPerson(tken, id);
+
+        requestCatalog.enqueue(new Callback<CatalogApi>() {
+
+            @Override
+            public void onResponse(Call<CatalogApi> call, Response<CatalogApi> response) {
+
+                CatalogApi CatalogApi = response.body();
+                if(response.isSuccessful()){
+                    for(Person p : CatalogApi.getPeoples()){
+                        Log.i(TAG, " " + p.name + " " );
+                        Log.i(TAG, "----------------------");
+
+                    }
+                }else{
+                    Log.i(TAG, "ERRO NA DataConverter: " + response.errorBody());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CatalogApi> call, Throwable t) {
+
+                Log.e(TAG, "Erro AQUI: " + t.getMessage());
             }
         });
     }
