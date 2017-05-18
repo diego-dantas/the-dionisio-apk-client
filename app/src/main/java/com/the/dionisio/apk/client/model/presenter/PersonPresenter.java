@@ -3,6 +3,7 @@ package com.the.dionisio.apk.client.model.presenter;
 import android.content.Context;
 
 import com.the.dionisio.apk.client.dao.api.Api;
+import com.the.dionisio.apk.client.dao.sqlite.PersonDAO;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 
@@ -12,29 +13,58 @@ import com.the.dionisio.apk.client.model.dto.Token;
 
 public class PersonPresenter
 {
-    public void getPerson(Token token, Person person)
+    public void getPersonApi(Token token, Person person, Context context)
     {
         //Calling the service of connection of API
-        Api.personDataConverter.getDataConverter(token.token,person._id);
+        if(token.token != null && person._id != null)
+        {
+            Api.personDataConverter.getPerson(token, person, context);
+        }
     }
 
 
-    public void createPerson(Person person, Context context)
+    public void createPersonApi(Person person, Context context)
     {
         //Calling the service of connection of API
-        Api.personDataConverter.postPerson(person, context);
+        if(person != null && context != null)
+        {
+            Api.personDataConverter.postPerson(person, context);
+        }
     }
 
-    public void updatePerson(Person person)
+    public void updatePersonApi(Person person, Context context)
     {
         //Calling the service of connection of API
-        Api.personDataConverter.updatePerson(person);
-
+        if(person != null && context != null)
+        {
+            Api.personDataConverter.updatePerson(person);
+        }
     }
 
-    public void deletePerson(Person person)
+    public void deletePersonApi(Person person, Context context)
     {
         //Calling the service of connection of API
-        Api.personDataConverter.deletePerson(person._id);
+        if(person != null && context != null)
+        {
+            Api.personDataConverter.deletePerson(person._id);
+        }
+    }
+
+    public void createPersonSQLite(Person person, Context context)
+    {
+        PersonDAO personDAO = new PersonDAO(context);
+        personDAO.createPerson(person);
+    }
+
+    public void updatePersonSQLite(Person person, Context context)
+    {
+        PersonDAO personDAO = new PersonDAO(context);
+        personDAO.updatePerson(person);
+    }
+
+    public void deletePersonSQLite(Person person, Context context)
+    {
+        PersonDAO personDAO = new PersonDAO(context);
+        personDAO.deletePerson(person);
     }
 }

@@ -50,20 +50,20 @@ public class CreateAccount extends AppCompatActivity
     public void goCreateAccountStepGenre(View v)
     {
 
-        if(Util.validationInput.emptyInput(inputNameFullCreateAccount, inputLayoutNameFullCreateAccount) == false)
+        if(!Util.validationInput.emptyInput(inputNameFullCreateAccount, inputLayoutNameFullCreateAccount))
         {
             return;
         }
-        else if(Util.validationInput.emptyInput(inputEmailCreateAccount, inputLayoutEmailCreateAccount) == false)
+        else if(!Util.validationInput.emptyInput(inputEmailCreateAccount, inputLayoutEmailCreateAccount))
         {
             return;
 
         }
-        else if(Util.validationInput.emptyInput(inputPasswordCreateAccount, inputLayoutPasswordCreateAccount) == false)
+        else if(!Util.validationInput.emptyInput(inputPasswordCreateAccount, inputLayoutPasswordCreateAccount))
         {
             return;
         }
-        else if(Util.validationInput.emptyInput(inputBirthCreateAccount, inputLayoutBirthCreateAccount) == false)
+        else if(!Util.validationInput.emptyInput(inputBirthCreateAccount, inputLayoutBirthCreateAccount))
         {
             return;
         }
@@ -79,9 +79,13 @@ public class CreateAccount extends AppCompatActivity
             {
                 sex = "MAN";
             }
-            else
+            else if(radioWomanCreateAccount.isChecked())
             {
                 sex = "WOMAN";
+            }
+            else
+            {
+                sex = "OTHERS";
             }
 
             Util.moviment.goViewClearWithData(this, CreateAccountStepGenre.class, name, email, password, image_url, birth, sex);

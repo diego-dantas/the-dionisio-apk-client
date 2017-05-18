@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
@@ -22,6 +24,8 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     private ImageView imgElectronics, imgRock, imgSertanejo, imgPagode;
     private View bgElectronic,bgRock, bgPagode, bgSertanejo;
     private TextView txtElectronics, txtRock, txtSertanejo, txtPagode;
+    private Button btnFinishCreateAccountStepGenre;
+    private ProgressBar progressBarCreateAccountStepGenre;
     private String controlCheck;
     private List<String> genres = new ArrayList<>();
 
@@ -50,6 +54,10 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         imgPagode = (ImageView) findViewById(R.id.imgPagode);
         txtPagode = (TextView) findViewById(R.id.txtPagode);
         bgPagode = findViewById(R.id.bgPagode);
+
+        btnFinishCreateAccountStepGenre = (Button) findViewById(R.id.btnFinishCreateAccountStepGenre);
+
+        progressBarCreateAccountStepGenre = (ProgressBar) findViewById(R.id.progressBarCreateAccountStepGenre);
 
         //this is filter in black color and opacity
         Util.cardGenre.setAlpha(bgElectronic);
@@ -92,8 +100,20 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     {
         if(Util.cardGenre.validGenre(genres, getApplicationContext()))
         {
+            loadProgressBar();
             Bundle bundle = getIntent().getExtras();
-            Presenter.personAction.createPerson(Util.getBundle.getBundle(bundle, genres), this);
+            Presenter.personAction.createPersonApi(Util.getBundle.setBundlePerson(bundle, genres), this);
+
         }
+    }
+
+    public void loadProgressBar()
+    {
+        progressBarCreateAccountStepGenre.setVisibility(View.VISIBLE);
+        cardElectronics.setVisibility(View.INVISIBLE);
+        cardRock.setVisibility(View.INVISIBLE);
+        cardPagode.setVisibility(View.INVISIBLE);
+        cardSertanejo.setVisibility(View.INVISIBLE);
+        btnFinishCreateAccountStepGenre.setVisibility(View.INVISIBLE);
     }
 }

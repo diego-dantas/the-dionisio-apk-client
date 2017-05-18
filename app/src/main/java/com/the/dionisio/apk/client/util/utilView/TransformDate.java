@@ -1,7 +1,6 @@
 package com.the.dionisio.apk.client.util.utilView;
 
 import android.os.Bundle;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ import java.util.List;
 
 public class TransformDate
 {
-    public List getDateIntoList(Bundle bundle)
+    public List<Integer> getDateIntoList(Bundle bundle)
     {
         List<Integer> birth = new ArrayList<>();
 

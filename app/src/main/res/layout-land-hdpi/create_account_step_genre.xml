@@ -24,7 +24,7 @@
         app:cardBackgroundColor="@color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/cardRock"
         app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintLeft_toLeftOf="@+id/btnFinish"
+        app:layout_constraintLeft_toLeftOf="@+id/btnFinishCreateAccountStepGenre"
         app:layout_constraintRight_toLeftOf="@+id/cardRock"
         app:layout_constraintTop_toTopOf="@+id/cardRock"
         app:layout_constraintVertical_bias="1.0"
@@ -85,7 +85,7 @@
         android:onClick="checkCard"
         app:cardBackgroundColor="@color/transparent"
         app:layout_constraintBottom_toBottomOf="@+id/cardSertanejo"
-        app:layout_constraintLeft_toLeftOf="@+id/btnFinish"
+        app:layout_constraintLeft_toLeftOf="@+id/btnFinishCreateAccountStepGenre"
         app:layout_constraintRight_toLeftOf="@+id/cardPagode"
         app:layout_constraintTop_toTopOf="@+id/cardSertanejo"
         tools:layout_constraintBottom_creator="1"
@@ -247,7 +247,7 @@
     </android.support.v7.widget.CardView>
 
     <Button
-        android:id="@+id/btnFinish"
+        android:id="@+id/btnFinishCreateAccountStepGenre"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:text="@string/genreFinish"

@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/cardRock"
         android:layout_marginEnd="10dp"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/btnFinish"
+        app:layout_constraintLeft_toLeftOf="@+id/btnFinishCreateAccountStepGenre"
         app:layout_constraintTop_toTopOf="@+id/cardRock"
         android:layout_marginLeft="11dp"
         android:layout_marginRight="10dp">
@@ -86,7 +86,7 @@
         android:layout_marginStart="155dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardSertanejo"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/btnFinish"
+        app:layout_constraintLeft_toLeftOf="@+id/btnFinishCreateAccountStepGenre"
         app:layout_constraintTop_toTopOf="@+id/cardSertanejo"
         android:layout_marginLeft="155dp"
         android:layout_marginRight="155dp">
@@ -246,7 +246,7 @@
     </android.support.v7.widget.CardView>
 
     <Button
-        android:id="@+id/btnFinish"
+        android:id="@+id/btnFinishCreateAccountStepGenre"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:text="@string/genreFinish"

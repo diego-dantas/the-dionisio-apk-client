@@ -10,6 +10,7 @@
     <string name="txt_sex">Sexo:</string>
     <string name="txt_man">Hombre</string>
     <string name="txt_woman">Mujer</string>
+    <string name="txt_other">Otros</string>
     <string name="btn_next">Proximo paso</string>
     <string name="txv_descriptionForgotPassword">Introduzca su dirección de correo electrónico para enviar una contraseña de recuperación.</string>
     <string name="btn_send">Enviar</string>

@@ -7,4 +7,5 @@ package com.the.dionisio.apk.client.model.presenter;
 public interface Presenter
 {
     PersonPresenter personAction = new PersonPresenter();
+    LoginPresenter login = new LoginPresenter();
 }

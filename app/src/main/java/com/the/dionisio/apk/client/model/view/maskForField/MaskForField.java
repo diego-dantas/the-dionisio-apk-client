@@ -10,24 +10,25 @@ import android.widget.EditText;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MaskForField implements TextWatcher{
-
-    private static MaskForField instance;
-
+public class MaskForField implements TextWatcher
+{
     private String mMask;
     private EditText mEditText;
-    private Set<String> symbolMask = new HashSet<String>();
+    private Set<String> symbolMask = new HashSet<>();
     private boolean isUpdating;
     private String old = "";
 
-    public MaskForField(String mask, EditText editText) {
+    public MaskForField(String mask, EditText editText)
+    {
         mMask = mask;
         mEditText = editText;
         initSymbolMask();
     }
 
-    private void initSymbolMask(){
-        for (int i=0; i < mMask.length(); i++){
+    private void initSymbolMask()
+    {
+        for (int i=0; i < mMask.length(); i++)
+        {
             char ch = mMask.charAt(i);
             if (ch != '#')
                 symbolMask.add(String.valueOf(ch));
@@ -35,11 +36,13 @@ public class MaskForField implements TextWatcher{
     }
 
     @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    public void onTextChanged(CharSequence s, int start, int before, int count)
+    {
         String str = UtilMask.unmask(s.toString(), symbolMask);
         String mascara = "";
 
-        if (isUpdating) {
+        if (isUpdating)
+        {
             old = str;
             isUpdating = false;
             return;
@@ -56,14 +59,16 @@ public class MaskForField implements TextWatcher{
         mEditText.setSelection(mascara.length());
     }
 
+
     @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    public void beforeTextChanged(CharSequence s, int start, int count, int after)
+    {
 
     }
 
-
     @Override
-    public void afterTextChanged(Editable s) {
+    public void afterTextChanged(Editable s)
+    {
 
     }
 }

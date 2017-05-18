@@ -5,13 +5,9 @@ import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.EditText;
-
 import com.the.dionisio.apk.client.R;
-
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 /**
  * Created by igorm on 03/05/2017.

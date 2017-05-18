@@ -27,7 +27,7 @@ public class CardGenre
         return view;
     }
 
-    public List checkCard(View v, CardView cardView, TextView textView, ImageView imageView, String controlCheck, List<String> genres)
+    public List<String> checkCard(View v, CardView cardView, TextView textView, ImageView imageView, String controlCheck, List<String> genres)
     {
         final String electronic = "ELECTRONIC", rock = "ROCK", sertanejo = "SERTANEJO", pagode = "PAGODE";
         switch (v.getId())

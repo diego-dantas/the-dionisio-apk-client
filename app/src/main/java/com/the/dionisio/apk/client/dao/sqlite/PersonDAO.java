@@ -4,8 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.util.Util;
 
 
@@ -15,10 +15,12 @@ import com.the.dionisio.apk.client.util.Util;
 
 public class PersonDAO {
     private SQLiteDatabase db;
+    private Context contextView;
 
     public PersonDAO(Context context){
         DataBase dataBase = new DataBase(context);
         db = dataBase.getWritableDatabase();
+        contextView = context;
     }
 
     public void createPerson(Person person){
@@ -36,6 +38,8 @@ public class PersonDAO {
 
         db.insert("person", null,values);
         db.close();
+
+        Presenter.login.resultLoginOk(person, contextView);
     }
 
     public void updatePerson(Person person){

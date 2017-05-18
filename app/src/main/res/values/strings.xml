@@ -26,6 +26,7 @@
     <string name="txt_sex">Sexo:</string>
     <string name="txt_man">Homem</string>
     <string name="txt_woman">Mulher</string>
+    <string name="txt_other">Outros</string>
     <string name="btn_next">Próximo Passo</string>
     <string name="txv_descriptionForgotPassword">Digite seu endereço de email para enviar uma senha de recuperação.</string>
     <string name="btn_send">Enviar</string>

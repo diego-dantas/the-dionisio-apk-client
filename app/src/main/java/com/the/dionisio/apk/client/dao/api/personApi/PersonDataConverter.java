@@ -3,9 +3,10 @@ package com.the.dionisio.apk.client.dao.api.personApi;
 import android.content.Context;
 import android.util.Log;
 import com.the.dionisio.apk.client.dao.api.ServiceGenerator;
-import com.the.dionisio.apk.client.dao.sqlite.PersonDAO;
 import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.dto.Validation;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,26 +18,30 @@ import retrofit2.Response;
 public class PersonDataConverter {
 
     public static final String TAG = "Person";
-    /*
-    public void getPerson(String token, String _id)
+
+    public void getPerson(Token token, Person person, Context context)
     {
         ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
-        Call<List<Person>> request = ServicePersonApi.getPerson(token, _id);
+        Call<CatalogApi> request = ServicePersonApi.getPerson(token.token, person._id);
 
-        request.enqueue(new Callback<List<Person>>()
+        request.enqueue(new Callback<CatalogApi>()
         {
             @Override
-            public void onResponse(Call<List<Person>> call, Response<List<Person>> response)
+            public void onResponse(Call<CatalogApi> call, Response<CatalogApi> response)
             {
-                List<Person> person = response.body();
+                CatalogApi catalogApi = response.body();
 
-                if(person != null)
+                if(catalogApi != null)
                 {
                     if(response.isSuccessful())
                     {
-                        person.forEach(p ->{
-                            Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + p.email + "; _id: " + p._id);
-                        });                    }
+                        for(Person p : catalogApi.getPeoples())
+                        {
+                            Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + p.name + "; _id: " + p.email);
+                        }
+
+                        Presenter.personAction.updatePersonSQLite(catalogApi.getPeoples().get(0), context);
+                    }
                     else
                     {
                         Log.e(TAG, "Failed - code: " + response.code());
@@ -49,40 +54,9 @@ public class PersonDataConverter {
             }
 
             @Override
-            public void onFailure(Call<List<Person>> call, Throwable t)
+            public void onFailure(Call<CatalogApi> call, Throwable t)
             {
                 Log.e(TAG, "Failure to communication with the server! alteração de texto");
-            }
-        });
-    }*/
-
-
-    public void getDataConverter(String tken, String id){
-
-        ServicePersonApi serviceAPI = ServiceGenerator.createService(ServicePersonApi.class);
-        Call<CatalogApi> requestCatalog = serviceAPI.getPerson(tken, id);
-
-        requestCatalog.enqueue(new Callback<CatalogApi>() {
-
-            @Override
-            public void onResponse(Call<CatalogApi> call, Response<CatalogApi> response) {
-
-                CatalogApi CatalogApi = response.body();
-                if(response.isSuccessful()){
-                    for(Person p : CatalogApi.getPeoples()){
-                        Log.i(TAG, " " + p.name + " " );
-                        Log.i(TAG, "----------------------");
-
-                    }
-                }else{
-                    Log.i(TAG, "ERRO NA DataConverter: " + response.errorBody());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CatalogApi> call, Throwable t) {
-
-                Log.e(TAG, "Erro AQUI: " + t.getMessage());
             }
         });
     }
@@ -107,10 +81,8 @@ public class PersonDataConverter {
                         Log.i(TAG, "Sucessfull - code: " + response.code() + " additional: " + validation.additional);
                         _id = validation.additional.toString().split("=");
                         person._id = _id[1].trim();
-                        Log.i(TAG, "_id: " + person._id);
 
-                        PersonDAO personDAO = new PersonDAO(context);
-                        personDAO.createPerson(person);
+                        Presenter.personAction.createPersonSQLite(person, context);
                     }
                     else
                     {

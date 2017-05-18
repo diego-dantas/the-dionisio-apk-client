@@ -30,6 +30,7 @@ public class MovingActivity
         intent.putExtra("PASSWORD", password);
         intent.putExtra("BIRTH", birth);
         intent.putExtra("SEX", sex);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
