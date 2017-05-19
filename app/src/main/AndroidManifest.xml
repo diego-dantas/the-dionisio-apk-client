@@ -49,6 +49,10 @@
             android:name=".model.view.Event"
             android:label="@string/title_activity_event"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".main"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
