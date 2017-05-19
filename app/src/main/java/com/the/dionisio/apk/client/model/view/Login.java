@@ -32,7 +32,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.the.dionisio.apk.client.R;
-import com.the.dionisio.apk.client.ViewMain;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.util.Util;
 import java.util.Arrays;
 
@@ -124,14 +124,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
             public void onCancel()
             {
                 //Mensagem de erro caso o amiginho cancele o login com o facebook
-                Toast.makeText(getApplicationContext() , "Cancelado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext() , "Cancelad", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException error)
             {
                 //Mensagem de erro caso tenha algum problema de conexão com o facebook
-                Toast.makeText(getApplicationContext(), "Erro", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -171,9 +171,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         String email = user.getEmail();
         String password = user.getUid();
         String image_url = user.getPhotoUrl().toString();
-        String birth = "";
-        String sex = "";
-        Util.moviment.goViewClearWithData(this, ViewMain.class, name, email, password, image_url, birth, sex);
     }
 
     protected void onStart()
@@ -224,9 +221,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
             String email = account.getEmail();
             String password = account.getId();
             String image_url = account.getPhotoUrl().toString();
-            String birth = "";
-            String sex = "";
-            Util.moviment.goViewClearWithData(this, ViewMain.class, name, email, password, image_url, birth, sex);
         }
         else
         {
@@ -250,17 +244,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
 
     public void goLogin(View v)
     {
-        if(Util.validationInput.emptyInput(inputEmailLogin, inputLayoutEmailLogin) == false)
+        if(!Util.validationInput.emptyInput(inputEmailLogin, inputLayoutEmailLogin))
         {
             return;
         }
-        else if(Util.validationInput.emptyInput(inputPasswordLogin, inputLayoutPasswordLogin) == false)
+        else if(!Util.validationInput.emptyInput(inputPasswordLogin, inputLayoutPasswordLogin))
         {
             return;
         }
         else
         {
-
+            Presenter.login.startLogin(Util.getBundle.setPerson(inputEmailLogin.getText().toString(), inputPasswordLogin.getText().toString(), null, null));
         }
     }
 

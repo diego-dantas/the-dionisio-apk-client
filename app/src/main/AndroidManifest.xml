@@ -20,7 +20,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".model.view.PreLogin"></activity>
+        <activity android:name=".model.view.PreLogin" />
         <activity
             android:name=".model.view.Login"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -48,7 +48,7 @@
         <activity
             android:name=".model.view.Event"
             android:label="@string/title_activity_event"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -25,6 +25,17 @@ public class BundlePerson
         return person;
     }
 
+    public Person setPerson(String email, String password, String name, String img_url)
+    {
+        Person person = new Person();
+        person.email = email;
+        person.password = password;
+        person.name = name;
+        person.picture = img_url;
+
+        return person;
+    }
+
     public Person getBundlePerson()
     {
         Person person = new Person();

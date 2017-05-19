@@ -18,8 +18,9 @@ public class LoginDataConverter
 
     public void postLogin(Person person)
     {
+        String username = person.email, password = person.password;
         ServiceLoginApi serviceLoginApi = ServiceGenerator.createService(ServiceLoginApi.class);
-        Call<Token> request = serviceLoginApi.postLogin(person.email, person.password);
+        Call<Token> request = serviceLoginApi.postLogin(username, password);
 
         request.enqueue(new Callback<Token>()
         {

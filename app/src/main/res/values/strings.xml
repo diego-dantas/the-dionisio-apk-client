@@ -46,5 +46,11 @@
     <string name="field_birth">Favor inserir uma data de nascimento válida</string>
     <string name="field_genre">Escolha pelo menos um gosto musical</string>
     <string name="title_activity_event">event</string>
+    <string name="title_activity_meu_oco">meuOco</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 </resources>

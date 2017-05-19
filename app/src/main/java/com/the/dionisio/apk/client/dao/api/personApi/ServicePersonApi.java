@@ -17,6 +17,9 @@ import retrofit2.http.Path;
 
 public interface ServicePersonApi
 {
+    @GET("/person")
+    Call<CatalogApi> getPeople(@Header("X-Auth-Token") String token);
+
     @GET("/person/{id}")
     Call<CatalogApi> getPerson(@Header("X-Auth-Token") String token, @Path("id") String id);
 

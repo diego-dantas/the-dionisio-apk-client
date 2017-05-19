@@ -27,7 +27,7 @@ public class DataBase extends SQLiteOpenHelper {
                 + "birth text,"
                 + "cpf integer,"
                 + "sex text,"
-                + "isActive text,"
+                + "isActive integer,"
                 + "picture text);"
         );
 
