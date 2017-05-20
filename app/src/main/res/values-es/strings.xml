@@ -29,4 +29,12 @@
     <string name="field_password">Por favor, introduzca su contraseña</string>
     <string name="field_birth">Por favor, introduzca una fecha de nacimiento válida</string>
     <string name="field_genre">Por favor, elija al menos un gusto musical</string>
+    <string name="config">Configurações</string>
+
+    <!-- Strings for navigation drawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Configuración</string>
+    <string name="title_activity_maps_local">MapsLocal</string>
+    <string name="ticket">Ingresso</string>
 </resources>
