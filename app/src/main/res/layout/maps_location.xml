@@ -5,4 +5,4 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.the.dionisio.apk.client.util.utilView.MapsLocation" />
+    tools:context="com.the.dionisio.apk.client.model.view.fragments.MapsLocation" />

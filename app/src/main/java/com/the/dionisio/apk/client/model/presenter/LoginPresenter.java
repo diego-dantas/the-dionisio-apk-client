@@ -4,6 +4,7 @@ import android.content.Context;
 import java.util.List;
 import com.the.dionisio.apk.client.ViewMain;
 import com.the.dionisio.apk.client.dao.api.Api;
+import com.the.dionisio.apk.client.model.dto.Login;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.util.Util;
 
@@ -13,9 +14,9 @@ import com.the.dionisio.apk.client.util.Util;
 
 public class LoginPresenter
 {
-    public void startLogin(Person person)
+    public void startLogin(Person person, Login login)
     {
-        Api.loginDataConverter.postLogin(person);
+        Api.loginDataConverter.postLogin(person, login);
     }
 
     public Person findPerson(List<Person> people, Person person)

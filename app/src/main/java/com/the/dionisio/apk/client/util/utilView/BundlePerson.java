@@ -1,6 +1,8 @@
 package com.the.dionisio.apk.client.util.utilView;
 
 import android.os.Bundle;
+
+import com.the.dionisio.apk.client.model.dto.Login;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.util.Util;
 import java.util.List;
@@ -34,6 +36,15 @@ public class BundlePerson
         person.picture = img_url;
 
         return person;
+    }
+
+    public Login setLogin(String username, String password)
+    {
+        Login login = new Login();
+        login.username = username;
+        login.password = password;
+
+        return login;
     }
 
     public Person getBundlePerson()

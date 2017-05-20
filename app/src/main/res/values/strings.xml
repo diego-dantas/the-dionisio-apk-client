@@ -1,5 +1,5 @@
-<resources>
-    <string name="app_name">The Dionisio Apk Client</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">The Dionisio</string>
 
     <!-- Content to use for facebook integration -->
     <string name="facebook_app_id">1925229844415906</string>
@@ -45,14 +45,11 @@
     <string name="field_password">Favor inserir a senha</string>
     <string name="field_birth">Favor inserir uma data de nascimento válida</string>
     <string name="field_genre">Escolha pelo menos um gosto musical</string>
-    <string name="title_activity_event">event</string>
-    <string name="title_activity_meu_oco">meuOco</string>
 
+    <!-- Strings for navigation drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
-    <string name="title_activity_main">main</string>
-    <string name="title_activity_maps_location">Map</string>
+    <string name="title_activity_maps_local">MapsLocal</string>
 
 </resources>

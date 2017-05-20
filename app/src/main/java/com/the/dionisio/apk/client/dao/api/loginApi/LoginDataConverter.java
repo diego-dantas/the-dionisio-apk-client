@@ -2,6 +2,7 @@ package com.the.dionisio.apk.client.dao.api.loginApi;
 
 import android.util.Log;
 import com.the.dionisio.apk.client.dao.api.ServiceGenerator;
+import com.the.dionisio.apk.client.model.dto.Login;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import retrofit2.Call;
@@ -16,11 +17,10 @@ public class LoginDataConverter
 {
     public static final String TAG = "LOGIN";
 
-    public void postLogin(Person person)
+    public void postLogin(Person person, Login login)
     {
-        String username = person.email, password = person.password;
         ServiceLoginApi serviceLoginApi = ServiceGenerator.createService(ServiceLoginApi.class);
-        Call<Token> request = serviceLoginApi.postLogin(username, password);
+        Call<Token> request = serviceLoginApi.postLogin(login);
 
         request.enqueue(new Callback<Token>()
         {
@@ -33,7 +33,7 @@ public class LoginDataConverter
                 {
                     if(response.isSuccessful())
                     {
-                        Log.i(TAG, "Sucessfull - code: " + response.code() + " token: " + token.token);
+                        Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + person.email + " token: " + token.token);
                     }
                     else
                     {

@@ -1,27 +1,23 @@
-package com.the.dionisio.apk.client.util.utilView;
+package com.the.dionisio.apk.client.model.view.fragments;
 
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.the.dionisio.apk.client.R;
 
-
-public class MapsLocation extends SupportMapFragment implements OnMapReadyCallback {
-
+public class MapsLocation extends SupportMapFragment implements OnMapReadyCallback
+{
     private GoogleMap mMap;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
     }
-
 
     /**
      * Manipulates the map once available.
@@ -33,7 +29,8 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap)
+    {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
