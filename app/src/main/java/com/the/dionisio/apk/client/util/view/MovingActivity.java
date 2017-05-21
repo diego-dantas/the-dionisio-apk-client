@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by igorm on 14/04/2017.
  */
@@ -13,6 +16,13 @@ public class MovingActivity
     public void backView(Activity activity)
     {
         activity.finish();
+    }
+
+
+    public void goView(Context context, Class classDestiny, List listEvent) {
+        Intent intent = new Intent(context, classDestiny);
+        intent.putExtra("ListEvent", (Serializable) listEvent);
+        context.startActivity(intent);
     }
 
     public void goView(Context context, Class classDestiny)
