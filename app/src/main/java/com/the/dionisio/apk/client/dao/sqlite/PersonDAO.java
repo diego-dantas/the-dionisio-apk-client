@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.NonNull;
+
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.util.Util;
@@ -20,76 +22,84 @@ public class PersonDAO
 
     public PersonDAO(Context context)
     {
-        DataBase dataBase = new DataBase(context);
-        db = dataBase.getWritableDatabase();
         contextView = context;
     }
 
     public void createPerson(Person person)
     {
-        ContentValues values = new ContentValues();
+        ContentValues values = getContentValues(person);
+        db = getDataBase();
+        try
+        {
+            db.insert("person", null,values);
+        }
+        catch (Exception e)
+        {
 
-        values.put("_idPerson", person._id);
-        values.put("name", person.name);
-        values.put("email", person.email);
-        values.put("password", person.password);
-        values.put("cpf", person.cpf);
-        values.put("birth", Util.transformDate.getDateIntoString(person.birth));
-        values.put("sex", person.sex);
-        values.put("picture", person.picture);
-        values.put("isActive", ((person.isActive) ? 1 : 0));
+        }
+        db.close();
 
         GenreDAO genre = new GenreDAO(contextView);
         genre.createGenre(person);
-
-        db.insert("person", null,values);
-        db.close();
 
         Presenter.login.resultLoginOk(person, contextView);
     }
 
     public void updatePerson(Person person)
     {
-        ContentValues values = new ContentValues();
+        ContentValues values = getContentValues(person);
+        db = getDataBase();
+        try
+        {
+            db.update("person", values, "_idPerson = ?", new String[]{"" + person._id});
+        }
+        catch (Exception e)
+        {
 
-        values.put("name", person.name);
-        values.put("email", person.email);
-        values.put("password", person.password);
-        values.put("cpf", person.cpf);
-        values.put("birth", Util.transformDate.getDateIntoString(person.birth));
-        values.put("sex", person.sex);
-        values.put("picture", person.picture);
-        values.put("isActive", ((person.isActive) ? 1 : 0));
-
-        db.update("person", values, "_idPerson = ?", new String[]{"" + person._id});
+        }
         db.close();
     }
 
     public void deletePerson(Person person)
     {
-        db.delete("person", "_idPerson = " + person._id, null);
+        db = getDataBase();
+
+        try
+        {
+            db.delete("person", "_idPerson = " + person._id, null);
+        }
+        catch (Exception e)
+        {
+
+        }
+
         db.close();
     }
 
     public Person findPersonBy_id(Person person)
     {
-        Cursor findPerson = db.rawQuery("SELECT * FROM person WHERE _idPerson = " + person._id,null);
+         try
+         {
+             Cursor findPerson = db.rawQuery("SELECT * FROM person WHERE _idPerson = " + person._id,null);
+             db = getDataBase();
+             if(findPerson.moveToNext())
+             {
+                 GenreDAO genre = new GenreDAO(contextView);
+                 person.name = findPerson.getString(findPerson.getColumnIndex("name"));
+                 person.email = findPerson.getString(findPerson.getColumnIndex("email"));
+                 person.password = findPerson.getString(findPerson.getColumnIndex("password"));
+                 person.birth = Util.transformDate.getDateIntoList(findPerson.getString(findPerson.getColumnIndex("birth")));
+                 person.cpf = findPerson.getString(findPerson.getColumnIndex("cpf"));
+                 person.sex = findPerson.getString(findPerson.getColumnIndex("sex"));
+                 person.picture = findPerson.getString(findPerson.getColumnIndex("picture"));
+                 person.genres = genre.searchGenre(person);
+                 person.isActive = findPerson.getInt(findPerson.getColumnIndex("isActive")) == 1 ? true : false;
+             }
+         }
+         catch (Exception e)
+         {
 
-        if(findPerson.moveToNext())
-        {
-            GenreDAO genre = new GenreDAO(contextView);
-
-            person.name = findPerson.getString(findPerson.getColumnIndex("name"));
-            person.email = findPerson.getString(findPerson.getColumnIndex("email"));
-            person.password = findPerson.getString(findPerson.getColumnIndex("password"));
-            person.birth = Util.transformDate.getDateIntoList(findPerson.getString(findPerson.getColumnIndex("birth")));
-            person.cpf = findPerson.getString(findPerson.getColumnIndex("cpf"));
-            person.sex = findPerson.getString(findPerson.getColumnIndex("sex"));
-            person.picture = findPerson.getString(findPerson.getColumnIndex("picture"));
-            person.genres = genre.searchGenre(person);
-            person.isActive = findPerson.getInt(findPerson.getColumnIndex("isActive")) == 1 ? true : false;
-        }
-
+         }
         db.close();
 
         return person;
@@ -97,15 +107,57 @@ public class PersonDAO
 
     public Boolean findPersonByEmail(Person person)
     {
-        Cursor findPerson = db.rawQuery("SELECT * FROM person WHERE email = " + person.email,null);
-
-        while(findPerson.moveToNext())
+        Boolean result = false;
+        try
         {
-            db.close();
-            return true;
-        }
+            String [] parametros ={person.email};
+            db = getDataBase();
+            Cursor findPerson = db.rawQuery("SELECT * FROM person WHERE email = ?",parametros);
 
+            if (findPerson != null) {
+                findPerson.moveToFirst();
+                if (findPerson.getInt (0) == 0) {
+
+                    result =  true;
+                }
+                else
+                {
+
+                    result = false;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            result = false;
+        }
         db.close();
-        return false;
+        return result;
+
+    }
+
+
+    @NonNull
+    private ContentValues getContentValues(Person person) {
+        ContentValues values = new ContentValues();
+        values.put("name", person.name);
+        values.put("email", person.email);
+        values.put("password", person.password);
+        values.put("cpf", person.cpf);
+        values.put("birth", Util.transformDate.getDateIntoString(person.birth));
+        values.put("sex", person.sex);
+        values.put("picture", person.picture);
+        values.put("isActive", ((person.isActive) ? 1 : 0));
+        return values;
+    }
+
+    /***
+     * Abre o banco com o contexto da classe [contextView]
+     * @return
+     */
+    public SQLiteDatabase getDataBase(){
+        DataBase dataBase = new DataBase(contextView);
+        return dataBase.getWritableDatabase();
+
     }
 }
