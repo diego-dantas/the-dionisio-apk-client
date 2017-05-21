@@ -1,7 +1,6 @@
 package com.the.dionisio.apk.client.model.presenter;
 
 import android.content.Context;
-import java.util.List;
 import com.the.dionisio.apk.client.ViewMain;
 import com.the.dionisio.apk.client.dao.api.Api;
 import com.the.dionisio.apk.client.model.dto.Login;
@@ -14,22 +13,9 @@ import com.the.dionisio.apk.client.util.Util;
 
 public class LoginPresenter
 {
-    public void startLogin(Person person, Login login)
+    public void startLogin(Person person, Login login, Context context)
     {
-        Api.loginDataConverter.postLogin(person, login);
-    }
-
-    public Person findPerson(List<Person> people, Person person)
-    {
-        for(Person p : people)
-        {
-            if(p.email.equals(person.email))
-            {
-                person = p;
-            }
-        }
-
-        return person;
+        Api.loginDataConverter.postLogin(person, login, context);
     }
 
     public void resultLoginOk(Person person, Context context)

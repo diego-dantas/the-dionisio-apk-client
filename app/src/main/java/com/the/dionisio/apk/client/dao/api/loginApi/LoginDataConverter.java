@@ -1,10 +1,13 @@
 package com.the.dionisio.apk.client.dao.api.loginApi;
 
+import android.content.Context;
 import android.util.Log;
 import com.the.dionisio.apk.client.dao.api.ServiceGenerator;
 import com.the.dionisio.apk.client.model.dto.Login;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
+import com.the.dionisio.apk.client.model.resource.PersonResource;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -16,24 +19,34 @@ import retrofit2.Response;
 public class LoginDataConverter
 {
     public static final String TAG = "LOGIN";
+    private PersonResource personResource = new PersonResource();
 
-    public void postLogin(Person person, Login login)
+    public void postLogin(Person person, Login login, Context context)
     {
         ServiceLoginApi serviceLoginApi = ServiceGenerator.createService(ServiceLoginApi.class);
-        Call<Token> request = serviceLoginApi.postLogin(login);
+        Call<Entity> request = serviceLoginApi.postLogin(login);
 
-        request.enqueue(new Callback<Token>()
+        request.enqueue(new Callback<Entity>()
         {
             @Override
-            public void onResponse(Call<Token> call, Response<Token> response)
+            public void onResponse(Call<Entity> call, Response<Entity> response)
             {
-                Token token = response.body();
+                Entity entity = response.body();
 
-                if(token != null)
+                if(entity != null)
                 {
                     if(response.isSuccessful())
                     {
-                        Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + person.email + " token: " + token.token);
+                        Token token = new Token();
+                        Person newPerson = entity.getPerson();
+
+                        token.token = entity.getToken();
+
+                        Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + newPerson.email + " token: " + token.token);
+
+                        personResource.createPersonOrUpdatePerson(newPerson, context);
+
+                        Presenter.login.resultLoginOk(newPerson, context);
                     }
                     else
                     {
@@ -47,7 +60,7 @@ public class LoginDataConverter
             }
 
             @Override
-            public void onFailure(Call<Token> call, Throwable t)
+            public void onFailure(Call<Entity> call, Throwable t)
             {
                 Log.e(TAG, "Failure to communication with the server!");
             }

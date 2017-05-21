@@ -71,7 +71,7 @@ public class PersonDAO
         db.close();
     }
 
-    public Person searchPerson(Person person)
+    public Person findPersonBy_id(Person person)
     {
         Cursor findPerson = db.rawQuery("SELECT * FROM person WHERE _idPerson = " + person._id,null);
 
@@ -93,5 +93,19 @@ public class PersonDAO
         db.close();
 
         return person;
+    }
+
+    public Boolean findPersonByEmail(Person person)
+    {
+        Cursor findPerson = db.rawQuery("SELECT * FROM person WHERE email = " + person.email,null);
+
+        while(findPerson.moveToNext())
+        {
+            db.close();
+            return true;
+        }
+
+        db.close();
+        return false;
     }
 }

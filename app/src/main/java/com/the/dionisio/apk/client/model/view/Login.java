@@ -257,7 +257,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         {
             username = inputEmailLogin.getText().toString();
             password = inputPasswordLogin.getText().toString();
-            Presenter.login.startLogin(Util.getBundle.setPerson(username, password, null, null), Util.getBundle.setLogin(username, password));
+            Presenter.login.startLogin(Util.getBundle.setPerson(username, password, null, null), Util.getBundle.setLogin(username, password), this);
         }
     }
 

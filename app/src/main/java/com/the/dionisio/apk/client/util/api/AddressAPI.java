@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.util.utilApi;
+package com.the.dionisio.apk.client.util.api;
 
 /**
  * Created by Dantas on 3/25/17.

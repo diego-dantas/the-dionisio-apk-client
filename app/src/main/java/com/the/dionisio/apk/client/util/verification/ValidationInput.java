@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.util.utilView;
+package com.the.dionisio.apk.client.util.verification;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;

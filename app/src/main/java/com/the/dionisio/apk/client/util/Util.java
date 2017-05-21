@@ -1,11 +1,11 @@
 package com.the.dionisio.apk.client.util;
 
-import com.the.dionisio.apk.client.util.utilApi.AddressAPI;
-import com.the.dionisio.apk.client.util.utilView.BundlePerson;
-import com.the.dionisio.apk.client.util.utilView.CardGenre;
-import com.the.dionisio.apk.client.util.utilView.MovingActivity;
-import com.the.dionisio.apk.client.util.utilView.TransformDate;
-import com.the.dionisio.apk.client.util.utilView.ValidationInput;
+import com.the.dionisio.apk.client.util.api.AddressAPI;
+import com.the.dionisio.apk.client.util.view.BundlePerson;
+import com.the.dionisio.apk.client.util.view.CardGenre;
+import com.the.dionisio.apk.client.util.view.MovingActivity;
+import com.the.dionisio.apk.client.util.view.TransformDate;
+import com.the.dionisio.apk.client.util.verification.ValidationInput;
 
 /**
  * Created by igorm on 14/04/2017.

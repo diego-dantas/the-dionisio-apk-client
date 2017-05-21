@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.util.utilView;
+package com.the.dionisio.apk.client.util.view;
 
 import android.os.Bundle;
 import java.util.ArrayList;

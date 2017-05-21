@@ -7,6 +7,7 @@ import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.dto.Validation;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
+import com.the.dionisio.apk.client.util.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,48 +19,6 @@ import retrofit2.Response;
 public class PersonDataConverter {
 
     public static final String TAG = "Person";
-
-    public void getPeople(Token token, Person person, Context context)
-    {
-        ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
-        Call<CatalogApi> request = ServicePersonApi.getPeople(token.token);
-
-        request.enqueue(new Callback<CatalogApi>()
-        {
-            @Override
-            public void onResponse(Call<CatalogApi> call, Response<CatalogApi> response)
-            {
-                CatalogApi catalogApi = response.body();
-
-                if(catalogApi != null)
-                {
-                    if(response.isSuccessful())
-                    {
-                        for(Person p : catalogApi.getPeoples())
-                        {
-                            Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + p.name + "; _id: " + p.email);
-                        }
-
-                        Presenter.personAction.createPersonSQLite(Presenter.login.findPerson(catalogApi.getPeoples(), person), context);
-                    }
-                    else
-                    {
-                        Log.e(TAG, "Failed - code: " + response.code());
-                    }
-                }
-                else
-                {
-                    Log.e(TAG, "Failed, the data does not match, code: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CatalogApi> call, Throwable t)
-            {
-                Log.e(TAG, "Failure to communication with the server! alteração de texto");
-            }
-        });
-    }
 
     public void getPerson(Token token, Person person, Context context)
     {
@@ -125,6 +84,7 @@ public class PersonDataConverter {
                         person._id = _id[1].trim();
 
                         Presenter.personAction.createPersonSQLite(person, context);
+                        Presenter.login.startLogin(person, Util.getBundle.setLogin(person.email, person.password), context);
                     }
                     else
                     {

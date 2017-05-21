@@ -1,4 +1,4 @@
-package com.the.dionisio.apk.client.util.utilView;
+package com.the.dionisio.apk.client.util.view;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,11 +1,9 @@
 package com.the.dionisio.apk.client.model.presenter;
 
 import android.content.Context;
-
 import com.the.dionisio.apk.client.dao.api.Api;
 import com.the.dionisio.apk.client.dao.sqlite.PersonDAO;
 import com.the.dionisio.apk.client.model.dto.Person;
-import com.the.dionisio.apk.client.model.dto.Token;
 
 /**
  * Created by igorm on 06/05/2017.
@@ -13,16 +11,6 @@ import com.the.dionisio.apk.client.model.dto.Token;
 
 public class PersonPresenter
 {
-    public void getPersonApi(Token token, Person person, Context context)
-    {
-        //Calling the service of connection of API
-        if(token.token != null && person._id != null)
-        {
-            Api.personDataConverter.getPerson(token, person, context);
-        }
-    }
-
-
     public void createPersonApi(Person person, Context context)
     {
         //Calling the service of connection of API
