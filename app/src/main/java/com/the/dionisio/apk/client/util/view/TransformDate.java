@@ -46,14 +46,22 @@ public class TransformDate
     {
         String convertBirth = "";
 
-        for(int i = 2; i>=0; i--)
+        try
         {
-            convertBirth += birth.get(i).toString();
-            if(i>0)
+            for(int i = 2; i>=0; i--)
             {
-                convertBirth += "/";
+                convertBirth += birth.get(i).toString();
+                if(i>0)
+                {
+                    convertBirth += "/";
+                }
             }
         }
+        catch (Exception error)
+        {
+            return null;
+        }
+
 
         return convertBirth;
     }

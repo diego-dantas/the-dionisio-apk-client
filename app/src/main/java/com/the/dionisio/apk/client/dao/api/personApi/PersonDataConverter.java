@@ -20,48 +20,6 @@ public class PersonDataConverter {
 
     public static final String TAG = "Person";
 
-    public void getPerson(Token token, Person person, Context context)
-    {
-        ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
-        Call<CatalogApi> request = ServicePersonApi.getPerson(token.token, person._id);
-
-        request.enqueue(new Callback<CatalogApi>()
-        {
-            @Override
-            public void onResponse(Call<CatalogApi> call, Response<CatalogApi> response)
-            {
-                CatalogApi catalogApi = response.body();
-
-                if(catalogApi != null)
-                {
-                    if(response.isSuccessful())
-                    {
-                        for(Person p : catalogApi.getPeoples())
-                        {
-                            Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + p.name + "; _id: " + p.email);
-                        }
-
-                        Presenter.personAction.updatePersonSQLite(catalogApi.getPeoples().get(0), context);
-                    }
-                    else
-                    {
-                        Log.e(TAG, "Failed - code: " + response.code());
-                    }
-                }
-                else
-                {
-                    Log.e(TAG, "Failed, the data does not match, code: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CatalogApi> call, Throwable t)
-            {
-                Log.e(TAG, "Failure to communication with the server!");
-            }
-        });
-    }
-
     public void postPerson(Person person, Context context)
     {
         ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
@@ -82,6 +40,8 @@ public class PersonDataConverter {
                         Log.i(TAG, "Sucessfull - code: " + response.code() + " additional: " + validation.additional);
                         _id = validation.additional.toString().split("=");
                         person._id = _id[1].trim();
+
+
 
                         Presenter.personAction.createPersonSQLite(person, context);
                         Presenter.login.startLogin(person, Util.getBundle.setLogin(person.email, person.password), context);
@@ -105,10 +65,10 @@ public class PersonDataConverter {
         });
     }
 
-    public void deletePerson(String id)
+    public void deletePerson(Token token, Person person)
     {
         ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
-        Call<Validation> request = ServicePersonApi.deletePerson(id);
+        Call<Validation> request = ServicePersonApi.deletePerson(token.token, person._id);
 
         request.enqueue(new Callback<Validation>()
         {
@@ -142,10 +102,10 @@ public class PersonDataConverter {
         });
     }
 
-    public void updatePerson(Person person)
+    public void updatePerson(Token token, Person person)
     {
         ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
-        Call<Validation> request = ServicePersonApi.updatePerson(person);
+        Call<Validation> request = ServicePersonApi.updatePerson(token.token, person);
 
         request.enqueue(new Callback<Validation>()
         {

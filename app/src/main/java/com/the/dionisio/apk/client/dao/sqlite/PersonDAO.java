@@ -97,12 +97,15 @@ public class PersonDAO
 
     public Boolean findPersonByEmail(Person person)
     {
-        Cursor findPerson = db.rawQuery("SELECT * FROM person WHERE email = " + person.email,null);
+        Cursor findPerson = db.rawQuery("SELECT * FROM person WHERE email = ?", new String[]{person.email});
 
-        while(findPerson.moveToNext())
+        if(findPerson != null)
         {
-            db.close();
-            return true;
+            while(findPerson.moveToFirst())
+            {
+                db.close();
+                return true;
+            }
         }
 
         db.close();

@@ -10,7 +10,7 @@ import com.the.dionisio.apk.client.model.dto.Person;
 
 public class PersonResource
 {
-    public void createPersonOrUpdatePerson(Person person, Context context)
+    public void  createPersonOrUpdatePerson(Person person, Context context)
     {
         PersonDAO personDAO = new PersonDAO(context);
 

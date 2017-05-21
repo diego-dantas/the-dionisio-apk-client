@@ -57,10 +57,10 @@
                 android:layout_height="130dp"
                 android:paddingTop="5dp"
                 android:src="@drawable/ic_eletro_not_check"
-                android:layout_above="@+id/imgCheckElectronics"
+                android:layout_marginTop="14dp"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="12dp" />
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/txtElectronics"
@@ -111,10 +111,10 @@
                 android:paddingBottom="20dp"
                 android:paddingTop="5dp"
                 android:src="@drawable/ic_rock_not_check"
-                android:layout_above="@+id/imgCheckRock"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginBottom="11dp" />
+                android:layout_marginTop="13dp" />
 
             <TextView
                 android:id="@+id/txtRock"

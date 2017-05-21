@@ -88,7 +88,7 @@ public class CreateAccount extends AppCompatActivity
                 sex = "OTHERS";
             }
 
-            Util.moviment.goViewClearWithData(this, CreateAccountStepGenre.class, name, email, password, image_url, birth, sex);
+            Util.moviment.goViewWithData(this, CreateAccountStepGenre.class, name, email, password, image_url, birth, sex);
         }
     }
 }

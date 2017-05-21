@@ -21,6 +21,18 @@ public class MovingActivity
         context.startActivity(intent);
     }
 
+    public void goViewWithData(Context context, Class classDestiny, String name, String email, String password, String image_url, String birth, String sex)
+    {
+        Intent intent = new Intent(context, classDestiny);
+        intent.putExtra("NAME", name);
+        intent.putExtra("EMAIL", email);
+        intent.putExtra("IMAGE_URL", image_url);
+        intent.putExtra("PASSWORD", password);
+        intent.putExtra("BIRTH", birth);
+        intent.putExtra("SEX", sex);
+        context.startActivity(intent);
+    }
+
     public void goViewClearWithData(Context context, Class classDestiny, String name, String email, String password, String image_url, String birth, String sex)
     {
         Intent intent = new Intent(context, classDestiny);

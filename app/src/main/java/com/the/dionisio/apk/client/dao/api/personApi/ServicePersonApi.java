@@ -5,11 +5,9 @@ import com.the.dionisio.apk.client.model.dto.Validation;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
-import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Path;
 
 /**
  * Created by Dantas on 3/25/17.
@@ -17,18 +15,12 @@ import retrofit2.http.Path;
 
 public interface ServicePersonApi
 {
-    @GET("/person")
-    Call<CatalogApi> getPeople(@Header("X-Auth-Token") String token);
-
-    @GET("/person/{id}")
-    Call<CatalogApi> getPerson(@Header("X-Auth-Token") String token, @Path("id") String id);
-
     @POST("/person")
     Call<Validation> postPerson(@Body Person p);
 
     @DELETE("/person")
-    Call<Validation> deletePerson(@Body String id);
+    Call<Validation> deletePerson(@Header("X-Auth-Token") String token, @Body String id);
 
     @PUT("/person")
-    Call<Validation> updatePerson(@Body Person p);
+    Call<Validation> updatePerson(@Header("X-Auth-Token") String token, @Body Person p);
 }
