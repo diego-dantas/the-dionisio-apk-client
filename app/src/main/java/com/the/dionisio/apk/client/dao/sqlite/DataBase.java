@@ -18,30 +18,70 @@ public class DataBase extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table person("
-                + "_idPerson text primary key,"
-                + "name text not null,"
-                + "email text not null,"
-                + "password text not null,"
-                + "birth text,"
-                + "cpf integer,"
-                + "sex text,"
-                + "isActive integer,"
-                + "picture text);"
-        );
+    public void onCreate(SQLiteDatabase db)
+    {
+        try
+        {
+            StringBuilder sql = new StringBuilder();
+                sql
+                .append("CREATE TABLE person (")
+                .append("_idPerson TEXT PRIMARY KEY, ")
+                .append("name TEXT NOT NULL, ")
+                .append("email TEXT NOT NULL, ")
+                .append("telefone TEXT, ")
+                .append("birth TEXT, ")
+                .append("cpf TEXT, ")
+                .append("sex TEXT, ")
+                .append("isActive INTEGER, ")
+                .append("picture TEXT);");
 
-        db.execSQL("create table genre("
-                + "_idGenre integer primary key autoincrement,"
-                + "_idPerson text not null,"
-                + "genre text,"
-                + "FOREIGN KEY(_idPerson) REFERENCES person(_idPerson));"
-        );
+            db.execSQL(sql.toString());
+        }
+        catch (Exception e)
+        {
+            e.toString();
+        }
+
+        try
+        {
+            StringBuilder sql = new StringBuilder();
+                sql
+                .append("CREATE TABLE genre (")
+                .append("_idGenre INTEGER PRIMARY KEY AUTOINCREMENT, ")
+                .append("_idPerson TEXT NOT NULL, ")
+                .append("GENRE TEXT NOT NULL, ")
+                .append("FOREIGN KEY (_idPerson) REFERENCES person (_idPerson));");
+
+            db.execSQL(sql.toString());
+        }
+        catch (Exception e)
+        {
+            e.toString();
+        }
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int arg1, int arg2) {
-        db.execSQL("drop table ;");
-        onCreate(db);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
+    {
+        try
+        {
+            StringBuilder sql = new StringBuilder();
+                sql
+                .append("DROP TABLE IF EXISTS person");
+
+            db.execSQL(sql.toString());
+
+            StringBuilder sql2 = new StringBuilder();
+                sql2
+                .append("DROP TABLE IF EXISTS genre");
+
+            db.execSQL(sql2.toString());
+
+            onCreate(db);
+        }
+        catch (Exception e)
+        {
+            e.toString();
+        }
     }
 }

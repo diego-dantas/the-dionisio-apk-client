@@ -15,6 +15,7 @@ public class MovingActivity
         activity.finish();
     }
 
+
     public void goView(Context context, Class classDestiny)
     {
         Intent intent = new Intent(context, classDestiny);

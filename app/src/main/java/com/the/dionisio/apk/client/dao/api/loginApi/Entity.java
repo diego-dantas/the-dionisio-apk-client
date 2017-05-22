@@ -8,16 +8,6 @@ import com.the.dionisio.apk.client.model.dto.Person;
 
 public class Entity
 {
-    private String token;
-    private Person entity;
-
-    public String getToken()
-    {
-        return this.token;
-    }
-
-    public Person getPerson()
-    {
-        return this.entity;
-    }
+    public String token;
+    public Person entity;
 }

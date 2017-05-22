@@ -6,7 +6,6 @@ import com.the.dionisio.apk.client.dao.api.ServiceGenerator;
 import com.the.dionisio.apk.client.model.dto.Login;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
-import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.model.resource.PersonResource;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,15 +37,13 @@ public class LoginDataConverter
                     if(response.isSuccessful())
                     {
                         Token token = new Token();
-                        Person newPerson = entity.getPerson();
+                        Person newPerson = entity.entity;
 
-                        token.token = entity.getToken();
+                        token.token = entity.token;
 
                         Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + newPerson.email + " token: " + token.token);
 
                         personResource.createPersonOrUpdatePerson(newPerson, context);
-
-                        Presenter.login.resultLoginOk(newPerson, context);
                     }
                     else
                     {

@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 import com.the.dionisio.apk.client.model.dto.Person;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,56 +19,108 @@ public class GenreDAO
 
     public GenreDAO(Context context)
     {
-        DataBase dataBase = new DataBase(context);
-        db = dataBase.getWritableDatabase();
         contextView = context;
     }
 
     public void createGenre(Person person)
     {
-        for(String genre : person.genres)
+        db = getDataBase();
+
+        try
         {
-            ContentValues values = new ContentValues();
+            for(String genre : person.genres)
+            {
+                ContentValues values = new ContentValues();
 
-            values.put("_idPerson", person._id);
-            values.put("genre", genre);
+                values.put("_idPerson", person._id);
+                values.put("genre", genre);
 
-            db.insert("genre", null, values);
+                db.insert("genre", null, values);
+            }
+        }
+        catch (Exception error)
+        {
+
         }
 
         db.close();
-        Toast.makeText(contextView, "Successfully registered! ", Toast.LENGTH_SHORT).show();
     }
 
     public void updateGenre(Person person)
     {
-        ContentValues values = new ContentValues();
+        db = getDataBase();
 
-        values.put("genre", String.valueOf(person.genres));
+        try
+        {
+            for(String genre : person.genres)
+            {
+                ContentValues values = new ContentValues();
 
-        db.update("genre", values, "_idPerson = ?", new String[]{"" + person._id});
+                values.put("genre", String.valueOf(person.genres));
+
+                db.update("genre", values, "_idPerson = ?", getParameters(person._id));
+            }
+        }
+        catch (Exception error)
+        {
+
+        }
+
         db.close();
     }
 
     public void deleteGenre(Person person)
     {
-        db.delete("genre", "_idPerson = " + person._id, null);
+        db = getDataBase();
+
+        try
+        {
+            db.delete("genre", "_idPerson = " + person._id, null);
+        }
+        catch (Exception error)
+        {
+
+        }
+
         db.close();
     }
 
     public List<String> searchGenre(Person person)
     {
+        db = getDataBase();
         List<String> genre = new ArrayList<>();
 
-        Cursor findGenre = db.rawQuery("SELECT * FROM genre WHERE _idPerson = " + person._id, null);
-
-        while(findGenre.moveToNext())
+        try
         {
-            genre.add(findGenre.getString(findGenre.getColumnIndex("genre")));
+            Cursor findGenre = db.rawQuery("SELECT * FROM genre WHERE _idPerson = ?", getParameters(person._id));
+
+            while(findGenre.moveToNext())
+            {
+                genre.add(findGenre.getString(findGenre.getColumnIndex("genre")));
+            }
+        }
+        catch (Exception error)
+        {
+
         }
 
         db.close();
-
         return genre;
+    }
+
+    private String[] getParameters(String field)
+    {
+        String[] parameters = {field};
+        return parameters;
+    }
+
+    /***
+     * Abre o banco com o contexto da classe [contextView]
+     * @return
+     */
+    public SQLiteDatabase getDataBase()
+    {
+        DataBase dataBase = new DataBase(contextView);
+        return dataBase.getWritableDatabase();
     }
 }

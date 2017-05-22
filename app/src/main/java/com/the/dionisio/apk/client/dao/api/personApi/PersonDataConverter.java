@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class PersonDataConverter {
 
-    public static final String TAG = "Person";
+    public static final String TAG = "PERSON";
 
     public void postPerson(Person person, Context context)
     {
@@ -30,7 +30,6 @@ public class PersonDataConverter {
             @Override
             public void onResponse(Call<Validation> call, Response<Validation> response)
             {
-                String[] _id;
                 Validation validation = response.body();
 
                 if(validation != null)
@@ -38,13 +37,10 @@ public class PersonDataConverter {
                     if(response.isSuccessful())
                     {
                         Log.i(TAG, "Sucessfull - code: " + response.code() + " additional: " + validation.additional);
-                        _id = validation.additional.toString().split("=");
-                        person._id = _id[1].trim();
 
+                        Person newPerson = (Person) validation.additional;
 
-
-                        Presenter.personAction.createPersonSQLite(person, context);
-                        Presenter.login.startLogin(person, Util.getBundle.setLogin(person.email, person.password), context);
+                        Presenter.login.startLogin(newPerson, Util.getBundle.setLogin(newPerson.email, newPerson.password), context);
                     }
                     else
                     {
