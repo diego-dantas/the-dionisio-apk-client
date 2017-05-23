@@ -1,5 +1,6 @@
 package com.the.dionisio.apk.client.dao.api.personApi;
 
+import com.the.dionisio.apk.client.dao.api.loginApi.Entity;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Validation;
 import retrofit2.Call;
