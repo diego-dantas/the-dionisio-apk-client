@@ -8,5 +8,5 @@ public class Validation
 {
     public String status;
     public String description;
-    public Object additional;
+    public Person additional;
 }
