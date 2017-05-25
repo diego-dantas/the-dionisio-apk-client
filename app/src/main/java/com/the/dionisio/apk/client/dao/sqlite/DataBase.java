@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataBase extends SQLiteOpenHelper {
 
-    private static final String NOME_BD = "dbTheDionisio";
+    private static final String NOME_BD = "TheDionisio";
     private static final int VERSAO_BD = 1;
 
     public DataBase(Context ctx){
@@ -28,12 +28,12 @@ public class DataBase extends SQLiteOpenHelper {
                 .append("_idPerson TEXT PRIMARY KEY, ")
                 .append("name TEXT NOT NULL, ")
                 .append("email TEXT NOT NULL, ")
-                .append("telefone TEXT, ")
+                .append("password TEXT NOT NULL, ")
                 .append("birth TEXT, ")
                 .append("cpf TEXT, ")
                 .append("sex TEXT, ")
-                .append("isActive INTEGER, ")
-                .append("picture TEXT);");
+                .append("picture TEXT, ")
+                .append("isActive INTEGER);");
 
             db.execSQL(sql.toString());
         }
@@ -49,7 +49,7 @@ public class DataBase extends SQLiteOpenHelper {
                 .append("CREATE TABLE genre (")
                 .append("_idGenre INTEGER PRIMARY KEY AUTOINCREMENT, ")
                 .append("_idPerson TEXT NOT NULL, ")
-                .append("GENRE TEXT NOT NULL, ")
+                .append("genre TEXT NOT NULL, ")
                 .append("FOREIGN KEY (_idPerson) REFERENCES person (_idPerson));");
 
             db.execSQL(sql.toString());

@@ -13,9 +13,9 @@ import com.the.dionisio.apk.client.util.Util;
 
 public class LoginPresenter
 {
-    public void startLogin(Person person, Login login, Context context)
+    public void startLogin(Login login, Context context)
     {
-        Api.loginDataConverter.postLogin(person, login, context);
+        Api.loginDataConverter.postLogin(login, context);
     }
 
     public void resultLoginOk(Person person, Context context)

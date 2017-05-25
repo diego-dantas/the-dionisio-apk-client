@@ -38,9 +38,10 @@ public class PersonDataConverter {
                     {
                         Log.i(TAG, "Sucessfull - code: " + response.code() + " additional: " + validation.additional);
 
-                        Person newPerson = (Person) validation.additional;
+                        Person newPerson = validation.additional;
 
-                        Presenter.login.startLogin(newPerson, Util.getBundle.setLogin(newPerson.email, newPerson.password), context);
+                        Util.validationResponse.validationPerson(response.code(), newPerson, context);
+                        Presenter.login.startLogin(Util.getBundle.setLogin(person.email, person.password), context);
                     }
                     else
                     {

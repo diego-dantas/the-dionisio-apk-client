@@ -6,7 +6,8 @@ import com.the.dionisio.apk.client.dao.api.ServiceGenerator;
 import com.the.dionisio.apk.client.model.dto.Login;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
-import com.the.dionisio.apk.client.model.resource.PersonResource;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
+import com.the.dionisio.apk.client.util.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,9 +19,8 @@ import retrofit2.Response;
 public class LoginDataConverter
 {
     public static final String TAG = "LOGIN";
-    private PersonResource personResource = new PersonResource();
 
-    public void postLogin(Person person, Login login, Context context)
+    public void postLogin(Login login, Context context)
     {
         ServiceLoginApi serviceLoginApi = ServiceGenerator.createService(ServiceLoginApi.class);
         Call<Entity> request = serviceLoginApi.postLogin(login);
@@ -37,13 +37,14 @@ public class LoginDataConverter
                     if(response.isSuccessful())
                     {
                         Token token = new Token();
-                        Person newPerson = entity.entity;
-
                         token.token = entity.token;
 
-                        Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + newPerson.email + " token: " + token.token);
+                        Person person = entity.entity;
 
-                        personResource.createPersonOrUpdatePerson(newPerson, context);
+                        Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + person.email + " token: " + token.token);
+
+                        Util.validationResponse.validationPerson(response.code(), person, context);
+                        Presenter.login.resultLoginOk(person, context);
                     }
                     else
                     {

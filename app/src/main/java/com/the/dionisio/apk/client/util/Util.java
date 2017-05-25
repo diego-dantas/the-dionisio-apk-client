@@ -1,6 +1,7 @@
 package com.the.dionisio.apk.client.util;
 
 import com.the.dionisio.apk.client.util.api.AddressAPI;
+import com.the.dionisio.apk.client.util.verification.ValidationResponse;
 import com.the.dionisio.apk.client.util.view.BundlePerson;
 import com.the.dionisio.apk.client.util.view.CardGenre;
 import com.the.dionisio.apk.client.util.view.MovingActivity;
@@ -13,10 +14,26 @@ import com.the.dionisio.apk.client.util.verification.ValidationInput;
 
 public interface Util
 {
+    /**
+     * Methods abstract for use in view.
+     */
     MovingActivity moviment = new MovingActivity();
     CardGenre cardGenre = new CardGenre();
-    AddressAPI addressApi = new AddressAPI();
-    ValidationInput validationInput = new ValidationInput();
-    TransformDate transformDate = new TransformDate();
     BundlePerson getBundle = new BundlePerson();
+
+    /**
+     * Methods of use in retrofit for api.
+     */
+    AddressAPI addressApi = new AddressAPI();
+
+    /**
+     * Methods of validation independent of use.
+     */
+    ValidationInput validationInput = new ValidationInput();
+    ValidationResponse validationResponse = new ValidationResponse();
+
+    /**
+     * Methods of general purpose.
+     */
+    TransformDate transformDate = new TransformDate();
 }

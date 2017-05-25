@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
+import android.util.Log;
+
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.util.Util;
 
@@ -16,6 +18,7 @@ public class PersonDAO
 {
     private SQLiteDatabase db;
     private Context contextView;
+    private final String TAG = "PERSON";
 
     public PersonDAO(Context context)
     {
@@ -29,13 +32,15 @@ public class PersonDAO
         try
         {
             db.insert("person", null,values);
+            Log.i(TAG, "Created person was successful!");
 
             GenreDAO genreDAO = new GenreDAO(contextView);
             genreDAO.createGenre(person);
+            Log.i(TAG, "Created genres of person was successful!");
         }
         catch (Exception e)
         {
-
+            Log.e(TAG, "Error in create person in SQLite!");
         }
 
         db.close();
@@ -47,11 +52,12 @@ public class PersonDAO
         db = getDataBase();
         try
         {
-            db.update("person", values, "_idPerson = ?", new String[]{"" + person._id});
+            db.update("person", values, "_idPerson = ?", getParameters(person._id));
+            Log.i(TAG, "Update person was successful!");
         }
         catch (Exception e)
         {
-
+            Log.e(TAG, "Error in update person in SQLite!");
         }
         db.close();
     }
@@ -63,10 +69,11 @@ public class PersonDAO
         try
         {
             db.delete("person", "_idPerson = " + person._id, null);
+            Log.i(TAG, "Deleted person was successful!");
         }
         catch (Exception e)
         {
-
+            Log.e(TAG, "Error in delete person in SQLite!");
         }
 
         db.close();
@@ -92,10 +99,12 @@ public class PersonDAO
                  person.genres = genreDAO.searchGenre(person);
                  person.isActive = findPerson.getInt(findPerson.getColumnIndex("isActive")) == 1 ? true : false;
              }
+
+             Log.i(TAG, "Find person was successful!");
          }
          catch (Exception e)
          {
-
+             Log.e(TAG, "Error in find person by _id in SQLite!");
          }
         db.close();
 
@@ -114,18 +123,21 @@ public class PersonDAO
             if (findPerson != null)
             {
                 findPerson.moveToFirst();
-                if (findPerson.getInt (0) == 0)
+                if (findPerson.getCount() == 0)
                 {
+                    Log.i(TAG, "Create or Update - Person not exists in SQLite!");
                     result =  true;
                 }
                 else
                 {
+                    Log.i(TAG, "Create or Update - Person exists in SQLite!");
                     result = false;
                 }
             }
         }
         catch (Exception e)
         {
+            Log.e(TAG, "Error in find person by email in SQLite for verification existing in database!");
             result = false;
         }
 
@@ -144,6 +156,8 @@ public class PersonDAO
     private ContentValues getContentValues(Person person)
     {
         ContentValues values = new ContentValues();
+
+        values.put("_idPerson", person._id);
         values.put("name", person.name);
         values.put("email", person.email);
         values.put("password", person.password);
@@ -152,6 +166,7 @@ public class PersonDAO
         values.put("sex", person.sex);
         values.put("picture", person.picture);
         values.put("isActive", ((person.isActive) ? 1 : 0));
+
         return values;
     }
 

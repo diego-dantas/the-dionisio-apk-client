@@ -1,9 +1,9 @@
 package com.the.dionisio.apk.client.model.resource;
 
 import android.content.Context;
+import android.util.Log;
 import com.the.dionisio.apk.client.dao.sqlite.PersonDAO;
 import com.the.dionisio.apk.client.model.dto.Person;
-import com.the.dionisio.apk.client.model.presenter.Presenter;
 
 /**
  * Created by igorm on 20/05/2017.
@@ -15,15 +15,30 @@ public class PersonResource
     {
         PersonDAO personDAO = new PersonDAO(context);
 
-        if(!personDAO.findPersonByEmail(person))
+        if(personDAO.findPersonByEmail(person))
         {
             personDAO.createPerson(person);
-            Presenter.login.resultLoginOk(person, context);
         }
         else
         {
             personDAO.updatePerson(person);
-            Presenter.login.resultLoginOk(person, context);
         }
+    }
+
+    public Boolean treatResponse(Person person)
+    {
+        try
+        {
+            if(person._id != null && person.email != null && person.name != null && person.genres != null)
+            {
+                return true;
+            }
+        }
+        catch(Exception error)
+        {
+            Log.e("PERSON", "Person handling log is not valid!");
+        }
+
+        return false;
     }
 }
