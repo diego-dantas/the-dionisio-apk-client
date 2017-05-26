@@ -12,12 +12,12 @@ import com.the.dionisio.apk.client.model.dto.Token;
 
 public class PersonPresenter
 {
-    public void createPersonApi(Person person, Context context)
+    public void createPersonApi(Person person, Context context, String typeLogin)
     {
         //Calling the service of connection of API
         if(person != null && context != null)
         {
-            Api.personDataConverter.postPerson(person, context);
+            Api.personDataConverter.postPerson(person, context, typeLogin);
         }
     }
 

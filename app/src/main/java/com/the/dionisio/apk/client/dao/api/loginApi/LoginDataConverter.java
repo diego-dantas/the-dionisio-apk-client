@@ -20,7 +20,7 @@ public class LoginDataConverter
 {
     public static final String TAG = "LOGIN";
 
-    public void postLogin(Login login, Context context)
+    public void postLogin(Person person, Login login, Context context, String typeLogin)
     {
         ServiceLoginApi serviceLoginApi = ServiceGenerator.createService(ServiceLoginApi.class);
         Call<Entity> request = serviceLoginApi.postLogin(login);
@@ -39,20 +39,22 @@ public class LoginDataConverter
                         Token token = new Token();
                         token.token = entity.token;
 
-                        Person person = entity.entity;
+                        Person newPerson = entity.entity;
 
                         Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + person.email + " token: " + token.token);
 
-                        Util.validationResponse.validationPerson(response.code(), person, context);
-                        Presenter.login.resultLoginOk(person, context);
+                        Util.validationResponse.validationPerson(response.code(), newPerson, context);
+                        Presenter.login.resultLoginOk(newPerson, context);
                     }
                     else
                     {
+                        Util.validationResponse.validationLogin(response.code(), person, context, typeLogin);
                         Log.e(TAG, "Failed - code: " + response.code());
                     }
                 }
                 else
                 {
+                    Util.validationResponse.validationLogin(response.code(), person, context, typeLogin);
                     Log.e(TAG, "Failed, the data does not match, code: " + response.code());
                 }
             }

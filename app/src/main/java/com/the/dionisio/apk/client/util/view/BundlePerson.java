@@ -21,19 +21,20 @@ public class BundlePerson
         person.email = bundle.getString("EMAIL");
         person.password = bundle.getString("PASSWORD");
         person.birth = Util.transformDate.getDateIntoList(bundle);
+        person.picture = bundle.getString("PICTURE");
         person.sex = bundle.getString("SEX");
         person.genres = genres;
 
         return person;
     }
 
-    public Person setPerson(String email, String password, String name, String img_url)
+    public Person setPerson(String email, String password, String name, String picture)
     {
         Person person = new Person();
         person.email = email;
         person.password = password;
         person.name = name;
-        person.picture = img_url;
+        person.picture = picture;
 
         return person;
     }

@@ -51,7 +51,7 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
         txtPassword.setText(bundle.getString("PASSWORD"));
         txtBirth.setText(bundle.getString("BIRTH"));
         txtSex.setText(bundle.getString("SEX"));
-        Glide.with(this).load(bundle.getString("IMG_URL")).into(imgPhoto);
+        Glide.with(this).load(bundle.getString("PICTURE")).into(imgPhoto);
 
         GoogleSignInOptions signInOptions = new
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -66,6 +66,9 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
 
     public void logOut(View view)
     {
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+
         Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
             @Override
              public void onResult(@NonNull Status status) {
@@ -77,8 +80,6 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
              }
         });
 
-        FirebaseAuth.getInstance().signOut();
-        LoginManager.getInstance().logOut();
         logOutAccount();
     }
 

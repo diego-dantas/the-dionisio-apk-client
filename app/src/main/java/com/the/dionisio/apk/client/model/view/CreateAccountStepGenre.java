@@ -102,7 +102,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         {
             loadProgressBar();
             Bundle bundle = getIntent().getExtras();
-            Presenter.personAction.createPersonApi(Util.getBundle.setBundlePerson(bundle, genres), this);
+            Presenter.personAction.createPersonApi(Util.getBundle.setBundlePerson(bundle, genres), this, null);
         }
     }
 

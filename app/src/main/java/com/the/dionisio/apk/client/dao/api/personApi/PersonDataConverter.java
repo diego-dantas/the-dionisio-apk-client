@@ -20,7 +20,7 @@ public class PersonDataConverter {
 
     public static final String TAG = "PERSON";
 
-    public void postPerson(Person person, Context context)
+    public void postPerson(Person person, Context context, String typeLogin)
     {
         ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
         Call<Validation> request = ServicePersonApi.postPerson(person);
@@ -41,7 +41,7 @@ public class PersonDataConverter {
                         Person newPerson = validation.additional;
 
                         Util.validationResponse.validationPerson(response.code(), newPerson, context);
-                        Presenter.login.startLogin(Util.getBundle.setLogin(person.email, person.password), context);
+                        Presenter.login.startLogin(newPerson ,Util.getBundle.setLogin(person.email, person.password), context, typeLogin);
                     }
                     else
                     {

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.view.maskForField.MaskForField;
 import com.the.dionisio.apk.client.util.Util;
 
@@ -69,26 +70,27 @@ public class CreateAccount extends AppCompatActivity
         }
         else
         {
-            String name = inputNameFullCreateAccount.getText().toString();
-            String email = inputEmailCreateAccount.getText().toString();
-            String password = inputPasswordCreateAccount.getText().toString();
-            String image_url = "";
-            String birth = inputBirthCreateAccount.getText().toString();
-            String sex;
+            Person person = new Person();
+            person.name = inputNameFullCreateAccount.getText().toString();
+            person.email = inputEmailCreateAccount.getText().toString();
+            person.password = inputPasswordCreateAccount.getText().toString();
+            person.picture = "";
+            person.birth = Util.transformDate.getDateIntoList(inputBirthCreateAccount.getText().toString());
+
             if(radioManCreateAccount.isChecked())
             {
-                sex = "MAN";
+                person.sex = "MAN";
             }
             else if(radioWomanCreateAccount.isChecked())
             {
-                sex = "WOMAN";
+                person.sex = "WOMAN";
             }
             else
             {
-                sex = "OTHERS";
+                person.sex = "OTHERS";
             }
 
-            Util.moviment.goViewWithData(this, CreateAccountStepGenre.class, name, email, password, image_url, birth, sex);
+            Util.moviment.goViewWithData(this, CreateAccountStepGenre.class, person);
         }
     }
 }

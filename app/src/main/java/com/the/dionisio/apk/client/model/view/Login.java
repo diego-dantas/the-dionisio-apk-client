@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,7 +60,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
     private EditText inputEmailLogin, inputPasswordLogin;
     private TextView txtForgotPassword;
     private Button btnLogin;
-    private String username, password;
+    private String typeLogin = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +120,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
                 caso ele já possua um cadastro devo redireciona-lo para a tela principal*/
                 handleFacebookAcessToken(loginResult.getAccessToken());
 
+                goViewMain();
             }
 
             @Override
@@ -143,7 +145,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null)
                 {
-                    goViewMain();
+                    Log.i("LOGIN", "Facebook login is successful!");
                 }
             }
         };
@@ -151,8 +153,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
 
     private void handleFacebookAcessToken(AccessToken accessToken)
     {
-        loadProgressBar();
-
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -168,10 +168,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
     private void goViewMain()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String name = user.getDisplayName();
-        String email = user.getEmail();
-        String password = user.getUid();
-        String image_url = user.getPhotoUrl().toString();
+
+        if(user != null)
+        {
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            String password = user.getUid();
+            String picture = user.getPhotoUrl().toString();
+            typeLogin = "SOCIAL_NETWORK";
+
+            Presenter.login.startLogin(
+                    Util.getBundle.setPerson(email, password, name, picture),
+                    Util.getBundle.setLogin(email, password),
+                    this,
+                    typeLogin);
+        }
     }
 
     protected void onStart()
@@ -213,18 +224,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
     //Google's method where the user data is retrieved for creation of the same
     public void handleResultGoogle(GoogleSignInResult result)
     {
-        loadProgressBar();
-
         if(result.isSuccess())
         {
             GoogleSignInAccount account = result.getSignInAccount();
             String name = account.getDisplayName();
             String email = account.getEmail();
             String password = account.getId();
-            String image_url = account.getPhotoUrl().toString();
-        }
-        else
-        {
+            String picture = account.getPhotoUrl().toString();
+            typeLogin = "SOCIAL_NETWORK";
+
+            Presenter.login.startLogin(
+                    Util.getBundle.setPerson(email, password, name, picture),
+                    Util.getBundle.setLogin(email, password),
+                    this,
+                    typeLogin);
         }
     }
 
@@ -255,9 +268,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         }
         else
         {
-            username = inputEmailLogin.getText().toString();
-            password = inputPasswordLogin.getText().toString();
-            Presenter.login.startLogin(Util.getBundle.setLogin(username, password), this);
+            typeLogin = "NORMAL_LOGIN";
+
+            Presenter.login.startLogin(
+                    Util.getBundle.setPerson(inputEmailLogin.getText().toString(), inputPasswordLogin.getText().toString(), null, null),
+                    Util.getBundle.setLogin(inputEmailLogin.getText().toString(), inputPasswordLogin.getText().toString()),
+                    this,
+                    typeLogin);
         }
     }
 
@@ -282,5 +299,18 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         btnLogin.setVisibility(View.INVISIBLE);
         btnLoginFacebook.setVisibility(View.INVISIBLE);
         btnLoginGoogle.setVisibility(View.INVISIBLE);
+    }
+
+    public void cancelProgressBar()
+    {
+        progressBarLoginAccount.setVisibility(View.INVISIBLE);
+        inputLayoutEmailLogin.setVisibility(View.VISIBLE);
+        inputLayoutPasswordLogin.setVisibility(View.VISIBLE);
+        inputEmailLogin.setVisibility(View.VISIBLE);
+        inputPasswordLogin.setVisibility(View.VISIBLE);
+        txtForgotPassword.setVisibility(View.VISIBLE);
+        btnLogin.setVisibility(View.VISIBLE);
+        btnLoginFacebook.setVisibility(View.VISIBLE);
+        btnLoginGoogle.setVisibility(View.VISIBLE);
     }
 }

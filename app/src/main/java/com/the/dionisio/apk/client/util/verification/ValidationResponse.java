@@ -3,6 +3,8 @@ package com.the.dionisio.apk.client.util.verification;
 import android.content.Context;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.resource.PersonResource;
+import com.the.dionisio.apk.client.model.view.CreateAccountStepGenre;
+import com.the.dionisio.apk.client.util.Util;
 
 /**
  * Created by igorm on 20/05/2017.
@@ -39,5 +41,35 @@ public class ValidationResponse
         }
     }
 
+    public void validationLogin(Integer statusCode, Person person, Context context, String typeLogin)
+    {
+        switch (statusCode)
+        {
+            case 200:
 
+                break;
+            case 401:
+                if(typeLogin.equals("SOCIAL_NETWORK"))
+                {
+                    Util.moviment.goViewWithData(context, CreateAccountStepGenre.class, person);
+                }
+                else
+                {
+
+                }
+                break;
+            case 404:
+
+                break;
+            case 406:
+
+                break;
+            case 509:
+
+                break;
+            default:
+
+                break;
+        }
+    }
 }

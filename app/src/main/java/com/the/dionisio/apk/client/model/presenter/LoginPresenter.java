@@ -13,20 +13,13 @@ import com.the.dionisio.apk.client.util.Util;
 
 public class LoginPresenter
 {
-    public void startLogin(Login login, Context context)
+    public void startLogin(Person person, Login login, Context context, String typeLogin)
     {
-        Api.loginDataConverter.postLogin(login, context);
+        Api.loginDataConverter.postLogin(person, login, context, typeLogin);
     }
 
     public void resultLoginOk(Person person, Context context)
     {
-        String name = person.name;
-        String email = person.email;
-        String password = person.password;
-        String image_url = person.picture;
-        String birth = Util.transformDate.getDateIntoString(person.birth);
-        String sex = person.sex;
-
-        Util.moviment.goViewClearWithData(context, ViewMain.class, name, email, password, image_url, birth, sex);
+        Util.moviment.goViewClearWithData(context, ViewMain.class, person);
     }
 }
