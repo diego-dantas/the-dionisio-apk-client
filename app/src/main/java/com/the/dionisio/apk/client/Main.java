@@ -1,6 +1,9 @@
 package com.the.dionisio.apk.client;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +22,7 @@ public class Main extends AppCompatActivity
         setContentView(R.layout.main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -62,18 +66,23 @@ public class Main extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.ticket) {
-
+        if (id == R.id.nav_ticket)
+        {
+            // Handle the ticket
+        }
+        else if (id == R.id.nav_manage)
+        {
+            // Handle the tools
         }
 
-        else if (id == R.id.config) {
 
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
