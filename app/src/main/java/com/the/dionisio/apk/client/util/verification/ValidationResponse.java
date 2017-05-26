@@ -1,6 +1,9 @@
 package com.the.dionisio.apk.client.util.verification;
 
 import android.content.Context;
+import android.widget.Toast;
+
+import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.resource.PersonResource;
 import com.the.dionisio.apk.client.model.view.CreateAccountStepGenre;
@@ -55,7 +58,7 @@ public class ValidationResponse
                 }
                 else
                 {
-
+                    Toast.makeText(context, R.string.validation_login, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case 404:

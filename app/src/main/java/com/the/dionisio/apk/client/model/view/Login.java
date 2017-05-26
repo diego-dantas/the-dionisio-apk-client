@@ -177,11 +177,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
             String picture = user.getPhotoUrl().toString();
             typeLogin = "SOCIAL_NETWORK";
 
+            loadProgressBar();
+
             Presenter.login.startLogin(
                     Util.getBundle.setPerson(email, password, name, picture),
                     Util.getBundle.setLogin(email, password),
                     this,
                     typeLogin);
+
+            cancelProgressBar();
         }
     }
 
@@ -233,11 +237,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
             String picture = account.getPhotoUrl().toString();
             typeLogin = "SOCIAL_NETWORK";
 
+            loadProgressBar();
+
             Presenter.login.startLogin(
                     Util.getBundle.setPerson(email, password, name, picture),
                     Util.getBundle.setLogin(email, password),
                     this,
                     typeLogin);
+
+            cancelProgressBar();
         }
     }
 
@@ -268,6 +276,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         }
         else
         {
+            loadProgressBar();
+
             typeLogin = "NORMAL_LOGIN";
 
             Presenter.login.startLogin(
@@ -275,6 +285,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
                     Util.getBundle.setLogin(inputEmailLogin.getText().toString(), inputPasswordLogin.getText().toString()),
                     this,
                     typeLogin);
+
+            cancelProgressBar();
         }
     }
 
