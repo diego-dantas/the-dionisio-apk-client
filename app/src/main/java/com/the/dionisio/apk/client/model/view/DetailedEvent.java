@@ -9,14 +9,15 @@ import com.the.dionisio.apk.client.R;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import com.the.dionisio.apk.client.model.dto.Event;
 
-public class Event extends AppCompatActivity
+public class DetailedEvent extends AppCompatActivity
 {
     private static final String TAG = "Maps";
-    com.the.dionisio.apk.client.model.dto.Event Event;
-    com.the.dionisio.apk.client.model.dto.Event event1;
-    com.the.dionisio.apk.client.model.dto.Event event2;
-    List<com.the.dionisio.apk.client.model.dto.Event> events = new ArrayList<com.the.dionisio.apk.client.model.dto.Event>();
+    Event Event;
+    Event event1;
+    Event event2;
+    List<Event> events = new ArrayList<>();
 
     private TextView txtTitle;
 
@@ -27,9 +28,9 @@ public class Event extends AppCompatActivity
         setContentView(R.layout.bar_event);
 
 
-        Event = new com.the.dionisio.apk.client.model.dto.Event();
-        event1 = new com.the.dionisio.apk.client.model.dto.Event();
-        event2 = new com.the.dionisio.apk.client.model.dto.Event();
+        Event = new Event();
+        event1 = new Event();
+        event2 = new Event();
 
         Event.latitude = "-21.1510028";
         Event.longitude = "-50.8999327";

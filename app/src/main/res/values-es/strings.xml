@@ -1,6 +1,5 @@
 <resources>
     <!-- Strings related to legend (spanish) -->
-    <string name="title_activity_maps_local">Maps Local</string>
     <string name="btn_createAccount">Crear una cuenta</string>
     <string name="btn_login">Entrar</string>
     <string name="hnt_password">Contraseña</string>
@@ -22,6 +21,7 @@
     <string name="genreFinish">Final</string>
     <string name="buyTicket">Comprar Entradas</string>
     <string name="localeEvent">Ubicación del evento</string>
+    <string name="action_map">Mapa</string>
 
     <!-- Strings related of error of field -->
     <string name="field_email">Por favor, inserte un correo electrónico válido</string>
@@ -30,7 +30,6 @@
     <string name="field_password">Por favor, introduzca su contraseña</string>
     <string name="field_birth">Por favor, introduzca una fecha de nacimiento válida</string>
     <string name="field_genre">Por favor, elija al menos un gusto musical</string>
-    <string name="config">Configurações</string>
     <string name="validation_login">Ingrese un correo electrónico y una contraseña válidos.</string>
     <string name="validation_connection">Comprueba tu conexión a Internet.</string>
 

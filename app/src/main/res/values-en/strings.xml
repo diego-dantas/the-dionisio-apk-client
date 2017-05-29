@@ -1,6 +1,5 @@
 <resources>
     <!-- Strings related to legend (english) -->
-    <string name="title_activity_maps_local">MapsLocal</string>
     <string name="btn_createAccount">Create account</string>
     <string name="btn_login">Login</string>
     <string name="hnt_password">Password</string>
@@ -22,6 +21,7 @@
     <string name="genreFinish">Finish</string>
     <string name="buyTicket">Buy Ticket</string>
     <string name="localeEvent">Event Place</string>
+    <string name="action_map">Map</string>
 
     <!-- Strings related of error of field -->
     <string name="field_email">Please insert a email valid</string>

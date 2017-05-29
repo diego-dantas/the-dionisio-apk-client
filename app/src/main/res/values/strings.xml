@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">The Dionisio</string>
-    <string name="title_activity_maps_local">MapsLocal</string>
 
     <!-- Content to use for facebook integration -->
     <string name="facebook_app_id">1925229844415906</string>
@@ -38,6 +37,7 @@
     <string name="genreFinish">Finalizar</string>
     <string name="buyTicket">Comprar Ingresso</string>
     <string name="localeEvent">Local do Evento</string>
+    <string name="action_map">Mapa</string>
 
     <!-- Strings related of error of field -->
     <string name="field_email">Favor inserir um e-mail válido</string>

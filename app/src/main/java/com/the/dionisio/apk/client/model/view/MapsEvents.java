@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.view.fragments.MapsLocation;
 import com.the.dionisio.apk.client.util.Util;
@@ -13,6 +12,7 @@ import com.the.dionisio.apk.client.util.Util;
 public class MapsEvents extends AppCompatActivity
 {
     private FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

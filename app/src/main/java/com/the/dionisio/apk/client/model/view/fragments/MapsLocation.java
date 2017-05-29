@@ -14,6 +14,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.the.dionisio.apk.client.model.dto.Event;
+import com.the.dionisio.apk.client.model.view.DetailedEvent;
 
 import java.util.List;
 
@@ -82,11 +83,11 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
         al.show();
     }
 
-    //Event screen call
+    //DetailedEvent screen call
     @Override
     public boolean onMarkerClick(Marker marker)
     {
-        Intent i = new Intent(getContext(), com.the.dionisio.apk.client.model.view.Event.class);
+        Intent i = new Intent(getContext(), DetailedEvent.class);
         i.putExtra("LOCAL", marker.getTitle().toString());
         i.putExtra("LATLOG", marker.getPosition().toString());
         startActivity(i);
@@ -118,7 +119,7 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
     @Override
     public void onInfoWindowClick(Marker marker)
     {
-        Intent i = new Intent(getContext(), com.the.dionisio.apk.client.model.view.Event.class);
+        Intent i = new Intent(getContext(), DetailedEvent.class);
         i.putExtra("LOCAL", marker.getTitle().toString());
         i.putExtra("LATLOG", marker.getPosition().toString());
         startActivity(i);
