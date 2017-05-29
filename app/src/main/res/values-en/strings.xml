@@ -39,6 +39,6 @@
     <string name="action_settings">Settings</string>
     <string name="ticket">Ticket</string>
     <string name="filter_date">Filter by date</string>
-    <string name="filter_locale">Filter by  location</string>
+    <string name="filter_locale">Filter by location</string>
     <string name="filter_genre">Filter by genre</string>
 </resources>
