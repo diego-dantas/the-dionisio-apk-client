@@ -1,5 +1,6 @@
 <resources>
     <!-- Strings related to legend (spanish) -->
+    <string name="title_activity_maps_local">Maps Local</string>
     <string name="btn_createAccount">Crear una cuenta</string>
     <string name="btn_login">Entrar</string>
     <string name="hnt_password">Contraseña</string>
@@ -37,6 +38,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Configuración</string>
-    <string name="title_activity_maps_local">MapsLocal</string>
     <string name="ticket">Ingresso</string>
+    <string name="filter_date">Filtrar por fecha</string>
+    <string name="filter_locale">Filtrar por ubicación</string>
+    <string name="filter_genre">Filtrar por género</string>
 </resources>
