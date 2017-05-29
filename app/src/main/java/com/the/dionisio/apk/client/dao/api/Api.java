@@ -9,6 +9,10 @@ import com.the.dionisio.apk.client.dao.api.personApi.PersonDataConverter;
 
 public interface Api
 {
+    String METHOD_GET = "get";
+    String METHOD_PUT = "put";
+    String METHOD_DELETE = "delete";
+
     PersonDataConverter personDataConverter = new PersonDataConverter();
     LoginDataConverter loginDataConverter = new LoginDataConverter();
 }

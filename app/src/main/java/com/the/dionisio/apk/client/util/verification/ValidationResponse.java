@@ -5,7 +5,9 @@ import android.widget.Toast;
 
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.dto.Person;
-import com.the.dionisio.apk.client.model.resource.PersonResource;
+import com.the.dionisio.apk.client.model.dto.Token;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
+import com.the.dionisio.apk.client.model.resource.Resource;
 import com.the.dionisio.apk.client.model.view.CreateAccountStepGenre;
 import com.the.dionisio.apk.client.util.Util;
 
@@ -20,10 +22,13 @@ public class ValidationResponse
         switch (statusCode)
         {
             case 200:
-                PersonResource personResource = new PersonResource();
-                if(personResource.treatResponse(person))
+                if(Resource.personResource.treatCreate(person))
                 {
-                    personResource.createPersonOrUpdatePerson(person, context);
+                    Resource.personResource.createPersonOrUpdatePerson(person, context);
+                }
+                else if(Resource.personResource.treatUpdate(person))
+                {
+                    Resource.personResource.createPersonOrUpdatePerson(person, context);
                 }
                 break;
             case 401:
@@ -39,22 +44,22 @@ public class ValidationResponse
 
                 break;
             default:
-
+                Toast.makeText(context, R.string.validation_connection, Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
-    public void validationLogin(Integer statusCode, Person person, Context context, String typeLogin)
+    public void validationLogin(Integer statusCode, Person person, Context context, Token token, String typeLogin)
     {
         switch (statusCode)
         {
             case 200:
-
+                Presenter.loginAction.resultLoginOk(context, person, token);
                 break;
             case 401:
                 if(typeLogin.equals("SOCIAL_NETWORK"))
                 {
-                    Util.moviment.goViewWithData(context, CreateAccountStepGenre.class, person);
+                    Util.moviment.goViewWithData(context, CreateAccountStepGenre.class, person, token);
                 }
                 else
                 {
@@ -71,7 +76,7 @@ public class ValidationResponse
 
                 break;
             default:
-
+                Toast.makeText(context, R.string.validation_connection, Toast.LENGTH_SHORT).show();
                 break;
         }
     }

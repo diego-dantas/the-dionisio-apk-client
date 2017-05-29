@@ -115,8 +115,38 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
         app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintTop_toBottomOf="@+id/txtSex" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="145dp"
+        android:onClick="testDeletePerson"
+        android:text="Delete"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/txtEmail"
+        app:layout_constraintRight_toRightOf="@+id/txtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txtSex"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="97dp"
+        android:onClick="testUpdatePerson"
+        android:text="Update"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/txtEmail"
+        app:layout_constraintRight_toRightOf="@+id/txtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txtSex"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
     <ImageView
         android:id="@+id/imgPhoto"

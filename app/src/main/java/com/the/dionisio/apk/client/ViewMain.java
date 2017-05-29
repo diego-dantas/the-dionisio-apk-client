@@ -19,7 +19,12 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.dao.api.Api;
+import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.dto.Token;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.model.view.PreLogin;
+import com.the.dionisio.apk.client.util.Util;
 
 /**
  * Created by igorm on 23/04/2017.
@@ -88,6 +93,46 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
         Intent intent = new Intent(this, PreLogin.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    public void testUpdatePerson(View view)
+    {
+        Person person = new Person();
+        Token token = new Token();
+
+        Bundle bundle = getIntent().getExtras();
+
+        token.token = bundle.getString("TOKEN");
+
+        person._id = bundle.getString("ID");
+        person.name = "John John";
+        person.email = null;
+        person.password = null;
+        person.birth = Util.transformDate.getDateIntoList(bundle.getString("BIRTH"));
+        person.sex = bundle.getString("SEX");
+        person.picture = bundle.getString("PICTURE");
+
+        Presenter.loginAction.refreshTokenApi(token, person, null, this, Api.METHOD_PUT);
+    }
+
+    public void testDeletePerson(View view)
+    {
+        Person person = new Person();
+        Token token = new Token();
+
+        Bundle bundle = getIntent().getExtras();
+
+        token.token = bundle.getString("TOKEN");
+
+        person._id = bundle.getString("ID");
+        person.name = "";
+        person.email = bundle.getString("EMAIL");
+        person.password = "123456";
+        person.birth = Util.transformDate.getDateIntoList(bundle.getString("BIRTH"));
+        person.sex = bundle.getString("SEX");
+        person.picture = bundle.getString("PICTURE");
+
+        Presenter.loginAction.refreshTokenApi(token, person, null, this, Api.METHOD_PUT);
     }
 
     @Override

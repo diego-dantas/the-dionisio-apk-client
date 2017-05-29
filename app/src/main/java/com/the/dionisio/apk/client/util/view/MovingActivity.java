@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.util.Util;
 
 /**
@@ -25,9 +26,11 @@ public class MovingActivity
         context.startActivity(intent);
     }
 
-    public void goViewWithData(Context context, Class classDestiny, Person person)
+    public void goViewWithData(Context context, Class classDestiny, Person person, Token token)
     {
         Intent intent = new Intent(context, classDestiny);
+        intent.putExtra("TOKEN", token.token);
+        intent.putExtra("ID", person._id);
         intent.putExtra("NAME", person.name);
         intent.putExtra("EMAIL", person.email);
         intent.putExtra("PICTURE", person.picture);
@@ -37,9 +40,11 @@ public class MovingActivity
         context.startActivity(intent);
     }
 
-    public void goViewClearWithData(Context context, Class classDestiny, Person person)
+    public void goViewClearWithData(Context context, Class classDestiny, Person person, Token token)
     {
         Intent intent = new Intent(context, classDestiny);
+        intent.putExtra("TOKEN", token.token);
+        intent.putExtra("ID", person._id);
         intent.putExtra("NAME", person.name);
         intent.putExtra("EMAIL", person.email);
         intent.putExtra("PICTURE", person.picture);

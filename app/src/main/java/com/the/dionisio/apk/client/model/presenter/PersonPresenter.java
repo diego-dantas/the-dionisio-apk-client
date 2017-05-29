@@ -26,7 +26,7 @@ public class PersonPresenter
         //Calling the service of connection of API
         if(person != null && context != null)
         {
-            Api.personDataConverter.updatePerson(token, person);
+            Api.personDataConverter.updatePerson(token, person, context);
         }
     }
 
@@ -35,8 +35,14 @@ public class PersonPresenter
         //Calling the service of connection of API
         if(person != null && context != null)
         {
-            Api.personDataConverter.deletePerson(token, person);
+            Api.personDataConverter.deletePerson(token, person, context);
         }
+    }
+
+    public Boolean findByEmailSQLite(Person person, Context context)
+    {
+        PersonDAO personDAO = new PersonDAO(context);
+        return personDAO.findPersonByEmail(person);
     }
 
     public void createPersonSQLite(Person person, Context context)

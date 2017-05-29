@@ -1,5 +1,6 @@
 package com.the.dionisio.apk.client.model.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -90,7 +91,14 @@ public class CreateAccount extends AppCompatActivity
                 person.sex = "OTHERS";
             }
 
-            Util.moviment.goViewWithData(this, CreateAccountStepGenre.class, person);
+            Intent intent = new Intent(this, CreateAccountStepGenre.class);
+            intent.putExtra("NAME", person.name);
+            intent.putExtra("EMAIL", person.email);
+            intent.putExtra("PICTURE", person.picture);
+            intent.putExtra("PASSWORD", person.password);
+            intent.putExtra("BIRTH", Util.transformDate.getDateIntoString(person.birth));
+            intent.putExtra("SEX", person.sex);
+            startActivity(intent);
         }
     }
 }

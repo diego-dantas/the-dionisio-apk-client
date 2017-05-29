@@ -1,8 +1,11 @@
 package com.the.dionisio.apk.client.dao.api.loginApi;
 
 import com.the.dionisio.apk.client.model.dto.Login;
+import com.the.dionisio.apk.client.model.dto.Token;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 /**
@@ -13,4 +16,7 @@ public interface ServiceLoginApi
 {
     @POST("/login")
     Call<Entity> postLogin(@Body Login login);
+
+    @GET("/login/refresh")
+    Call<Token> getToken(@Header("X-Auth-Token") String token);
 }

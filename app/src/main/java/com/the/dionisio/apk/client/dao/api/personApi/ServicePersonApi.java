@@ -22,5 +22,5 @@ public interface ServicePersonApi
     Call<Validation> deletePerson(@Header("X-Auth-Token") String token, @Body String id);
 
     @PUT("/person")
-    Call<Validation> updatePerson(@Header("X-Auth-Token") String token, @Body Person p);
+    Call<Validation> putPerson(@Header("X-Auth-Token") String token, @Body Person p);
 }

@@ -31,6 +31,7 @@
     <string name="field_genre">Por favor, elija al menos un gusto musical</string>
     <string name="config">Configurações</string>
     <string name="validation_login">Ingrese un correo electrónico y una contraseña válidos.</string>
+    <string name="validation_connection">Comprueba tu conexión a Internet.</string>
 
     <!-- Strings for navigation drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>

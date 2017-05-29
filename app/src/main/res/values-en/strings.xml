@@ -30,6 +30,7 @@
     <string name="field_birth">Please insert a date birth valid</string>
     <string name="field_genre">Please choose at least one musical taste</string>
     <string name="validation_login">Please enter an invalid email and password.</string>
+    <string name="validation_connection">Check your internet connection.</string>
 
     <!-- Strings for navigation drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>

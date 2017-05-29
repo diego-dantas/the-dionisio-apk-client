@@ -13,7 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by Dantas on 3/25/17.
+ * Created by igorm on 3/25/17.
  */
 
 public class PersonDataConverter {
@@ -36,21 +36,23 @@ public class PersonDataConverter {
                 {
                     if(response.isSuccessful())
                     {
-                        Log.i(TAG, "Sucessfull - code: " + response.code() + " additional: " + validation.additional);
+                        Log.i(TAG, "Sucessfull - code: " + response.code() + " description: " + validation.description);
 
                         Person newPerson = validation.additional;
 
                         Util.validationResponse.validationPerson(response.code(), newPerson, context);
-                        Presenter.login.startLogin(newPerson ,Util.getBundle.setLogin(person.email, person.password), context, typeLogin);
+                        Presenter.loginAction.startLogin(newPerson ,Util.getBundle.setLogin(person.email, person.password), context, typeLogin);
                     }
                     else
                     {
                         Log.e(TAG, "Failed - code: " + response.code());
+                        Util.validationResponse.validationPerson(response.code(), person, context);
                     }
                 }
                 else
                 {
                     Log.e(TAG, "Failed, the data does not match, code: " + response.code());
+                    Util.validationResponse.validationPerson(response.code(), person, context);
                 }
             }
 
@@ -62,7 +64,51 @@ public class PersonDataConverter {
         });
     }
 
-    public void deletePerson(Token token, Person person)
+    public void updatePerson(Token token, Person person, Context context)
+    {
+        ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
+        Call<Validation> request = ServicePersonApi.putPerson(token.token, person);
+
+        request.enqueue(new Callback<Validation>()
+        {
+            @Override
+            public void onResponse(Call<Validation> call, Response<Validation> response)
+            {
+                Validation validation = response.body();
+
+                if(validation != null)
+                {
+                    if(response.isSuccessful())
+                    {
+                        Log.i(TAG, "Sucessfull - code: " + response.code() + " description: " + validation.description);
+
+                        Person newPerson = validation.additional;
+
+                        Util.validationResponse.validationPerson(response.code(), newPerson, context);
+                        Util.validationResponse.validationLogin(response.code(), newPerson, context, token, null);
+                    }
+                    else
+                    {
+                        Log.e(TAG, "Failed - code: " + response.code());
+                        Util.validationResponse.validationPerson(response.code(), person, context);
+                    }
+                }
+                else
+                {
+                    Log.e(TAG, "Failed, the data does not match, code: " + response.code());
+                    Util.validationResponse.validationPerson(response.code(), person, context);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Validation> call, Throwable t)
+            {
+                Log.e(TAG, "Failure to communication with the server!");
+            }
+        });
+    }
+
+    public void deletePerson(Token token, Person person, Context context)
     {
         ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
         Call<Validation> request = ServicePersonApi.deletePerson(token.token, person._id);
@@ -78,44 +124,7 @@ public class PersonDataConverter {
                 {
                     if(response.isSuccessful())
                     {
-                        Log.i(TAG, "Sucessfull - code: " + response.code() + " additional: " + validation.additional);
-                    }
-                    else
-                    {
-                        Log.e(TAG, "Failed - code: " + response.code());
-                    }
-                }
-                else
-                {
-                    Log.e(TAG, "Failed, the data does not match, code: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Validation> call, Throwable t)
-            {
-                Log.e(TAG, "Failure to communication with the server!");
-            }
-        });
-    }
-
-    public void updatePerson(Token token, Person person)
-    {
-        ServicePersonApi ServicePersonApi = ServiceGenerator.createService(ServicePersonApi.class);
-        Call<Validation> request = ServicePersonApi.updatePerson(token.token, person);
-
-        request.enqueue(new Callback<Validation>()
-        {
-            @Override
-            public void onResponse(Call<Validation> call, Response<Validation> response)
-            {
-                Validation validation = response.body();
-
-                if(validation != null)
-                {
-                    if(response.isSuccessful())
-                    {
-                        Log.i(TAG, "Sucessfull - code: " + response.code() + " additional: " + validation.additional);
+                        Log.i(TAG, "Sucessfull - code: " + response.code() + " description: " + validation.description);
                     }
                     else
                     {

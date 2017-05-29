@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import com.the.dionisio.apk.client.R;
-import com.the.dionisio.apk.client.dao.sqlite.PersonDAO;
-import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.util.Util;
 
 /**
