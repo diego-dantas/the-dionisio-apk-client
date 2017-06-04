@@ -26,7 +26,7 @@ public class CreateAccount extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bar_create_account);
 
-        inputLayoutNameFullCreateAccount = (TextInputLayout) findViewById(R.id.inputLayoutNameFullCreateAccount);
+        inputLayoutNameFullCreateAccount = (TextInputLayout) findViewById(R.id.inputLayout);
         inputLayoutEmailCreateAccount = (TextInputLayout) findViewById(R.id.inputLayoutEmailCreateAccount);
         inputLayoutPasswordCreateAccount = (TextInputLayout) findViewById(R.id.inputLayoutPasswordCreateAccount);
         inputLayoutBirthCreateAccount = (TextInputLayout) findViewById(R.id.inputLayoutBirthCreateAccount);

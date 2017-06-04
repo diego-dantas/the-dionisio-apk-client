@@ -39,6 +39,7 @@
     <string name="localeEvent">Local do Evento</string>
     <string name="action_map">Mapa</string>
     <string name="hnt_searchEvent">Pesquisar</string>
+    <string name="hnt_sectorEvent">Setor</string>
 
     <!-- Strings related of error of field -->
     <string name="field_email">Favor inserir um e-mail válido</string>
