@@ -2,9 +2,9 @@ package com.the.dionisio.apk.client.util;
 
 import com.the.dionisio.apk.client.util.api.AddressAPI;
 import com.the.dionisio.apk.client.util.verification.ValidationResponse;
-import com.the.dionisio.apk.client.util.view.BundlePerson;
 import com.the.dionisio.apk.client.util.view.CardGenre;
 import com.the.dionisio.apk.client.util.view.MovingActivity;
+import com.the.dionisio.apk.client.util.view.SetData;
 import com.the.dionisio.apk.client.util.view.TransformDate;
 import com.the.dionisio.apk.client.util.verification.ValidationInput;
 
@@ -19,7 +19,7 @@ public interface Util
      */
     MovingActivity moviment = new MovingActivity();
     CardGenre cardGenre = new CardGenre();
-    BundlePerson getBundle = new BundlePerson();
+    SetData setData = new SetData();
 
     /**
      * Methods of use in retrofit for api.

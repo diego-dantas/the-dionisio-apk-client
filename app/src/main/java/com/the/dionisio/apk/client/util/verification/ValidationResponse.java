@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.dao.api.eventApi.Events;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
@@ -49,12 +50,12 @@ public class ValidationResponse
         }
     }
 
-    public void validationLogin(Integer statusCode, Person person, Context context, Token token, String typeLogin)
+    public void validationLogin(Integer statusCode, Person person, Events events, Context context, Token token, String typeLogin)
     {
         switch (statusCode)
         {
             case 200:
-                Presenter.loginAction.resultLoginOk(context, person, token);
+                Presenter.loginAction.resultLoginOk(context, person, events, token);
                 break;
             case 401:
                 if(typeLogin.equals("SOCIAL_NETWORK"))

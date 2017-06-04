@@ -22,6 +22,7 @@
     <string name="buyTicket">Comprar Entradas</string>
     <string name="localeEvent">Ubicación del evento</string>
     <string name="action_map">Mapa</string>
+    <string name="hnt_searchEvent">Búsqueda</string>
 
     <!-- Strings related of error of field -->
     <string name="field_email">Por favor, inserte un correo electrónico válido</string>

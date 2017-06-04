@@ -4,22 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.the.dionisio.apk.client.R;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import com.the.dionisio.apk.client.model.dto.Event;
+import com.the.dionisio.apk.client.util.Util;
 
 public class DetailedEvent extends AppCompatActivity
 {
-    private static final String TAG = "Maps";
-    Event Event;
-    Event event1;
-    Event event2;
-    List<Event> events = new ArrayList<>();
-
-    private TextView txtTitle;
+    private Event event;
+    private TextView txtNameEvent, txtDescriptionEvent, txtDateStartEvent, txtDateEndEvent;
+    private ImageView imageBannerEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,32 +23,38 @@ public class DetailedEvent extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bar_event);
 
+        txtNameEvent = (TextView) findViewById(R.id.txtNameEvent);
+        txtDescriptionEvent = (TextView) findViewById(R.id.txtDescriptionEvent);
+        txtDateStartEvent = (TextView) findViewById(R.id.txtDateStartEvent);
+        txtDateEndEvent = (TextView) findViewById(R.id.txtDateEndEvent);
+        imageBannerEvent = (ImageView) findViewById(R.id.imageBannerEvent);
 
-        Event = new Event();
-        event1 = new Event();
-        event2 = new Event();
+        event = (Event) getIntent().getSerializableExtra("EVENT");
+        populateEvent();
+    }
 
-        Event.latitude = "-21.1510028";
-        Event.longitude = "-50.8999327";
-        Event.title = "ARAÇATUBA";
+    public void populateEvent()
+    {
+        txtNameEvent.setText(event.name);
+        txtDescriptionEvent.setText(event.description);
+        txtDateStartEvent.setText(Util.transformDate.getDateAndHourIntoString(event.dateTimeRange.start));
+        txtDateEndEvent.setText(Util.transformDate.getDateAndHourIntoString(event.dateTimeRange.end));
 
-        event1.latitude = "-21.264134";
-        event1.longitude = "-50.4929904";
-        event1.title = "BIRIGUI";
-
-        event2.latitude = "-21.2407177";
-        event2.longitude = "-50.6871082";
-        event2.title = "EXPO";
-
-        events.add(Event);
-        events.add(event1);
-        events.add(event2);
+        if(event.urlBanners != null)
+        {
+            Glide.with(this).load(event.urlBanners.get(0)).into(imageBannerEvent);
+        }
     }
 
     public void goLocation(View view)
     {
         Intent intent = new Intent(this, MapsEvents.class);
-        intent.putExtra("ListEvent", (Serializable) events);
+        //intent.putExtra("ListEvent", (Serializable) events);
         startActivity(intent);
+    }
+
+    public void backDetailedEvent(View view)
+    {
+        Util.moviment.backView(this);
     }
 }

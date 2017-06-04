@@ -1,9 +1,6 @@
 package com.the.dionisio.apk.client.model.view.fragments;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -14,7 +11,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.the.dionisio.apk.client.model.dto.Event;
-import com.the.dionisio.apk.client.model.view.DetailedEvent;
 
 import java.util.List;
 
@@ -23,9 +19,9 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
 {
     private static final String TAG = "Maps";
     private GoogleMap mMap;
-    private LocationManager locationManager;
-    private String title;
-    List<Event> events;
+    //private LocationManager locationManager;
+    //private String title;
+    //private List<Event> events;
 
 
     @Override
@@ -33,8 +29,6 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
     {
         super.onCreate(savedInstanceState);
         getMapAsync(this);
-
-        events = (List<Event>) getActivity().getIntent().getSerializableExtra("ListEvent");
     }
 
     /**
@@ -52,14 +46,14 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
     {
         try
         {
-            locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+            //locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
             mMap = googleMap;
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setZoomControlsEnabled(true);
             mMap.moveCamera(CameraUpdateFactory.zoomTo(10));
 
-            markerEvet(events);
+            //markerEvet(events);
 
 
             mMap.setOnMapClickListener(this);
@@ -87,10 +81,10 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
     @Override
     public boolean onMarkerClick(Marker marker)
     {
-        Intent i = new Intent(getContext(), DetailedEvent.class);
+        /*Intent i = new Intent(getContext(), DetailedEvent.class);
         i.putExtra("LOCAL", marker.getTitle().toString());
         i.putExtra("LATLOG", marker.getPosition().toString());
-        startActivity(i);
+        startActivity(i);*/
 
         return false;
     }
@@ -103,7 +97,7 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
 
         for(Event ev : listEvent)
         {
-            lati = Double.parseDouble(ev.latitude);
+            /*lati = Double.parseDouble(ev.latitude);
             longi = Double.parseDouble(ev.longitude);
             title = ev.title;
             Log.i(TAG, "Latitude " + lati + " Longitude" + longi + " title " + title);
@@ -112,16 +106,16 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
             marker.position(location);
             marker.title(title);
             mMap.addMarker(marker);
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(location));*/
         }
     }
 
     @Override
     public void onInfoWindowClick(Marker marker)
     {
-        Intent i = new Intent(getContext(), DetailedEvent.class);
+        /*Intent i = new Intent(getContext(), DetailedEvent.class);
         i.putExtra("LOCAL", marker.getTitle().toString());
         i.putExtra("LATLOG", marker.getPosition().toString());
-        startActivity(i);
+        startActivity(i);*/
     }
 }

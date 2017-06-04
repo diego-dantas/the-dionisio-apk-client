@@ -180,8 +180,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
             loadProgressBar();
 
             Presenter.loginAction.startLogin(
-                    Util.getBundle.setPerson(email, password, name, picture),
-                    Util.getBundle.setLogin(email, password),
+                    Util.setData.setPerson(email, password, name, picture),
+                    Util.setData.setLogin(email, password),
                     this,
                     typeLogin);
 
@@ -240,8 +240,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
             loadProgressBar();
 
             Presenter.loginAction.startLogin(
-                    Util.getBundle.setPerson(email, password, name, picture),
-                    Util.getBundle.setLogin(email, password),
+                    Util.setData.setPerson(email, password, name, picture),
+                    Util.setData.setLogin(email, password),
                     this,
                     typeLogin);
 
@@ -281,8 +281,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
             typeLogin = "NORMAL_LOGIN";
 
             Presenter.loginAction.startLogin(
-                    Util.getBundle.setPerson(inputEmailLogin.getText().toString(), inputPasswordLogin.getText().toString(), null, null),
-                    Util.getBundle.setLogin(inputEmailLogin.getText().toString(), inputPasswordLogin.getText().toString()),
+                    Util.setData.setPerson(inputEmailLogin.getText().toString(), inputPasswordLogin.getText().toString(), null, null),
+                    Util.setData.setLogin(inputEmailLogin.getText().toString(), inputPasswordLogin.getText().toString()),
                     this,
                     typeLogin);
 

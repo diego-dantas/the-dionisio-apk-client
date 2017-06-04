@@ -8,4 +8,5 @@ public interface Presenter
 {
     PersonPresenter personAction = new PersonPresenter();
     LoginPresenter loginAction = new LoginPresenter();
+    EventPresenter eventAction = new EventPresenter();
 }
