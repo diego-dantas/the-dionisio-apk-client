@@ -92,7 +92,7 @@ public class PersonDAO
                  person.name = findPerson.getString(findPerson.getColumnIndex("name"));
                  person.email = findPerson.getString(findPerson.getColumnIndex("email"));
                  person.password = findPerson.getString(findPerson.getColumnIndex("password"));
-                 person.birth = Util.transformDate.getDateIntoList(findPerson.getString(findPerson.getColumnIndex("birth")));
+                // person.birth = Util.transformDate.getDateIntoList(findPerson.getString(findPerson.getColumnIndex("birth")));
                  person.cpf = findPerson.getString(findPerson.getColumnIndex("cpf"));
                  person.sex = findPerson.getString(findPerson.getColumnIndex("sex"));
                  person.picture = findPerson.getString(findPerson.getColumnIndex("picture"));

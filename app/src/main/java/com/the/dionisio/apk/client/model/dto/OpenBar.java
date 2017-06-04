@@ -2,13 +2,11 @@ package com.the.dionisio.apk.client.model.dto;
 
 import java.io.Serializable;
 
-/**
- * Created by igorm on 13/05/2017.
- */
-
-public class Token implements Serializable
+public class OpenBar implements Serializable
 {
     private static final long serialVersionUID = 1;
 
-    public String token;
+    public String name;
+    public String description;
+    public Boolean isActive;
 }

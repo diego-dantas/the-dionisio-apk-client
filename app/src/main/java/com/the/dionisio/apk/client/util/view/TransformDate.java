@@ -1,6 +1,5 @@
 package com.the.dionisio.apk.client.util.view;
 
-import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,32 +9,9 @@ import java.util.List;
 
 public class TransformDate
 {
-    public List<Integer> getDateIntoList(Bundle bundle)
-    {
-        List<Integer> birth = new ArrayList<>();
-
-        try
-        {
-            String[] date = bundle.getString("BIRTH").split("/");
-            Integer day = Integer.parseInt(date[0]);
-            Integer month = Integer.parseInt(date[1]);
-            Integer year = Integer.parseInt(date[2]);
-
-            birth.add(year);
-            birth.add(month);
-            birth.add(day);
-        }
-        catch (Exception error)
-        {
-            return null;
-        }
-
-        return birth;
-    }
-
     public List<Integer> getDateIntoList(String dateBirth)
     {
-        List<Integer> birth = new ArrayList<>();
+        List<Integer> convertedBirth = new ArrayList<>();
 
         try
         {
@@ -44,30 +20,31 @@ public class TransformDate
             Integer month = Integer.parseInt(date[1]);
             Integer year = Integer.parseInt(date[2]);
 
-            birth.add(year);
-            birth.add(month);
-            birth.add(day);
+
+            convertedBirth.add(year);
+            convertedBirth.add(month);
+            convertedBirth.add(day);
         }
         catch (Exception error)
         {
             return null;
         }
 
-        return birth;
+        return convertedBirth;
     }
 
     public String getDateIntoString(List<Integer> birth)
     {
-        String convertBirth = "";
+        String convertedBirth = "";
 
         try
         {
             for(int i = 2; i>=0; i--)
             {
-                convertBirth += birth.get(i).toString();
+                convertedBirth += birth.get(i).toString();
                 if(i>0)
                 {
-                    convertBirth += "/";
+                    convertedBirth += "/";
                 }
             }
         }
@@ -76,6 +53,58 @@ public class TransformDate
             return null;
         }
 
-        return convertBirth;
+        return convertedBirth;
+    }
+
+    public String getDateAndHourIntoString(List<Integer> dateEvent)
+    {
+        String convertedDateEvent = "";
+
+        try
+        {
+            if(dateEvent.get(2) < 10)
+            {
+                convertedDateEvent += "0" + dateEvent.get(2).toString() + "/";
+            }
+            else
+            {
+                convertedDateEvent += dateEvent.get(2).toString() + "/";
+            }
+
+            if(dateEvent.get(1) < 10)
+            {
+                convertedDateEvent += "0" + dateEvent.get(1).toString() + "/";
+            }
+            else
+            {
+                convertedDateEvent += dateEvent.get(1).toString() + "/";
+            }
+
+            convertedDateEvent += dateEvent.get(0).toString() + " ";
+
+            if(dateEvent.get(3) < 10)
+            {
+                convertedDateEvent += "0" + dateEvent.get(3).toString() + ":";
+            }
+            else
+            {
+                convertedDateEvent += dateEvent.get(3).toString() + ":";
+            }
+
+            if(dateEvent.get(4) < 10)
+            {
+                convertedDateEvent += "0" + dateEvent.get(4).toString();
+            }
+            else
+            {
+                convertedDateEvent += dateEvent.get(4).toString();
+            }
+        }
+        catch(Exception error)
+        {
+            return null;
+        }
+
+        return convertedDateEvent;
     }
 }

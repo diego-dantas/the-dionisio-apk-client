@@ -1,5 +1,6 @@
 package com.the.dionisio.apk.client.dao.api;
 
+import com.the.dionisio.apk.client.dao.api.eventApi.EventDataConverter;
 import com.the.dionisio.apk.client.dao.api.loginApi.LoginDataConverter;
 import com.the.dionisio.apk.client.dao.api.personApi.PersonDataConverter;
 
@@ -15,4 +16,5 @@ public interface Api
 
     PersonDataConverter personDataConverter = new PersonDataConverter();
     LoginDataConverter loginDataConverter = new LoginDataConverter();
+    EventDataConverter eventDataConverter = new EventDataConverter();
 }

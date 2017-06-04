@@ -41,7 +41,7 @@ public class PersonDataConverter {
                         Person newPerson = validation.additional;
 
                         Util.validationResponse.validationPerson(response.code(), newPerson, context);
-                        Presenter.loginAction.startLogin(newPerson ,Util.getBundle.setLogin(person.email, person.password), context, typeLogin);
+                        Presenter.loginAction.startLogin(newPerson ,Util.setData.setLogin(person.email, person.password), context, typeLogin);
                     }
                     else
                     {
@@ -85,7 +85,7 @@ public class PersonDataConverter {
                         Person newPerson = validation.additional;
 
                         Util.validationResponse.validationPerson(response.code(), newPerson, context);
-                        Util.validationResponse.validationLogin(response.code(), newPerson, context, token, null);
+                        Util.validationResponse.validationLogin(response.code(), newPerson, null, context, token, null);
                     }
                     else
                     {

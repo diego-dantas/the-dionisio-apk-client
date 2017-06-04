@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.util.Util;
 import java.util.ArrayList;
@@ -101,8 +102,9 @@ public class CreateAccountStepGenre extends AppCompatActivity {
         if(Util.cardGenre.validGenre(genres, getApplicationContext()))
         {
             loadProgressBar();
-            Bundle bundle = getIntent().getExtras();
-            Presenter.personAction.createPersonApi(Util.getBundle.setBundlePerson(bundle, genres), this, null);
+            Person person = (Person) getIntent().getSerializableExtra("PERSON");
+            person.genres = genres;
+            Presenter.personAction.createPersonApi(person, this, null);
         }
     }
 

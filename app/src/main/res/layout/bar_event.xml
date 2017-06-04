@@ -6,29 +6,39 @@
     android:layout_height="match_parent"
     tools:context="com.the.dionisio.apk.client.model.view.DetailedEvent">
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </android.support.design.widget.AppBarLayout>
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-    <include layout="@layout/event" />
+            <ImageButton
+                android:id="@+id/btnBackCreate"
+                android:layout_width="48dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:onClick="backDetailedEvent"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        </android.support.design.widget.AppBarLayout>
 
-        <ImageButton
-            android:id="@+id/btnBackCreate"
-            android:layout_width="48dp"
-            android:layout_height="54dp"
-            android:layout_weight="1"
-            android:background="@color/transparent"
-            android:onClick="backCreateAccount"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+        <include
+            layout="@layout/event"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    </android.support.design.widget.AppBarLayout>
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+        </android.support.design.widget.AppBarLayout>
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

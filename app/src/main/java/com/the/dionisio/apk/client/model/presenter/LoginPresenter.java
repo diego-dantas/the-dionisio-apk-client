@@ -1,9 +1,9 @@
 package com.the.dionisio.apk.client.model.presenter;
 
 import android.content.Context;
-import com.the.dionisio.apk.client.ViewMain;
+import com.the.dionisio.apk.client.Main;
 import com.the.dionisio.apk.client.dao.api.Api;
-import com.the.dionisio.apk.client.model.dto.Event;
+import com.the.dionisio.apk.client.dao.api.eventApi.Events;
 import com.the.dionisio.apk.client.model.dto.Login;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
@@ -20,16 +20,16 @@ public class LoginPresenter
         Api.loginDataConverter.postLogin(person, login, context, typeLogin);
     }
 
-    public void resultLoginOk(Context context, Person person, Token token)
+    public void resultLoginOk(Context context, Person person, Events events, Token token)
     {
-        Util.moviment.goViewClearWithData(context, ViewMain.class, person, token);
+        Util.moviment.goViewClearWithData(context, Main.class, person, events, token);
     }
 
-    public void refreshTokenApi(Token token, Person person, Event event, Context context, String typeMethod)
+    public void refreshTokenApi(Token token, Person person, Context context, String typeMethod)
     {
-        if(context != null && (person != null || event != null))
+        if(context != null && typeMethod != null && !typeMethod.isEmpty())
         {
-            Api.loginDataConverter.refreshToken(token, person, event, context, typeMethod);
+            Api.loginDataConverter.refreshToken(token, person, context, typeMethod);
         }
     }
 }

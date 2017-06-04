@@ -59,25 +59,22 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".model.view.SplashScreen"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar" >
+=======
+            android:theme="@style/AppTheme.NoActionBar">
+
+>>>>>>> b4a68fcd5e907a2e7968d287741d8fe912994169
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".model.view.DetailedEvent"
-            android:theme="@style/AppTheme.NoActionBar">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".model.view.fragments.MapsLocation"
             android:theme="@style/AppTheme.NoActionBar" />

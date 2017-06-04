@@ -49,14 +49,14 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
 
         imgPhoto = (ImageView) findViewById(R.id.imgPhoto);
 
-        Bundle bundle = getIntent().getExtras();
+        Person person = (Person) getIntent().getSerializableExtra("PERSON");
 
-        txtName.setText(bundle.getString("NAME"));
-        txtEmail.setText(bundle.getString("EMAIL"));
-        txtPassword.setText(bundle.getString("PASSWORD"));
-        txtBirth.setText(bundle.getString("BIRTH"));
-        txtSex.setText(bundle.getString("SEX"));
-        Glide.with(this).load(bundle.getString("PICTURE")).into(imgPhoto);
+        txtName.setText(person.name);
+        txtEmail.setText(person.email);
+        txtPassword.setText(person.password);
+        txtBirth.setText(Util.transformDate.getDateIntoString(person.birth));
+        txtSex.setText(person.sex);
+        Glide.with(this).load(person.picture).into(imgPhoto);
 
         GoogleSignInOptions signInOptions = new
                 GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -97,42 +97,24 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
 
     public void testUpdatePerson(View view)
     {
-        Person person = new Person();
-        Token token = new Token();
+        Person person = (Person) getIntent().getSerializableExtra("PERSON");
+        Token token = (Token) getIntent().getSerializableExtra("TOKEN");
 
-        Bundle bundle = getIntent().getExtras();
-
-        token.token = bundle.getString("TOKEN");
-
-        person._id = bundle.getString("ID");
-        person.name = "John John";
+        person.name = "Jonathan Henrique";
         person.email = null;
-        person.password = null;
-        person.birth = Util.transformDate.getDateIntoList(bundle.getString("BIRTH"));
-        person.sex = bundle.getString("SEX");
-        person.picture = bundle.getString("PICTURE");
 
-        Presenter.loginAction.refreshTokenApi(token, person, null, this, Api.METHOD_PUT);
+        Presenter.loginAction.refreshTokenApi(token, person, this, Api.METHOD_PUT);
     }
 
     public void testDeletePerson(View view)
     {
-        Person person = new Person();
-        Token token = new Token();
+        Person person = (Person) getIntent().getSerializableExtra("PERSON");
+        Token token = (Token) getIntent().getSerializableExtra("TOKEN");
 
-        Bundle bundle = getIntent().getExtras();
-
-        token.token = bundle.getString("TOKEN");
-
-        person._id = bundle.getString("ID");
         person.name = "";
-        person.email = bundle.getString("EMAIL");
-        person.password = "123456";
-        person.birth = Util.transformDate.getDateIntoList(bundle.getString("BIRTH"));
-        person.sex = bundle.getString("SEX");
-        person.picture = bundle.getString("PICTURE");
+        person.email = null;
 
-        Presenter.loginAction.refreshTokenApi(token, person, null, this, Api.METHOD_PUT);
+        Presenter.loginAction.refreshTokenApi(token, person, this, Api.METHOD_PUT);
     }
 
     @Override
