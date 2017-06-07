@@ -15,6 +15,10 @@ import com.the.dionisio.apk.client.model.dto.Batch;
 import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.util.Util;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DetailedEvent extends AppCompatActivity
 {
     private Event event;
@@ -23,6 +27,7 @@ public class DetailedEvent extends AppCompatActivity
     private Spinner spinnerSector;
     private RadioButton radioManEvent, radioWomanEvent;
     private ArrayAdapter<String> adapterSector;
+    private List<Event> listEvent = new ArrayList<Event>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +49,7 @@ public class DetailedEvent extends AppCompatActivity
 
         event = (Event) getIntent().getSerializableExtra("EVENT");
         populateEvent();
+        listEvent.add(event);
 
         for(Batch bacth : event.batches)
         {
@@ -70,7 +76,7 @@ public class DetailedEvent extends AppCompatActivity
     public void goLocation(View view)
     {
         Intent intent = new Intent(this, MapsEvents.class);
-        intent.putExtra("EVENT", event);
+        intent.putExtra("ListEvents", (Serializable) listEvent);
         startActivity(intent);
     }
 
