@@ -4,6 +4,7 @@ import com.the.dionisio.apk.client.util.api.AddressAPI;
 import com.the.dionisio.apk.client.util.verification.ValidationResponse;
 import com.the.dionisio.apk.client.util.view.CardGenre;
 import com.the.dionisio.apk.client.util.view.MovingActivity;
+import com.the.dionisio.apk.client.util.view.QrCode;
 import com.the.dionisio.apk.client.util.view.SetData;
 import com.the.dionisio.apk.client.util.view.TransformDate;
 import com.the.dionisio.apk.client.util.verification.ValidationInput;
@@ -20,7 +21,7 @@ public interface Util
     MovingActivity moviment = new MovingActivity();
     CardGenre cardGenre = new CardGenre();
     SetData setData = new SetData();
-
+    QrCode qrCode = new QrCode();
     /**
      * Methods of use in retrofit for api.
      */
