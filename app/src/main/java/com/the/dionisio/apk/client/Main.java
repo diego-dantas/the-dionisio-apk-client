@@ -21,11 +21,7 @@ import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.view.DetailedEvent;
 import com.the.dionisio.apk.client.model.view.MapsEvents;
 import com.the.dionisio.apk.client.model.view.fragments.EventListAdapter;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -136,9 +132,8 @@ public class Main extends AppCompatActivity
 
     public void goViewMap()
     {
-
         Intent intent = new Intent(this, MapsEvents.class);
-        intent.putExtra("ListEvents", (Serializable) listEvents.events);
+        intent.putExtra("EVENTS", (Serializable) listEvents.events);
         startActivity(intent);
     }
 

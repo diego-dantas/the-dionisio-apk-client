@@ -15,8 +15,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.view.DetailedEvent;
-
-import java.io.Serializable;
 import java.util.List;
 
 public class MapsLocation extends SupportMapFragment implements OnMapReadyCallback,
@@ -27,7 +25,6 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
     private LocationManager locationManager;
     private String title;
     private List<Event> events;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -62,7 +59,6 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
 
             markerEvet(events);
 
-
             //mMap.setOnMapClickListener(this);
             mMap.setOnMarkerClickListener(this);
             mMap.setOnInfoWindowClickListener(this);
@@ -91,8 +87,10 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
         String lat = String.valueOf(marker.getPosition().latitude);
         String lgnt = String.valueOf(marker.getPosition().longitude);
 
-        for(Event event : events){
-            if(event.place.location.latitude.equals(lat) && event.place.location.longitude.equals(lgnt)){
+        for(Event event : events)
+        {
+            if(event.place.location.latitude.equals(lat) && event.place.location.longitude.equals(lgnt))
+            {
                 Intent i = new Intent(getContext(), DetailedEvent.class);
                 i.putExtra("EVENT", event);
                 startActivity(i);
@@ -132,12 +130,15 @@ public class MapsLocation extends SupportMapFragment implements OnMapReadyCallba
         startActivity(i);*/
     }
 
-    public Event positionEvent(Marker marker){
+    public Event positionEvent(Marker marker)
+    {
         String lat = String.valueOf(marker.getPosition().latitude);
         String lgnt = String.valueOf(marker.getPosition().longitude);
 
-        for(Event event : events){
-            if(event.place.location.latitude.equals(lat) && event.place.location.latitude.equals(lgnt)){
+        for(Event event : events)
+        {
+            if(event.place.location.latitude.equals(lat) && event.place.location.latitude.equals(lgnt))
+            {
                 return event;
             }
         }

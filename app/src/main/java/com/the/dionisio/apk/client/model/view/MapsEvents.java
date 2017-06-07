@@ -1,7 +1,5 @@
 package com.the.dionisio.apk.client.model.view;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +8,6 @@ import android.view.View;
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.view.fragments.MapsLocation;
 import com.the.dionisio.apk.client.util.Util;
-
-import java.io.Serializable;
-import java.util.List;
 
 public class MapsEvents extends AppCompatActivity
 {
@@ -35,6 +30,4 @@ public class MapsEvents extends AppCompatActivity
     {
         Util.moviment.backView(this);
     }
-
-
 }
