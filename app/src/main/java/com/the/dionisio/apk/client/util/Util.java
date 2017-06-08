@@ -21,7 +21,6 @@ public interface Util
     MovingActivity moviment = new MovingActivity();
     CardGenre cardGenre = new CardGenre();
     SetData setData = new SetData();
-    QrCode qrCode = new QrCode();
     /**
      * Methods of use in retrofit for api.
      */
