@@ -61,7 +61,7 @@
     <string name="filter_genre">Filtrar por genero</string>
     <string name="title_activity_ticket">Ticket</string>
     <string name="title_activity_setting">Setting</string>
-    
+
     <!-- Strings related of alter password -->
     <string name="hnt_present_password">Senha Atual</string>
     <string name="hnt_new_password">Nova senha</string>
