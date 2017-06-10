@@ -87,10 +87,14 @@
         <activity
             android:name=".model.view.Ticket"
             android:theme="@style/AppTheme.NoActionBar" />
+<<<<<<< HEAD
         <activity
             android:name=".model.view.AlterPassword"
             android:label="@string/title_activity_alter_password"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+        <activity android:name=".model.view.ShoppingCart"></activity>
+>>>>>>> payment
     </application>
 
 </manifest>
