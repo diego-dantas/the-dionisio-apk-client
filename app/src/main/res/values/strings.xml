@@ -62,4 +62,14 @@
     <string name="title_activity_ticket">Ticket</string>
     <string name="title_activity_setting">Setting</string>
 
+    <!-- Strings related of alter password -->
+    <string name="hnt_present_password">Senha Atual</string>
+    <string name="hnt_new_password">Nova senha</string>
+    <string name="hnt_confirm_password">Confirma nova senha</string>
+    <string name="btn_confirm">Confirmar</string>
+
+    <!-- String related of settings -->
+    <string name="hnt_alter_name">Alterar nome</string>
+    <string name="title_activity_alter_password">AlterPassword</string>
+
 </resources>

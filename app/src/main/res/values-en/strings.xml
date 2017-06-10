@@ -43,4 +43,13 @@
     <string name="filter_date">Filter by date</string>
     <string name="filter_locale">Filter by location</string>
     <string name="filter_genre">Filter by genre</string>
+
+    <!-- Strings related of alter password -->
+    <string name="hnt_present_password">Current password</string>
+    <string name="hnt_new_password">New password</string>
+    <string name="hnt_confirm_password">Confirm new Password</string>
+    <string name="btn_confirm">Confirm</string>
+
+    <!-- String related of settings -->
+    <string name="hnt_alter_name">Change name</string>
 </resources>

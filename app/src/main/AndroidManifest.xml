@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--Splash-->
+        <!-- Splash -->
         <activity
             android:name=".model.view.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -29,29 +29,29 @@
             </intent-filter>
         </activity>
 
-        <!--Main-->
+        <!-- Main -->
         <activity
             android:name=".Main"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--Facebook-->
+        <!-- Facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <!--Google-->
+        <!-- Google -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <!--Login-->
+        <!-- Login -->
         <activity android:name=".model.view.PreLogin" />
         <activity
             android:name=".model.view.Login"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--Create Account-->
+        <!-- Create Account -->
         <activity
             android:name=".model.view.CreateAccount"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -59,17 +59,17 @@
             android:name=".model.view.CreateAccountStepGenre"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--Setting Account-->
+        <!-- Setting Account -->
         <activity
             android:name=".model.view.Setting"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--Forgot Password-->
+        <!-- Forgot Password -->
         <activity
             android:name=".model.view.ForgotPassword"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--Event-->
+        <!-- Event -->
         <activity
             android:name=".model.view.DetailedEvent"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -80,14 +80,17 @@
             android:name=".ViewMain"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--Ticket-->
+        <!-- Ticket -->
         <activity
             android:name=".model.view.Tickets"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".model.view.Ticket"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".model.view.AlterPassword"
+            android:label="@string/title_activity_alter_password"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
