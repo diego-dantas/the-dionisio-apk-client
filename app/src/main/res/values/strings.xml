@@ -61,5 +61,10 @@
     <string name="filter_genre">Filtrar por genero</string>
     <string name="title_activity_ticket">Ticket</string>
     <string name="title_activity_setting">Setting</string>
+    <string name="txt_qtd">Quantidade</string>
+    <string name="txt_opcao">Opção</string>
+    <string name="txt_valueTotal">Valor Total</string>
+    <string name="txt_valueUnit">Valor Unitario</string>
+    <string name="btn_checkout">Checkout</string>
 
 </resources>

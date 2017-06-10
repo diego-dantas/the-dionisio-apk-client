@@ -3,6 +3,7 @@ package com.the.dionisio.apk.client.model.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -77,6 +78,13 @@ public class DetailedEvent extends AppCompatActivity
     {
         Intent intent = new Intent(this, MapsEvents.class);
         intent.putExtra("ListEvents", (Serializable) listEvent);
+        startActivity(intent);
+    }
+
+    public void goShoppingCart(View view){
+        Log.i("Reso", "To aqui mano");
+        Intent intent = new Intent(this, ShoppingCart.class);
+        intent.putExtra("EVENT", event);
         startActivity(intent);
     }
 
