@@ -6,7 +6,7 @@
     <string name="txv_forgotPassword">Forgot password</string>
     <string name="hnt_fullName">Full name</string>
     <string name="hnt_email">Email address</string>
-    <string name="hnt_birth">Birth - Exemplo: dd/MM/yyyy</string>
+    <string name="hnt_birth">Birth - Example: dd/MM/yyyy</string>
     <string name="txt_sex">Sex:</string>
     <string name="txt_man">Man</string>
     <string name="txt_woman">Woman</string>
@@ -24,6 +24,10 @@
     <string name="action_map">Map</string>
     <string name="hnt_searchEvent">Search</string>
     <string name="hnt_sectorEvent">Sector</string>
+    <string name="hnt_filterDateStart">Date begin - Example: dd/MM/yyyy</string>
+    <string name="hnt_filterDateEnd">Date end - Example: dd/MM/yyyy</string>
+    <string name="hnt_filterLocationActivated">Activated</string>
+    <string name="hnt_filterLocationDeactivated">Deactivated</string>
 
     <!-- Strings related of error of field -->
     <string name="field_email">Please insert a email valid</string>

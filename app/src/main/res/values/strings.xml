@@ -40,6 +40,9 @@
     <string name="action_map">Mapa</string>
     <string name="hnt_searchEvent">Pesquisar</string>
     <string name="hnt_sectorEvent">Setor</string>
+    <string name="hnt_filterDateStart">Data inicial - Exemplo: dd/MM/yyyy</string>
+    <string name="hnt_filterDateEnd">Data final - Exemplo: dd/MM/yyyy</string>
+    <string name="hnt_filterLocationActivated">Ativado</string>
 
     <!-- Strings related of error of field -->
     <string name="field_email">Favor inserir um e-mail válido</string>

@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +22,14 @@ import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.view.DetailedEvent;
 import com.the.dionisio.apk.client.model.view.MapsEvents;
 import com.the.dionisio.apk.client.model.view.fragments.EventListAdapter;
+import com.the.dionisio.apk.client.model.view.fragments.FilterAdapter;
+import com.the.dionisio.apk.client.model.view.fragments.PopulateData;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -39,6 +47,12 @@ public class Main extends AppCompatActivity
     private ListView listViewEvent;
     private EventListAdapter adapterCustom;
     private Events listEvents;
+
+    //Components of filter
+    private HashMap<String, List<String>> filter_category;
+    private List<String> list_child;
+    private ExpandableListView expandable_genre, expandable_date, expandable_locale;
+    private FilterAdapter filterAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,38 +95,20 @@ public class Main extends AppCompatActivity
         });
 
         View header = leftNavigationView.getHeaderView(0);
-
-        urlPersonImage = (CircleImageView) header.findViewById(R.id.urlPersonImage);
-        txtPersonName = (TextView) header.findViewById(R.id.txtPersonName);
-        txtPersonEmail = (TextView) header.findViewById(R.id.txtPersonEmail);
-
-        populatePerson();
+        populatePerson(header);
 
         NavigationView rightNavigationView = (NavigationView) findViewById(R.id.nav_right_view);
-        rightNavigationView.setNavigationItemSelectedListener(item ->
-        {
-            int id = item.getItemId();
 
-            if (id == R.id.filter_date)
-            {
-                Toast.makeText(getApplicationContext(), "Filter Date", Toast.LENGTH_SHORT).show();
-            }
-            else if (id == R.id.filter_locale)
-            {
-                Toast.makeText(getApplicationContext(), "Filter Locale", Toast.LENGTH_SHORT).show();
-            }
-            else if (id == R.id.filter_genre)
-            {
-                Toast.makeText(getApplicationContext(), "Filter Genre", Toast.LENGTH_SHORT).show();
-            }
-
-            drawer.closeDrawer(GravityCompat.END);
-            return true;
-        });
+        View header2 = rightNavigationView.getHeaderView(0);
+        componentsOfFilter(header2);
     }
 
-    public void populatePerson()
+    public void populatePerson(View view)
     {
+        urlPersonImage = (CircleImageView) view.findViewById(R.id.urlPersonImage);
+        txtPersonName = (TextView) view.findViewById(R.id.txtPersonName);
+        txtPersonEmail = (TextView) view.findViewById(R.id.txtPersonEmail);
+
         person = (Person) getIntent().getSerializableExtra("PERSON");
 
         txtPersonName.setText(person.name);
@@ -135,6 +131,30 @@ public class Main extends AppCompatActivity
         Intent intent = new Intent(this, MapsEvents.class);
         intent.putExtra("EVENTS", (Serializable) listEvents.events);
         startActivity(intent);
+    }
+
+    public void componentsOfFilter(View view)
+    {
+        expandable_genre = (ExpandableListView) view.findViewById(R.id.expandable_genre);
+        filter_category = PopulateData.getData(R.string.filter_genre, this);
+
+        list_child = new ArrayList<>(filter_category.keySet());
+        filterAdapter = new FilterAdapter(this, filter_category, list_child, R.string.filter_genre);
+        expandable_genre.setAdapter(filterAdapter);
+
+        expandable_date = (ExpandableListView) view.findViewById(R.id.expandable_date);
+        filter_category = PopulateData.getData(R.string.filter_date, this);
+
+        list_child = new ArrayList<>(filter_category.keySet());
+        filterAdapter = new FilterAdapter(this , filter_category, list_child, R.string.filter_date);
+        expandable_date.setAdapter(filterAdapter);
+
+        expandable_locale = (ExpandableListView) view.findViewById(R.id.expandable_locale);
+        filter_category = PopulateData.getData(R.string.filter_locale, this);
+
+        list_child = new ArrayList<>(filter_category.keySet());
+        filterAdapter = new FilterAdapter(this , filter_category, list_child, R.string.filter_locale);
+        expandable_locale.setAdapter(filterAdapter);
     }
 
     @Override

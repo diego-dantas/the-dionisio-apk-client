@@ -28,6 +28,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:fitsSystemWindows="true"
-        app:menu="@menu/activity_right_drawer" />
+        app:headerLayout="@layout/filter_body" />
 
 </android.support.v4.widget.DrawerLayout>
