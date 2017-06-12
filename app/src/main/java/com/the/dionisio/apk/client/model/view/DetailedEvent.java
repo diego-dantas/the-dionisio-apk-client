@@ -25,9 +25,6 @@ public class DetailedEvent extends AppCompatActivity
     private Event event;
     private TextView txtNameEvent, txtDescriptionEvent, txtDateStartEvent, txtDateEndEvent;
     private ImageView imageBannerEvent;
-    private Spinner spinnerSector;
-    private RadioButton radioManEvent, radioWomanEvent;
-    private ArrayAdapter<String> adapterSector;
     private List<Event> listEvent = new ArrayList<Event>();
 
     @Override
@@ -41,24 +38,10 @@ public class DetailedEvent extends AppCompatActivity
         txtDateStartEvent = (TextView) findViewById(R.id.txtDateStartEvent);
         txtDateEndEvent = (TextView) findViewById(R.id.txtDateEndEvent);
         imageBannerEvent = (ImageView) findViewById(R.id.imageBannerEvent);
-        spinnerSector = (Spinner) findViewById(R.id.spinnerSector);
-        radioManEvent = (RadioButton) findViewById(R.id.radioManEvent);
-        radioWomanEvent = (RadioButton) findViewById(R.id.radioWomanEvent);
-        adapterSector = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
-        adapterSector.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSector.setAdapter(adapterSector);
 
         event = (Event) getIntent().getSerializableExtra("EVENT");
         populateEvent();
         listEvent.add(event);
-
-        for(Batch bacth : event.batches)
-        {
-            adapterSector.add(bacth.sector);
-        }
-
-        /*spinnerSector.setOnItemClickListener((parent, view, position, id) ->
-                Toast.makeText(this, "Sector: " + parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show());*/
     }
 
     public void populateEvent()

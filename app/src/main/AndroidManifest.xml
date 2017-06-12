@@ -91,7 +91,11 @@
             android:name=".model.view.AlterPassword"
             android:label="@string/title_activity_alter_password"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".model.view.ShoppingCart"></activity>
+
+
+        <activity
+            android:name=".model.view.ShoppingCart"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
