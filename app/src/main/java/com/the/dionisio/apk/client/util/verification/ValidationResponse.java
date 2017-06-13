@@ -2,15 +2,15 @@ package com.the.dionisio.apk.client.util.verification;
 
 import android.content.Context;
 import android.widget.Toast;
-
 import com.the.dionisio.apk.client.R;
-import com.the.dionisio.apk.client.dao.api.eventApi.Events;
+import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.model.resource.Resource;
 import com.the.dionisio.apk.client.model.view.CreateAccountStepGenre;
 import com.the.dionisio.apk.client.util.Util;
+import java.util.List;
 
 /**
  * Created by igorm on 20/05/2017.
@@ -50,7 +50,7 @@ public class ValidationResponse
         }
     }
 
-    public void validationLogin(Integer statusCode, Person person, Events events, Context context, Token token, String typeLogin)
+    public void validationLogin(Integer statusCode, Person person, List<Event> events, Context context, Token token, String typeLogin)
     {
         switch (statusCode)
         {

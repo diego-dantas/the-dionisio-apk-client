@@ -7,6 +7,9 @@ import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,14 +25,14 @@ public class EventDataConverter
     public void getEvents(Token token, Person person, Context context)
     {
         ServiceEventApi ServiceEventApi = ServiceGenerator.createService(ServiceEventApi.class);
-        Call<Events> request = ServiceEventApi.getEvents(token.token);
+        Call<List<Event>> request = ServiceEventApi.getEvents(token.token);
 
-        request.enqueue(new Callback<Events>()
+        request.enqueue(new Callback<List<Event>>()
         {
             @Override
-            public void onResponse(Call<Events> call, Response<Events> response)
+            public void onResponse(Call<List<Event>> call, Response<List<Event>> response)
             {
-                Events events = response.body();
+                List<Event> events = response.body();
 
                 if(events != null)
                 {
@@ -37,7 +40,7 @@ public class EventDataConverter
                     {
                         Log.i(TAG, "Sucessfull - code: " + response.code());
 
-                        for(Event event : events.events)
+                        for(Event event : events)
                         {
                             Log.i(TAG, "Event: " + event.description);
                         }
@@ -56,7 +59,7 @@ public class EventDataConverter
             }
 
             @Override
-            public void onFailure(Call<Events> call, Throwable t)
+            public void onFailure(Call<List<Event>> call, Throwable t)
             {
                 Log.e(TAG, "Failure to communication with the server!");
             }

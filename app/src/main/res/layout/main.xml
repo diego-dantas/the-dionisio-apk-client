@@ -22,12 +22,77 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_right_view"
-        android:layout_width="wrap_content"
+    <!-- The navigation drawer -->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/filter_body" />
+        android:background="@color/white"
+        android:layout_gravity="end" >
+
+        <TextView
+            android:id="@+id/txt_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:textSize="20dp"
+            android:typeface="normal"
+            android:text="@string/txt_filter"
+            tools:layout_constraintTop_creator="1"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="50dp"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/expandable_genre"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="33dp" />
+
+        <ExpandableListView
+            android:id="@+id/expandable_genre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:divider="#00ffffff"
+            android:dividerHeight="0.5dp"
+            android:layout_marginTop="8dp"
+            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+            app:layout_constraintTop_toBottomOf="@+id/txt_filter"
+            tools:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+        </ExpandableListView>
+
+        <ExpandableListView
+            android:id="@+id/expandable_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:divider="#00ffffff"
+            android:dividerHeight="0.5dp"
+            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+            app:layout_constraintTop_toBottomOf="@+id/expandable_genre"
+            tools:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+        </ExpandableListView>
+
+        <ExpandableListView
+            android:id="@+id/expandable_locale"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:divider="#00ffffff"
+            android:dividerHeight="0.5dp"
+            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+            app:layout_constraintTop_toBottomOf="@+id/expandable_date"
+            tools:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="@+id/expandable_date"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/expandable_date">
+
+        </ExpandableListView>
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v4.widget.DrawerLayout>

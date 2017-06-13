@@ -1,7 +1,9 @@
 package com.the.dionisio.apk.client;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,42 +13,50 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
-import com.the.dionisio.apk.client.dao.api.eventApi.Events;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseAuth;
 import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.view.DetailedEvent;
 import com.the.dionisio.apk.client.model.view.MapsEvents;
+import com.the.dionisio.apk.client.model.view.PreLogin;
 import com.the.dionisio.apk.client.model.view.fragments.EventListAdapter;
 import com.the.dionisio.apk.client.model.view.fragments.FilterAdapter;
 import com.the.dionisio.apk.client.model.view.fragments.PopulateData;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Daniel on 25/05/2017.
  */
-public class Main extends AppCompatActivity
+public class Main extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener
 {
     //Components of person
     private CircleImageView urlPersonImage;
     private TextView txtPersonName, txtPersonEmail;
     private Person person;
+    private GoogleApiClient googleApiClient;
 
     //Components of events
     private DrawerLayout drawer;
     private ListView listViewEvent;
     private EventListAdapter adapterCustom;
-    private Events listEvents;
+    private List<Event> listEvents;
 
     //Components of filter
     private HashMap<String, List<String>> filter_category;
@@ -55,17 +65,20 @@ public class Main extends AppCompatActivity
     private FilterAdapter filterAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listEvents = (Events) getIntent().getSerializableExtra("EVENTS");
+        loadGoogleClient();
+
+        listEvents = (List<Event>) getIntent().getSerializableExtra("EVENTS");
 
         listViewEvent = (ListView) findViewById(R.id.listViewEvent);
 
-        adapterCustom = new EventListAdapter(this, listEvents.events);
+        adapterCustom = new EventListAdapter(this, listEvents);
         listViewEvent.setAdapter(adapterCustom);
 
         listViewEvent.setOnItemClickListener((parent, view, position, id) ->
@@ -79,15 +92,17 @@ public class Main extends AppCompatActivity
         NavigationView leftNavigationView = (NavigationView) findViewById(R.id.nav_left_view);
         leftNavigationView.setNavigationItemSelectedListener(item ->
         {
-            int id = item.getItemId();
-
-            if (id == R.id.nav_ticket)
+            switch (item.getItemId())
             {
-                Toast.makeText(getApplicationContext(), "Ticket", Toast.LENGTH_SHORT).show();
-            }
-            else if (id == R.id.nav_settings)
-            {
-                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                case R.id.nav_settings:
+                    Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.nav_ticket:
+                    Toast.makeText(getApplicationContext(), "Ticket", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.nav_logout:
+                    logOut();
+                    break;
             }
 
             drawer.closeDrawer(GravityCompat.START);
@@ -97,10 +112,46 @@ public class Main extends AppCompatActivity
         View header = leftNavigationView.getHeaderView(0);
         populatePerson(header);
 
-        NavigationView rightNavigationView = (NavigationView) findViewById(R.id.nav_right_view);
+        componentsOfFilter();
+    }
 
-        View header2 = rightNavigationView.getHeaderView(0);
-        componentsOfFilter(header2);
+    private void loadGoogleClient()
+    {
+        GoogleSignInOptions signInOptions = new
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions)
+                .build();
+    }
+
+    private void logOut()
+    {
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+
+        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+            @Override
+            public void onResult(@NonNull Status status) {
+                if (status.isSuccess()) {
+                    logOutAccount();
+                } else {
+                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        logOutAccount();
+    }
+
+    private void logOutAccount()
+    {
+        Intent intent = new Intent(this, PreLogin.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     public void populatePerson(View view)
@@ -129,32 +180,48 @@ public class Main extends AppCompatActivity
     public void goViewMap()
     {
         Intent intent = new Intent(this, MapsEvents.class);
-        intent.putExtra("EVENTS", (Serializable) listEvents.events);
+        intent.putExtra("EVENTS", (Serializable) listEvents);
         startActivity(intent);
     }
 
-    public void componentsOfFilter(View view)
+    public void componentsOfFilter()
     {
-        expandable_genre = (ExpandableListView) view.findViewById(R.id.expandable_genre);
+        expandable_genre = (ExpandableListView) findViewById(R.id.expandable_genre);
         filter_category = PopulateData.getData(R.string.filter_genre, this);
 
         list_child = new ArrayList<>(filter_category.keySet());
         filterAdapter = new FilterAdapter(this, filter_category, list_child, R.string.filter_genre);
         expandable_genre.setAdapter(filterAdapter);
 
-        expandable_date = (ExpandableListView) view.findViewById(R.id.expandable_date);
+        expandable_date = (ExpandableListView) findViewById(R.id.expandable_date);
         filter_category = PopulateData.getData(R.string.filter_date, this);
 
         list_child = new ArrayList<>(filter_category.keySet());
         filterAdapter = new FilterAdapter(this , filter_category, list_child, R.string.filter_date);
         expandable_date.setAdapter(filterAdapter);
 
-        expandable_locale = (ExpandableListView) view.findViewById(R.id.expandable_locale);
+        expandable_locale = (ExpandableListView) findViewById(R.id.expandable_locale);
         filter_category = PopulateData.getData(R.string.filter_locale, this);
 
         list_child = new ArrayList<>(filter_category.keySet());
         filterAdapter = new FilterAdapter(this , filter_category, list_child, R.string.filter_locale);
         expandable_locale.setAdapter(filterAdapter);
+    }
+
+    public void selectedChildTest(View view)
+    {
+        if(view.getTag() != "CHECK" && view.getTag() == null)
+        {
+            CheckBox checkBox = (CheckBox) view;
+            checkBox.setTextColor(Color.parseColor("#36b30c"));
+            view.setTag("CHECK");
+        }
+        else
+        {
+            CheckBox checkBox = (CheckBox) view;
+            checkBox.setTextColor(Color.parseColor("#000000"));
+            view.setTag(null);
+        }
     }
 
     @Override
@@ -200,5 +267,11 @@ public class Main extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult)
+    {
+
     }
 }

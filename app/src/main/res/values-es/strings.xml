@@ -28,6 +28,7 @@
     <string name="hnt_filterDateEnd">Data final - Ejemplo: dd/MM/yyyy</string>
     <string name="hnt_filterLocationActivated">Activado</string>
     <string name="hnt_filterLocationDeactivated">Desactivado</string>
+    <string name="txt_filter">Filtro</string>
 
     <!-- Strings related of error of field -->
     <string name="field_email">Por favor, inserte un correo electrónico válido</string>
@@ -44,6 +45,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Configuración</string>
     <string name="ticket">Ingresso</string>
+    <string name="nav_logout">Cerrar sesión</string>
     <string name="filter_date">Filtrar por fecha</string>
     <string name="filter_locale">Filtrar por ubicación</string>
     <string name="filter_genre">Filtrar por género</string>

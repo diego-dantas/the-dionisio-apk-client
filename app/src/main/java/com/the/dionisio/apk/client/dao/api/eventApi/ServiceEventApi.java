@@ -2,6 +2,8 @@ package com.the.dionisio.apk.client.dao.api.eventApi;
 
 import com.the.dionisio.apk.client.model.dto.Event;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -14,8 +16,5 @@ import retrofit2.http.Path;
 public interface ServiceEventApi
 {
     @GET("/event")
-    Call<Events> getEvents(@Header("X-Auth-Token") String token);
-
-    @GET("/event/{id}")
-    Call<Event> getEvent(@Header("X-Auth-Token") String token, @Path("id") String id);
+    Call<List<Event>> getEvents(@Header("X-Auth-Token") String token);
 }
