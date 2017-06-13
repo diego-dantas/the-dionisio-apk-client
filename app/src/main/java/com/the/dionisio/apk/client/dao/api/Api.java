@@ -1,9 +1,5 @@
 package com.the.dionisio.apk.client.dao.api;
 
-import com.the.dionisio.apk.client.dao.api.eventApi.EventDataConverter;
-import com.the.dionisio.apk.client.dao.api.loginApi.LoginDataConverter;
-import com.the.dionisio.apk.client.dao.api.personApi.PersonDataConverter;
-
 /**
  * Created by igorm on 06/05/2017.
  */
@@ -11,10 +7,11 @@ import com.the.dionisio.apk.client.dao.api.personApi.PersonDataConverter;
 public interface Api
 {
     String METHOD_GET = "get";
+    String METHOD_POST = "post";
     String METHOD_PUT = "put";
     String METHOD_DELETE = "delete";
 
-    PersonDataConverter personDataConverter = new PersonDataConverter();
-    LoginDataConverter loginDataConverter = new LoginDataConverter();
-    EventDataConverter eventDataConverter = new EventDataConverter();
+    RequestPerson requestPerson = new RequestPerson();
+    RequestLogin requestLogin = new RequestLogin();
+    RequestEvent requestEvent = new RequestEvent();
 }

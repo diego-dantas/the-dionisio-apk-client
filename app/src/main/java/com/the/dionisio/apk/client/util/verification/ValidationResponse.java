@@ -33,16 +33,16 @@ public class ValidationResponse
                 }
                 break;
             case 401:
-
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                 break;
             case 404:
-
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                 break;
             case 406:
-
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                 break;
             case 509:
-
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Toast.makeText(context, R.string.validation_connection, Toast.LENGTH_SHORT).show();
@@ -68,13 +68,13 @@ public class ValidationResponse
                 }
                 break;
             case 404:
-
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                 break;
             case 406:
-
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                 break;
             case 509:
-
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Toast.makeText(context, R.string.validation_connection, Toast.LENGTH_SHORT).show();

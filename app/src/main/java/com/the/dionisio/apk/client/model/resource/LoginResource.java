@@ -1,6 +1,9 @@
 package com.the.dionisio.apk.client.model.resource;
 
 import android.content.Context;
+import android.widget.Toast;
+
+import com.the.dionisio.apk.client.model.dto.Filter;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
@@ -11,30 +14,41 @@ import com.the.dionisio.apk.client.model.presenter.Presenter;
 
 public class LoginResource
 {
-    public void methodsWithToken(Token token, Person person, Context context, String methodHttp)
+    public void methodsWithToken(Token token, Person person, Filter filter, Context context, String methodHttp)
     {
         switch(methodHttp)
         {
             case "get":
-                if(token != null)
-                {
-                    Presenter.eventAction.getEvents(token, person, context);
-                }
+                if (validationParameters(token)) {Presenter.eventAction.getEvents(token, person, context);}
+                else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
+                break;
+            case "post":
+                if (validationParameters(token)) {Presenter.eventAction.getEventsWithFilter(token, filter, context);}
+                else { Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
                 break;
             case "put":
-                if(person != null && token != null)
-                {
-                    Presenter.personAction.updatePersonApi(token, person, context);
-                }
+                if (validationParameters(token, person)) {Presenter.personAction.updatePersonApi(token, person, context);}
+                else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
                 break;
             case "delete":
-                if(person != null && token != null)
-                {
-                    Presenter.personAction.deletePersonApi(token, person, context);
-                }
+                if (validationParameters(token, person)) {Presenter.personAction.deletePersonApi(token, person, context);}
+                else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
                 break;
             default:
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    public Boolean validationParameters(Token token)
+    {
+        if(token != null) {return true;}
+        else  {return false;}
+    }
+
+    public Boolean validationParameters(Token token, Person person)
+    {
+        if(token != null && person != null) {return true;}
+        else  {return false;}
     }
 }

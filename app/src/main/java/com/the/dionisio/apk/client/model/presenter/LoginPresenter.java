@@ -4,11 +4,11 @@ import android.content.Context;
 import com.the.dionisio.apk.client.Main;
 import com.the.dionisio.apk.client.dao.api.Api;
 import com.the.dionisio.apk.client.model.dto.Event;
+import com.the.dionisio.apk.client.model.dto.Filter;
 import com.the.dionisio.apk.client.model.dto.Login;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.util.Util;
-
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ public class LoginPresenter
 {
     public void startLogin(Person person, Login login, Context context, String typeLogin)
     {
-        Api.loginDataConverter.postLogin(person, login, context, typeLogin);
+        Api.requestLogin.postLogin(person, login, context, typeLogin);
     }
 
     public void resultLoginOk(Context context, Person person, List<Event> events, Token token)
@@ -27,11 +27,11 @@ public class LoginPresenter
         Util.moviment.goViewClearWithData(context, Main.class, person, events, token);
     }
 
-    public void refreshTokenApi(Token token, Person person, Context context, String typeMethod)
+    public void refreshTokenApi(Token token, Person person, Filter filter, Context context, String typeMethod)
     {
         if(context != null && typeMethod != null && !typeMethod.isEmpty())
         {
-            Api.loginDataConverter.refreshToken(token, person, context, typeMethod);
+            Api.requestLogin.refreshToken(token, person, filter, context, typeMethod);
         }
     }
 }

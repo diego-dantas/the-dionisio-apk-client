@@ -17,7 +17,7 @@ public class PersonPresenter
         //Calling the service of connection of API
         if(person != null && context != null)
         {
-            Api.personDataConverter.postPerson(person, context, typeLogin);
+            Api.requestPerson.postPerson(person, context, typeLogin);
         }
     }
 
@@ -26,7 +26,7 @@ public class PersonPresenter
         //Calling the service of connection of API
         if(person != null && context != null)
         {
-            Api.personDataConverter.updatePerson(token, person, context);
+            Api.requestPerson.updatePerson(token, person, context);
         }
     }
 
@@ -35,7 +35,7 @@ public class PersonPresenter
         //Calling the service of connection of API
         if(person != null && context != null)
         {
-            Api.personDataConverter.deletePerson(token, person, context);
+            Api.requestPerson.deletePerson(token, person, context);
         }
     }
 
