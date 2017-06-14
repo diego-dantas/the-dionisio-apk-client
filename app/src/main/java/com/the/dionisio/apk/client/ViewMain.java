@@ -54,7 +54,7 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
         txtName.setText(person.name);
         txtEmail.setText(person.email);
         txtPassword.setText(person.password);
-        txtBirth.setText(Util.transformDate.getDateIntoString(person.birth));
+        txtBirth.setText(person.getBirth(person.birth));
         txtSex.setText(person.sex);
         Glide.with(this).load(person.picture).into(imgPhoto);
 

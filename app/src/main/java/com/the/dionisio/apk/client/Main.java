@@ -24,8 +24,6 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.dto.Person;
@@ -63,6 +61,8 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
     private List<String> list_child;
     private ExpandableListView expandable_genre, expandable_date, expandable_locale;
     private FilterAdapter filterAdapter;
+    private List<String> filterGenre = new ArrayList<>();
+    private final String CHECK = "check";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -133,14 +133,11 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
 
-        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
-            @Override
-            public void onResult(@NonNull Status status) {
-                if (status.isSuccess()) {
-                    logOutAccount();
-                } else {
-                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-                }
+        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(status -> {
+            if (status.isSuccess()) {
+                logOutAccount();
+            } else {
+                Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -208,20 +205,74 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         expandable_locale.setAdapter(filterAdapter);
     }
 
-    public void selectedChildTest(View view)
+    public void selectedCheckFilter(View view)
     {
-        if(view.getTag() != "CHECK" && view.getTag() == null)
+        if(view.getTag() != CHECK && view.getTag() == null)
         {
             CheckBox checkBox = (CheckBox) view;
             checkBox.setTextColor(Color.parseColor("#36b30c"));
-            view.setTag("CHECK");
+            checkBox.setTag(CHECK);
+            populateFilterGenre(checkBox);
         }
         else
         {
             CheckBox checkBox = (CheckBox) view;
             checkBox.setTextColor(Color.parseColor("#000000"));
-            view.setTag(null);
+            checkBox.setTag(null);
+            populateFilterGenre(checkBox);
         }
+    }
+
+    private void populateFilterGenre(View view)
+    {
+        switch(view.getId())
+        {
+            case R.id.child_rock:
+                if(view.getTag() == CHECK)
+                {
+                    filterGenre.add("rock");
+                }
+                else
+                {
+                    filterGenre.remove("rock");
+                }
+                break;
+            case R.id.child_electronic:
+                if(view.getTag() == CHECK)
+                {
+                    filterGenre.add("electronic");
+                }
+                else
+                {
+                    filterGenre.remove("electronic");
+                }
+                break;
+            case R.id.child_sertanejo:
+                if(view.getTag() == CHECK)
+                {
+                    filterGenre.add("sertanejo");
+                }
+                else
+                {
+                    filterGenre.remove("sertanejo");
+                }
+                break;
+            case R.id.child_pagode:
+                if(view.getTag() == CHECK)
+                {
+                    filterGenre.add("pagode");
+                }
+                else
+                {
+                    filterGenre.remove("pagode");
+                }
+                break;
+        }
+    }
+
+    public void getEventsWithFilter(View view)
+    {
+
     }
 
     @Override

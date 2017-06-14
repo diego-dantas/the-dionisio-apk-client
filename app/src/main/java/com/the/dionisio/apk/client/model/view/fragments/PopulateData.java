@@ -1,9 +1,7 @@
 package com.the.dionisio.apk.client.model.view.fragments;
 
 import android.content.Context;
-
 import com.the.dionisio.apk.client.R;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,10 +20,7 @@ public class PopulateData
         switch(filter)
         {
             case R.string.filter_genre:
-                components.add("Rock");
-                components.add("Electronic");
-                components.add("Country");
-                components.add("Pagode");
+                components.add("");
                 type_filter.put(context.getString(filter), components);
                 return type_filter;
             case R.string.filter_date:

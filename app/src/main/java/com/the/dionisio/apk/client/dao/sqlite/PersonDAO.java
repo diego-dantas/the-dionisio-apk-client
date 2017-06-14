@@ -6,9 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.util.Log;
-
 import com.the.dionisio.apk.client.model.dto.Person;
-import com.the.dionisio.apk.client.util.Util;
 
 /**
  * Created by Daniel on 05/05/2017.
@@ -162,7 +160,7 @@ public class PersonDAO
         values.put("email", person.email);
         values.put("password", person.password);
         values.put("cpf", person.cpf);
-        values.put("birth", Util.transformDate.getDateIntoString(person.birth));
+        values.put("birth", person.getBirth(person.birth));
         values.put("sex", person.sex);
         values.put("picture", person.picture);
         values.put("isActive", ((person.isActive) ? 1 : 0));

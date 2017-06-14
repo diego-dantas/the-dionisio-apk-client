@@ -48,8 +48,8 @@ public class DetailedEvent extends AppCompatActivity
     {
         txtNameEvent.setText(event.name);
         txtDescriptionEvent.setText(event.description);
-        txtDateStartEvent.setText(Util.transformDate.getDateAndHourIntoString(event.dateTimeRange.start));
-        txtDateEndEvent.setText(Util.transformDate.getDateAndHourIntoString(event.dateTimeRange.end));
+        txtDateStartEvent.setText(event.dateTimeRange.getStart());
+        txtDateEndEvent.setText(event.dateTimeRange.getEnd());
 
         if(event.urlBanners != null)
         {

@@ -49,6 +49,7 @@
     <string name="filter_date">Filtrar por fecha</string>
     <string name="filter_locale">Filtrar por ubicación</string>
     <string name="filter_genre">Filtrar por género</string>
+    <string name="btn_filter">Filtrar ahora</string>
 
     <!-- Strings related of alter password -->
     <string name="hnt_present_password">contraseña actual</string>

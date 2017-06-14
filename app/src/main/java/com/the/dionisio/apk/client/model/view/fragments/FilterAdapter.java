@@ -49,15 +49,13 @@ public class FilterAdapter extends BaseExpandableListAdapter
     @Override
     public View getChildView(int parent, int child, boolean lastChild, View convertView, ViewGroup parentView)
     {
-        String title_child =  (String) getChild(parent, child);
-
         if(convertView == null)
         {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(whoLayoutChild(), parentView,false);
         }
 
-        componentsBelongChild(convertView, title_child);
+        componentsBelongChild(convertView);
 
         return convertView;
     }
@@ -130,19 +128,19 @@ public class FilterAdapter extends BaseExpandableListAdapter
         }
     }
 
-    public void componentsBelongChild(View view, String title_child)
+    public void componentsBelongChild(View view)
     {
         switch(who_parent)
         {
             case R.string.filter_genre:
-                CheckBox check_child = (CheckBox) view.findViewById(R.id.child_txt);
-                check_child.setText(title_child);
+                CheckBox check_rock = (CheckBox) view.findViewById(R.id.child_rock);
+                CheckBox check_electronic = (CheckBox) view.findViewById(R.id.child_electronic);
+                CheckBox check_sertanejo = (CheckBox) view.findViewById(R.id.child_sertanejo);
+                CheckBox check_pagode = (CheckBox) view.findViewById(R.id.child_pagode);
                 break;
             case R.string.filter_date:
                 EditText edit_childBegin = (EditText) view.findViewById(R.id.editTextDateStart);
-                edit_childBegin.setText(title_child);
                 EditText edit_childEnd = (EditText) view.findViewById(R.id.editTextDateEnd);
-                edit_childEnd.setText(title_child);
                 break;
             case R.string.filter_locale:
                 RadioButton radio_childActive = (RadioButton) view.findViewById(R.id.radioLocaleActivated);

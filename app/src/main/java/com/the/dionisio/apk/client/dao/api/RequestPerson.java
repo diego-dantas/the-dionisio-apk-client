@@ -128,7 +128,7 @@ public class RequestPerson
         });
     }
 
-    public void validationDelete(Response response)
+    private void validationDelete(Response response)
     {
         Validation validation = (Validation) response.body();
 

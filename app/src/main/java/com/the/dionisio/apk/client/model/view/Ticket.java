@@ -1,16 +1,12 @@
 package com.the.dionisio.apk.client.model.view;
 
-import android.annotation.TargetApi;
 import android.graphics.Point;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.util.Util;
 import com.the.dionisio.apk.client.util.view.QrCode;

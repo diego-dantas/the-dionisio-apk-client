@@ -4,9 +4,7 @@ import com.the.dionisio.apk.client.util.api.AddressAPI;
 import com.the.dionisio.apk.client.util.verification.ValidationResponse;
 import com.the.dionisio.apk.client.util.view.CardGenre;
 import com.the.dionisio.apk.client.util.view.MovingActivity;
-import com.the.dionisio.apk.client.util.view.QrCode;
 import com.the.dionisio.apk.client.util.view.SetData;
-import com.the.dionisio.apk.client.util.view.TransformDate;
 import com.the.dionisio.apk.client.util.verification.ValidationInput;
 
 /**
@@ -31,9 +29,4 @@ public interface Util
      */
     ValidationInput validationInput = new ValidationInput();
     ValidationResponse validationResponse = new ValidationResponse();
-
-    /**
-     * Methods of general purpose.
-     */
-    TransformDate transformDate = new TransformDate();
 }

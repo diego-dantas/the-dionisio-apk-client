@@ -4,11 +4,39 @@
     android:layout_height="match_parent">
 
     <CheckBox
-        android:id="@+id/child_txt"
+        android:id="@+id/child_rock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/genreRock"
         android:theme="@style/CustomTheme"
-        android:onClick="selectedChildTest"
+        android:onClick="selectedCheckFilter"
+        android:layout_marginLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
+    <CheckBox
+        android:id="@+id/child_electronic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/genreElectronics"
+        android:theme="@style/CustomTheme"
+        android:onClick="selectedCheckFilter"
+        android:layout_marginLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
+    <CheckBox
+        android:id="@+id/child_sertanejo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/genreSertanejo"
+        android:theme="@style/CustomTheme"
+        android:onClick="selectedCheckFilter"
+        android:layout_marginLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
+    <CheckBox
+        android:id="@+id/child_pagode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/genrePagoda"
+        android:theme="@style/CustomTheme"
+        android:onClick="selectedCheckFilter"
         android:layout_marginLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
 
 </LinearLayout>

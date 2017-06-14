@@ -75,7 +75,7 @@ public class CreateAccount extends AppCompatActivity
             person.email = inputEmailCreateAccount.getText().toString();
             person.password = inputPasswordCreateAccount.getText().toString();
             person.picture = "";
-            person.birth = Util.transformDate.getDateIntoList(inputBirthCreateAccount.getText().toString());
+            person.birth = person.setBirth(inputBirthCreateAccount.getText().toString());
 
             if(radioManCreateAccount.isChecked())
             {

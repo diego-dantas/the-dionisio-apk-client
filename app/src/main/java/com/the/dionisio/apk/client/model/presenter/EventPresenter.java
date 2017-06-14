@@ -15,14 +15,27 @@ public class EventPresenter
 {
     public void getEvents(Token token, Person person, Context context)
     {
-        if(token.token != null || token.token.isEmpty())
+        if(validationData(token, person))
         {
             Api.requestEvent.getEvents(token, person, context);
         }
     }
 
-    public void getEventsWithFilter(Token token, Filter filter, Context context)
+    public void getEventsWithFilter(Token token, Person person, Filter filter, Context context)
     {
+        if(validationData(token, person))
+        {
+            Api.requestEvent.getEventsWithFilter(token, person, filter, context);
+        }
+    }
 
+    private Boolean validationData(Token token, Person person)
+    {
+        if(token.token != null && !token.token.equals("") && person != null)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

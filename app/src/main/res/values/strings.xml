@@ -65,6 +65,7 @@
     <string name="filter_date">Filtrar por data</string>
     <string name="filter_locale">Filtrar por local</string>
     <string name="filter_genre">Filtrar por genero</string>
+    <string name="btn_filter">Filtrar agora</string>
     <string name="title_activity_ticket">Ticket</string>
     <string name="title_activity_setting">Setting</string>
 

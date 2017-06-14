@@ -23,7 +23,7 @@ public class LoginResource
                 else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
                 break;
             case "post":
-                if (validationParameters(token)) {Presenter.eventAction.getEventsWithFilter(token, filter, context);}
+                if (validationParameters(token)) {Presenter.eventAction.getEventsWithFilter(token, person, filter, context);}
                 else { Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
                 break;
             case "put":

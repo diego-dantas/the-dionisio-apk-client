@@ -26,16 +26,40 @@ public class RequestEvent
     {
         try
         {
-            Call<List<Event>> request = retrofitFactory.getEventService().getEvents(token.token);
+            Call request = retrofitFactory.getEventService().getEvents(token.token);
 
-            request.enqueue(new Callback<List<Event>>() {
+            request.enqueue(new Callback() {
                 @Override
-                public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                public void onResponse(Call call, Response response) {
                     validationEvents(response, token, person, context);
                 }
 
                 @Override
-                public void onFailure(Call<List<Event>> call, Throwable t) {
+                public void onFailure(Call call, Throwable t) {
+                    Log.e(TAG, "Failure to communication with the server!");
+                }
+            });
+        }
+        catch(Exception error)
+        {
+
+        }
+    }
+
+    public void getEventsWithFilter(Token token, Person person, Filter filter, Context context)
+    {
+        try
+        {
+            Call request = retrofitFactory.getEventService().getEventsWithFilter(token.token, filter);
+
+            request.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    validationEvents(response, token, person, context);
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
                     Log.e(TAG, "Failure to communication with the server!");
                 }
             });
@@ -72,10 +96,5 @@ public class RequestEvent
         {
             Log.e(TAG, "Failed, the data does not match, code: " + response.code());
         }
-    }
-
-    public void getEventsWithFilter(Token token, Filter filter, Context context)
-    {
-
     }
 }
