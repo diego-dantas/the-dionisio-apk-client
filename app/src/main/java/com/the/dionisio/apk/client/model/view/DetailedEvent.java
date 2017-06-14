@@ -65,7 +65,6 @@ public class DetailedEvent extends AppCompatActivity
     }
 
     public void goShoppingCart(View view){
-        Log.i("Reso", "To aqui mano");
         Intent intent = new Intent(this, ShoppingCart.class);
         intent.putExtra("EVENT", event);
         startActivity(intent);

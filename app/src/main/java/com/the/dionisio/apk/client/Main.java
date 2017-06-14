@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -177,7 +178,7 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
     public void goViewMap()
     {
         Intent intent = new Intent(this, MapsEvents.class);
-        intent.putExtra("EVENTS", (Serializable) listEvents);
+        intent.putExtra("ListEvents", (Serializable) listEvents);
         startActivity(intent);
     }
 
