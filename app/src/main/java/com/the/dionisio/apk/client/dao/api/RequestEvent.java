@@ -22,7 +22,7 @@ public class RequestEvent
     private RetrofitFactory retrofitFactory = new RetrofitFactory();
     private String TAG = "EVENT";
 
-    public void getEvents(Token token, Person person, Context context)
+    public void getEvents(final Token token, final Person person, final Context context)
     {
         try
         {
@@ -46,7 +46,7 @@ public class RequestEvent
         }
     }
 
-    public void getEventsWithFilter(Token token, Person person, Filter filter, Context context)
+    public void getEventsWithFilter(final Token token, final Person person, Filter filter, final Context context)
     {
         try
         {

@@ -23,7 +23,7 @@ public class RequestLogin
     private RetrofitFactory retrofitFactory = new RetrofitFactory();
     public static final String TAG = "LOGIN";
 
-    public void postLogin(Person person, Login login, Context context, String typeLogin)
+    public void postLogin(final Person person, Login login, final Context context, final String typeLogin)
     {
         try
         {
@@ -50,7 +50,7 @@ public class RequestLogin
         }
     }
 
-    public void refreshToken(Token token, Person person, Filter filter, Context context, String methodHTTP)
+    public void refreshToken(Token token, final Person person, final Filter filter, final Context context, final String methodHTTP)
     {
         try
         {

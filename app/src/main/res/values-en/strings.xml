@@ -59,4 +59,9 @@
 
     <!-- String related of settings -->
     <string name="hnt_alter_name">Change name</string>
+
+    <!-- String of load views -->
+    <string name="progress_title">Loading ...</string>
+    <string name="progress_message">Connecting to web service ...</string>
+
 </resources>

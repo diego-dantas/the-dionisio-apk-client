@@ -38,7 +38,7 @@ public class MaskForField implements TextWatcher
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count)
     {
-        String str = UtilMask.unmask(s.toString(), symbolMask);
+        String str = unmask(s.toString(), symbolMask);
         String mascara = "";
 
         if (isUpdating)
@@ -49,16 +49,43 @@ public class MaskForField implements TextWatcher
         }
 
         if(str.length() > old.length())
-            mascara = UtilMask.mask(mMask,str);
+            mascara = mask(mMask,str);
         else
             mascara = s.toString();
 
         isUpdating = true;
 
+        mEditText.removeTextChangedListener(this);
         mEditText.setText(mascara);
         mEditText.setSelection(mascara.length());
+        mEditText.addTextChangedListener(this);
     }
 
+    public static String unmask(String s, Set<String> replaceSymbols) {
+
+        for (String symbol : replaceSymbols)
+            s = s.replaceAll("["+symbol+"]","");
+
+        return s;
+    }
+
+    public static String mask(String format, String text){
+        String maskedText="";
+        int i =0;
+        for (char m : format.toCharArray()) {
+            if (m != '#') {
+                maskedText += m;
+                continue;
+            }
+            try {
+                maskedText += text.charAt(i);
+            } catch (Exception e) {
+                break;
+            }
+            i++;
+        }
+        return maskedText;
+    }
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after)

@@ -1,5 +1,6 @@
 package com.the.dionisio.apk.client.model.view;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -55,7 +56,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
     //This is components this view
-    private ProgressBar progressBarLoginAccount;
+    private ProgressDialog progressLogin;
     private TextInputLayout inputLayoutEmailLogin, inputLayoutPasswordLogin;
     private EditText inputEmailLogin, inputPasswordLogin;
     private TextView txtForgotPassword;
@@ -97,8 +98,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         //End bloc google
 
         //Components of view
-        progressBarLoginAccount = (ProgressBar) findViewById(R.id.progressBarLoginAccount);
-
         inputLayoutEmailLogin = (TextInputLayout) findViewById(R.id.inputLayoutEmailLogin);
         inputLayoutPasswordLogin = (TextInputLayout) findViewById(R.id.inputLayoutPasswordLogin);
         inputEmailLogin = (EditText) findViewById(R.id.inputEmailLogin);
@@ -184,8 +183,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
                     Util.setData.setLogin(email, password),
                     this,
                     typeLogin);
-
-            cancelProgressBar();
         }
     }
 
@@ -244,8 +241,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
                     Util.setData.setLogin(email, password),
                     this,
                     typeLogin);
-
-            cancelProgressBar();
         }
     }
 
@@ -285,8 +280,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
                     Util.setData.setLogin(inputEmailLogin.getText().toString(), inputPasswordLogin.getText().toString()),
                     this,
                     typeLogin);
-
-            cancelProgressBar();
         }
     }
 
@@ -302,27 +295,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
 
     public void loadProgressBar()
     {
-        progressBarLoginAccount.setVisibility(View.VISIBLE);
-        inputLayoutEmailLogin.setVisibility(View.INVISIBLE);
-        inputLayoutPasswordLogin.setVisibility(View.INVISIBLE);
-        inputEmailLogin.setVisibility(View.INVISIBLE);
-        inputPasswordLogin.setVisibility(View.INVISIBLE);
-        txtForgotPassword.setVisibility(View.INVISIBLE);
-        btnLogin.setVisibility(View.INVISIBLE);
-        btnLoginFacebook.setVisibility(View.INVISIBLE);
-        btnLoginGoogle.setVisibility(View.INVISIBLE);
-    }
-
-    public void cancelProgressBar()
-    {
-        progressBarLoginAccount.setVisibility(View.INVISIBLE);
-        inputLayoutEmailLogin.setVisibility(View.VISIBLE);
-        inputLayoutPasswordLogin.setVisibility(View.VISIBLE);
-        inputEmailLogin.setVisibility(View.VISIBLE);
-        inputPasswordLogin.setVisibility(View.VISIBLE);
-        txtForgotPassword.setVisibility(View.VISIBLE);
-        btnLogin.setVisibility(View.VISIBLE);
-        btnLoginFacebook.setVisibility(View.VISIBLE);
-        btnLoginGoogle.setVisibility(View.VISIBLE);
+        progressLogin = new ProgressDialog(Login.this);
+        progressLogin.setTitle(getString(R.string.progress_title));
+        progressLogin.setMessage(getString(R.string.progress_message));
+        progressLogin.show();
     }
 }

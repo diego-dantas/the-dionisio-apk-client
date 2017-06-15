@@ -42,7 +42,10 @@ public class TextHelp {
             treatTex.add(formatBlock(frase[i]));
         }
 
-        treatTex.forEach(t->{result.append(t+" ");});
+        for(String t : treatTex)
+        {
+            result.append(t+" ");
+        }
 
         return result.deleteCharAt(result.length()-1).toString();
 

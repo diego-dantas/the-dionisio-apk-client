@@ -2,7 +2,6 @@ package com.the.dionisio.apk.client.model.resource;
 
 import android.content.Context;
 import android.widget.Toast;
-
 import com.the.dionisio.apk.client.model.dto.Filter;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
@@ -19,8 +18,16 @@ public class LoginResource
         switch(methodHttp)
         {
             case "get":
-                if (validationParameters(token)) {Presenter.eventAction.getEvents(token, person, context);}
-                else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
+                if(filter == null)
+                {
+                    if (validationParameters(token)) {Presenter.eventAction.getEvents(token, person, context);}
+                    else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
+                }
+                else
+                {
+                    if (validationParameters(token)) {Presenter.eventAction.getEvents(token, person, context);}
+                    else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
+                }
                 break;
             case "post":
                 if (validationParameters(token)) {Presenter.eventAction.getEventsWithFilter(token, person, filter, context);}

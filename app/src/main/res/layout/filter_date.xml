@@ -12,6 +12,8 @@
             android:id="@+id/editTextDateStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
             android:hint="@string/hnt_filterDateStart" />
 
     </android.support.design.widget.TextInputLayout>
@@ -25,6 +27,8 @@
             android:id="@+id/editTextDateEnd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
             android:hint="@string/hnt_filterDateEnd" />
 
     </android.support.design.widget.TextInputLayout>

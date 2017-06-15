@@ -12,6 +12,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.model.view.maskForField.MaskForField;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class FilterAdapter extends BaseExpandableListAdapter
     private HashMap<String, List<String>> filter_category;
     private List<String> filter_list;
     private Integer who_parent;
+    public EditText edit_childBegin, edit_childEnd;
+    private final String MASK_DATE = "##/##/####";
 
     public FilterAdapter(Context context, HashMap<String, List<String>> filter_category, List<String> filter_list, Integer who_parent)
     {
@@ -139,8 +143,11 @@ public class FilterAdapter extends BaseExpandableListAdapter
                 CheckBox check_pagode = (CheckBox) view.findViewById(R.id.child_pagode);
                 break;
             case R.string.filter_date:
-                EditText edit_childBegin = (EditText) view.findViewById(R.id.editTextDateStart);
-                EditText edit_childEnd = (EditText) view.findViewById(R.id.editTextDateEnd);
+                edit_childBegin = (EditText) view.findViewById(R.id.editTextDateStart);
+                edit_childEnd = (EditText) view.findViewById(R.id.editTextDateEnd);
+
+                edit_childBegin.addTextChangedListener(new MaskForField(MASK_DATE, edit_childBegin));
+                edit_childEnd.addTextChangedListener(new MaskForField(MASK_DATE, edit_childEnd));
                 break;
             case R.string.filter_locale:
                 RadioButton radio_childActive = (RadioButton) view.findViewById(R.id.radioLocaleActivated);
@@ -151,5 +158,19 @@ public class FilterAdapter extends BaseExpandableListAdapter
                 Toast.makeText(context, "Trouxaaaa", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    public String getFieldDateFilter(String date)
+    {
+        if(date.equals("begin"))
+        {
+            return edit_childBegin.getText().toString();
+        }
+        else if(date.equals("end"))
+        {
+            return edit_childEnd.getText().toString();
+        }
+
+        return null;
     }
 }

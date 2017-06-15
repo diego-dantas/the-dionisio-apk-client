@@ -17,8 +17,40 @@ public class DateTimeRange implements Serializable
         return treateDateTime(this.start);
     }
 
+    public Integer[] setStart(String dateTime)
+    {
+        Integer[] convertedDate = new Integer[6];
+        String[] date = dateTime.split("/");
+
+        convertedDate[0] = Integer.parseInt(date[0]);
+        convertedDate[1] = Integer.parseInt(date[1]);
+        convertedDate[2] = Integer.parseInt(date[2]);
+        convertedDate[4] = 0;
+        convertedDate[5] = 0;
+        convertedDate[6] = 0;
+        convertedDate[7] = 0;
+
+        return convertedDate;
+    }
+
     public String getEnd() {
         return treateDateTime(this.end);
+    }
+
+    public Integer[] setEnd(String dateTime)
+    {
+        Integer[] convertedDate = new Integer[6];
+        String[] date = dateTime.split("/");
+
+        convertedDate[0] = Integer.parseInt(date[0]);
+        convertedDate[1] = Integer.parseInt(date[1]);
+        convertedDate[2] = Integer.parseInt(date[2]);
+        convertedDate[4] = 0;
+        convertedDate[5] = 0;
+        convertedDate[6] = 0;
+        convertedDate[7] = 0;
+
+        return convertedDate;
     }
 
     private String treateDateTime(Integer[] value)

@@ -20,6 +20,7 @@ public class CreateAccount extends AppCompatActivity
     private TextInputLayout inputLayoutNameFullCreateAccount, inputLayoutEmailCreateAccount, inputLayoutPasswordCreateAccount, inputLayoutBirthCreateAccount;
     private EditText inputNameFullCreateAccount, inputEmailCreateAccount, inputPasswordCreateAccount, inputBirthCreateAccount;
     private RadioButton radioManCreateAccount, radioWomanCreateAccount;
+    private final String MASK_DATE = "##/##/####";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,7 @@ public class CreateAccount extends AppCompatActivity
         radioManCreateAccount = (RadioButton) findViewById(R.id.radioManCreateAccount);
         radioWomanCreateAccount = (RadioButton) findViewById(R.id.radioWomanCreateAccount);
 
-        MaskForField maskBirth = new MaskForField("##/##/####", inputBirthCreateAccount);
-        inputBirthCreateAccount.addTextChangedListener(maskBirth);
+        inputBirthCreateAccount.addTextChangedListener(new MaskForField(MASK_DATE, inputBirthCreateAccount));
     }
 
     public void backCreateAccount(View v)

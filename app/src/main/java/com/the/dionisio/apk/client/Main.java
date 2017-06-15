@@ -10,11 +10,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,8 +28,11 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.the.dionisio.apk.client.model.dto.Event;
+import com.the.dionisio.apk.client.model.dto.Filter;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.view.DetailedEvent;
 import com.the.dionisio.apk.client.model.view.MapsEvents;
@@ -61,6 +67,7 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
     private HashMap<String, List<String>> filter_category;
     private List<String> list_child;
     private ExpandableListView expandable_genre, expandable_date, expandable_locale;
+    private EditText inputSearchNameEvent;
     private FilterAdapter filterAdapter;
     private List<String> filterGenre = new ArrayList<>();
     private final String CHECK = "check";
@@ -82,8 +89,12 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         adapterCustom = new EventListAdapter(this, listEvents);
         listViewEvent.setAdapter(adapterCustom);
 
-        listViewEvent.setOnItemClickListener((parent, view, position, id) ->
-                goDetailedEvent((Event) view.getTag()));
+        listViewEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                goDetailedEvent((Event) view.getTag());
+            }
+        });
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -91,23 +102,25 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         toggle.syncState();
 
         NavigationView leftNavigationView = (NavigationView) findViewById(R.id.nav_left_view);
-        leftNavigationView.setNavigationItemSelectedListener(item ->
-        {
-            switch (item.getItemId())
-            {
-                case R.id.nav_settings:
-                    Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.nav_ticket:
-                    Toast.makeText(getApplicationContext(), "Ticket", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.nav_logout:
-                    logOut();
-                    break;
-            }
+        leftNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.nav_settings:
+                        Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_ticket:
+                        Toast.makeText(getApplicationContext(), "Ticket", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_logout:
+                        logOut();
+                        break;
+                }
 
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
         });
 
         View header = leftNavigationView.getHeaderView(0);
@@ -134,11 +147,14 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
 
-        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(status -> {
-            if (status.isSuccess()) {
-                logOutAccount();
-            } else {
-                Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+            @Override
+            public void onResult(@NonNull Status status) {
+                if (status.isSuccess()) {
+                    logOutAccount();
+                } else {
+                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -204,6 +220,22 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         list_child = new ArrayList<>(filter_category.keySet());
         filterAdapter = new FilterAdapter(this , filter_category, list_child, R.string.filter_locale);
         expandable_locale.setAdapter(filterAdapter);
+
+        inputSearchNameEvent = (EditText) findViewById(R.id.inputSearchNameEvent);
+
+        inputSearchNameEvent.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_SEARCH)
+                {
+                    getEventsWithFilter(null);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        inputSearchNameEvent.clearFocus();
     }
 
     public void selectedCheckFilter(View view)
@@ -273,7 +305,11 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
 
     public void getEventsWithFilter(View view)
     {
-
+        Filter filter = new Filter();
+        filter.genres = filterGenre;
+        //filter.dateTimeRange.start = filter.dateTimeRange.setStart(filterAdapter.getFieldDateFilter("begin"));
+        //filter.dateTimeRange.end = filter.dateTimeRange.setEnd(filterAdapter.getFieldDateFilter("end"));
+        filter.name = inputSearchNameEvent.getText().toString();
     }
 
     @Override

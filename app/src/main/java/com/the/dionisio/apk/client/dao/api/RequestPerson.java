@@ -21,7 +21,7 @@ public class RequestPerson
     private RetrofitFactory retrofitFactory = new RetrofitFactory();
     public static final String TAG = "PERSON";
 
-    public void postPerson(Person person, Context context, String typeLogin)
+    public void postPerson(final Person person, final Context context, final String typeLogin)
     {
         try
         {
@@ -48,7 +48,7 @@ public class RequestPerson
         }
     }
 
-    public void updatePerson(Token token, Person person, Context context)
+    public void updatePerson(final Token token, final Person person, final Context context)
     {
         Call request = retrofitFactory.getPersonService().putPerson(token.token, person);
 
@@ -81,7 +81,7 @@ public class RequestPerson
                 Person newPerson = validation.additional;
 
                 Util.validationResponse.validationPerson(response.code(), newPerson, context);
-                isPostOrUpdate(response, token, newPerson, context, typeLogin);
+                isPostOrPut(response, token, person, newPerson, context, typeLogin);
             }
             else
             {
@@ -96,15 +96,15 @@ public class RequestPerson
         }
     }
 
-    private void isPostOrUpdate(Response response, Token token, Person person, Context context, String typeLogin)
+    private void isPostOrPut(Response response, Token token, Person person, Person newPerson, Context context, String typeLogin)
     {
-        if(token == null && typeLogin != null)
+        if(token == null)
         {
-            Presenter.loginAction.startLogin(person ,Util.setData.setLogin(person.email, person.password), context, typeLogin);
+            Presenter.loginAction.startLogin(newPerson ,Util.setData.setLogin(person.email, person.password), context, typeLogin);
         }
         else
         {
-            Util.validationResponse.validationLogin(response.code(), person, null, context, token, null);
+            Util.validationResponse.validationLogin(response.code(), newPerson, null, context, token, null);
         }
     }
 

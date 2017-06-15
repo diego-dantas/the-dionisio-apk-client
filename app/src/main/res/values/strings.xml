@@ -85,4 +85,8 @@
     <string name="txt_valueUnit">Valor Unitario</string>
     <string name="btn_checkout">Checkout</string>
 
+    <!-- String of load views -->
+    <string name="progress_title">Carregando ...</string>
+    <string name="progress_message">Conectando-se ao webservice ...</string>
+
 </resources>
