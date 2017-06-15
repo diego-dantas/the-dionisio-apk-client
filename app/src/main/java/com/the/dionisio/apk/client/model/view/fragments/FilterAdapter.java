@@ -138,27 +138,68 @@ public class FilterAdapter extends BaseExpandableListAdapter
         }
     }
 
+    /**
+     * VARIAVES DE CONTROLE DE ATRIBUIÇÃO DE VALOR NOS FILTRO DE DATA [begin, end]
+     */
+    private boolean NOP_GENRE =  true;
+    private boolean NOP_DATE =  true;
+    private boolean NOP_LOCATE =  true;
+    private boolean CTRL_BEGIN =  true;
+    private boolean CTRL_END=  true;
+
     public void componentsBelongChild(View view)
     {
-        switch(who_parent)
+
+
+            switch(who_parent)
         {
             case R.string.filter_genre:
-                CheckBox check_rock = (CheckBox) view.findViewById(R.id.child_rock);
-                CheckBox check_electronic = (CheckBox) view.findViewById(R.id.child_electronic);
-                CheckBox check_sertanejo = (CheckBox) view.findViewById(R.id.child_sertanejo);
-                CheckBox check_pagode = (CheckBox) view.findViewById(R.id.child_pagode);
+                if(NOP_GENRE)
+                {
+                    NOP_GENRE = false;
+                    CheckBox check_rock = (CheckBox) view.findViewById(R.id.child_rock);
+                    CheckBox check_electronic = (CheckBox) view.findViewById(R.id.child_electronic);
+                    CheckBox check_sertanejo = (CheckBox) view.findViewById(R.id.child_sertanejo);
+                    CheckBox check_pagode = (CheckBox) view.findViewById(R.id.child_pagode);
+                }
                 break;
             case R.string.filter_date:
-                edit_childBegin = (EditText) view.findViewById(R.id.editTextDateStart);
-                edit_childEnd = (EditText) view.findViewById(R.id.editTextDateEnd);
+                if (NOP_DATE)
+                {
+                    NOP_DATE =false;
+                    edit_childBegin = (EditText) view.findViewById(R.id.editTextDateStart);
+                    edit_childEnd = (EditText) view.findViewById(R.id.editTextDateEnd);
+                    edit_childBegin.addTextChangedListener(new MaskForField(MASK_DATE, edit_childBegin));
+                    edit_childEnd.addTextChangedListener(new MaskForField(MASK_DATE, edit_childEnd));
+                }
 
-                edit_childBegin.addTextChangedListener(new MaskForField(MASK_DATE, edit_childBegin));
-                edit_childEnd.addTextChangedListener(new MaskForField(MASK_DATE, edit_childEnd));
-                break;
+                //BEGIN
+                if (edit_childBegin.getText().toString().length()<10 && !CTRL_BEGIN){CTRL_BEGIN=true;}
+                if ( edit_childBegin.getText().toString().length()>=10 && CTRL_BEGIN)
+                {
+                    CTRL_BEGIN = false;
+                    //sua ação
+                    Toast.makeText(context, edit_childBegin.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+
+                //END
+                if (edit_childEnd.getText().toString().length()<10 && !CTRL_END){CTRL_END=true;}
+                if ( edit_childEnd.getText().toString().length()>=10 && CTRL_END)
+                {
+                    CTRL_END = false;
+                    //sua ação
+                    Toast.makeText(context, edit_childEnd.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+
+                 break;
             case R.string.filter_locale:
-                RadioButton radio_childActive = (RadioButton) view.findViewById(R.id.radioLocaleActivated);
-                RadioButton radio_childDeactivated = (RadioButton) view.findViewById(R.id.radioLocaleDeactivated);
-                radio_childDeactivated.setChecked(true);
+                if (NOP_LOCATE)
+                {
+                    NOP_LOCATE = false;
+                    RadioButton radio_childActive = (RadioButton) view.findViewById(R.id.radioLocaleActivated);
+                    RadioButton radio_childDeactivated = (RadioButton) view.findViewById(R.id.radioLocaleDeactivated);
+                    radio_childDeactivated.setChecked(true);
+                }
                 break;
             default:
                 Toast.makeText(context, "Trouxaaaa", Toast.LENGTH_SHORT).show();

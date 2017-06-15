@@ -54,11 +54,8 @@ public class MaskForField implements TextWatcher
             mascara = s.toString();
 
         isUpdating = true;
-
-        mEditText.removeTextChangedListener(this);
         mEditText.setText(mascara);
         mEditText.setSelection(mascara.length());
-        mEditText.addTextChangedListener(this);
     }
 
     public static String unmask(String s, Set<String> replaceSymbols) {
