@@ -26,7 +26,7 @@ public class CreateAccountStepGenre extends AppCompatActivity {
     private TextView txtElectronics, txtRock, txtSertanejo, txtPagode;
     private String controlCheck;
     private List<String> genres = new ArrayList<>();
-    private ProgressDialog progressCreateAccount;
+    private static ProgressDialog progressCreateAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -99,9 +99,15 @@ public class CreateAccountStepGenre extends AppCompatActivity {
             progressCreateAccount.setTitle(getString(R.string.progress_title));
             progressCreateAccount.setMessage(getString(R.string.progress_message));
             progressCreateAccount.show();
+
             Person person = (Person) getIntent().getSerializableExtra("PERSON");
             person.genres = genres;
             Presenter.personAction.createPersonApi(person, this, null);
         }
+    }
+
+    public void cancelProgressBar()
+    {
+        progressCreateAccount.dismiss();
     }
 }

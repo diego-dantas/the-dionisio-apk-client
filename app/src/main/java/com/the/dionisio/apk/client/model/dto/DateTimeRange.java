@@ -19,18 +19,25 @@ public class DateTimeRange implements Serializable
 
     public Integer[] setStart(String dateTime)
     {
-        Integer[] convertedDate = new Integer[6];
-        String[] date = dateTime.split("/");
+        try
+        {
+            Integer[] convertedDate = new Integer[8];
+            String[] date = dateTime.split("/");
 
-        convertedDate[0] = Integer.parseInt(date[0]);
-        convertedDate[1] = Integer.parseInt(date[1]);
-        convertedDate[2] = Integer.parseInt(date[2]);
-        convertedDate[4] = 0;
-        convertedDate[5] = 0;
-        convertedDate[6] = 0;
-        convertedDate[7] = 0;
+            convertedDate[0] = Integer.parseInt(date[2]);
+            convertedDate[1] = Integer.parseInt(date[1]);
+            convertedDate[2] = Integer.parseInt(date[0]);
+            convertedDate[4] = 0;
+            convertedDate[5] = 0;
+            convertedDate[6] = 0;
+            convertedDate[7] = 0;
 
-        return convertedDate;
+            return convertedDate;
+        }
+        catch(Exception error)
+        {
+            return null;
+        }
     }
 
     public String getEnd() {
@@ -39,18 +46,25 @@ public class DateTimeRange implements Serializable
 
     public Integer[] setEnd(String dateTime)
     {
-        Integer[] convertedDate = new Integer[6];
-        String[] date = dateTime.split("/");
+        try
+        {
+            Integer[] convertedDate = new Integer[8];
+            String[] date = dateTime.split("/");
 
-        convertedDate[0] = Integer.parseInt(date[0]);
-        convertedDate[1] = Integer.parseInt(date[1]);
-        convertedDate[2] = Integer.parseInt(date[2]);
-        convertedDate[4] = 0;
-        convertedDate[5] = 0;
-        convertedDate[6] = 0;
-        convertedDate[7] = 0;
+            convertedDate[0] = Integer.parseInt(date[2]);
+            convertedDate[1] = Integer.parseInt(date[1]);
+            convertedDate[2] = Integer.parseInt(date[0]);
+            convertedDate[4] = 0;
+            convertedDate[5] = 0;
+            convertedDate[6] = 0;
+            convertedDate[7] = 0;
 
-        return convertedDate;
+            return convertedDate;
+        }
+        catch(Exception error)
+        {
+            return null;
+        }
     }
 
     private String treateDateTime(Integer[] value)

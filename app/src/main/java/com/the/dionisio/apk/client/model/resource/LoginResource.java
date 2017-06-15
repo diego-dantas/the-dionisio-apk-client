@@ -18,16 +18,8 @@ public class LoginResource
         switch(methodHttp)
         {
             case "get":
-                if(filter == null)
-                {
-                    if (validationParameters(token)) {Presenter.eventAction.getEvents(token, person, context);}
-                    else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
-                }
-                else
-                {
-                    if (validationParameters(token)) {Presenter.eventAction.getEvents(token, person, context);}
-                    else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
-                }
+                if (validationParameters(token)) {Presenter.eventAction.getEvents(token, person, context);}
+                else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
                 break;
             case "post":
                 if (validationParameters(token)) {Presenter.eventAction.getEventsWithFilter(token, person, filter, context);}

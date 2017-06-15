@@ -34,9 +34,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.dto.Filter;
 import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.dto.Token;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.model.view.DetailedEvent;
 import com.the.dionisio.apk.client.model.view.MapsEvents;
 import com.the.dionisio.apk.client.model.view.PreLogin;
+import com.the.dionisio.apk.client.model.view.Setting;
 import com.the.dionisio.apk.client.model.view.fragments.EventListAdapter;
 import com.the.dionisio.apk.client.model.view.fragments.FilterAdapter;
 import com.the.dionisio.apk.client.model.view.fragments.PopulateData;
@@ -55,6 +58,7 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
     private CircleImageView urlPersonImage;
     private TextView txtPersonName, txtPersonEmail;
     private Person person;
+    private Token token;
     private GoogleApiClient googleApiClient;
 
     //Components of events
@@ -97,7 +101,7 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         });
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.syncState();
 
@@ -108,7 +112,10 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
                 switch (item.getItemId())
                 {
                     case R.id.nav_settings:
-                        Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                        Intent goSettings = new Intent(getApplicationContext(), Setting.class);
+                        goSettings.putExtra("PERSON", person);
+                        goSettings.putExtra("TOKEN", token);
+                        startActivity(goSettings);
                         break;
                     case R.id.nav_ticket:
                         Toast.makeText(getApplicationContext(), "Ticket", Toast.LENGTH_SHORT).show();
@@ -175,6 +182,7 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         txtPersonEmail = (TextView) view.findViewById(R.id.txtPersonEmail);
 
         person = (Person) getIntent().getSerializableExtra("PERSON");
+        token = (Token) getIntent().getSerializableExtra("TOKEN");
 
         txtPersonName.setText(person.name);
         txtPersonEmail.setText(person.email);
@@ -310,6 +318,8 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
         filter.dateTimeRange.start = filter.dateTimeRange.setStart(filterAdapter.getFieldDateFilter("begin"));
         filter.dateTimeRange.end = filter.dateTimeRange.setEnd(filterAdapter.getFieldDateFilter("end"));
         filter.name = inputSearchNameEvent.getText().toString();
+
+        Presenter.eventAction.getEventsWithFilter(token, person, filter, this);
     }
 
     @Override

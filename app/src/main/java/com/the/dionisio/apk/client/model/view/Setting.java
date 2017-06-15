@@ -9,11 +9,18 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.dao.api.Api;
+import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.dto.Token;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
+import com.the.dionisio.apk.client.model.view.fragments.GenreListAdapter;
 import com.the.dionisio.apk.client.util.Util;
-
 import java.util.Locale;
 
 /**
@@ -23,7 +30,13 @@ import java.util.Locale;
 public class Setting extends AppCompatActivity
 {
     private Spinner optLanguage;
-    private String[] aLanguage = new String[]{" ","Portuguese(Brazil)","English(United Stated)","Spain(Spain)"};
+    private String[] aLanguage = new String[]{"Portuguese(Brazil)","English(United Stated)","Spain(Spain)"};
+    private ListView listViewGenre;
+    private GenreListAdapter adapterCustom;
+    private Person person;
+    private Token token;
+    private EditText inputEmailSetting, inputNameSetting;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -56,6 +69,26 @@ public class Setting extends AppCompatActivity
 
             }
         });
+
+        /*listViewGenre = (ListView) findViewById(R.id.listViewGenre);
+
+        adapterCustom = new GenreListAdapter(this);
+        listViewGenre.setAdapter(adapterCustom);*/
+
+        person = (Person) getIntent().getSerializableExtra("PERSON");
+        token = (Token) getIntent().getSerializableExtra("TOKEN");
+
+        inputEmailSetting = (EditText) findViewById(R.id.inputEmailSetting);
+        inputNameSetting = (EditText) findViewById(R.id.inputNameSetting);
+
+        inputEmailSetting.setText(person.email);
+        inputNameSetting.setText(person.name);
+    }
+
+    public void putPerson(View view)
+    {
+        person.name = inputNameSetting.getText().toString();
+        Presenter.loginAction.refreshTokenApi(token, person, null, this, Api.METHOD_PUT);
     }
 
     public void setLocale(String lang) {

@@ -2,12 +2,17 @@ package com.the.dionisio.apk.client.dao.api;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.dto.Filter;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.retrofit.RetrofitFactory;
+import com.the.dionisio.apk.client.util.Util;
+
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +42,8 @@ public class RequestEvent
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     Log.e(TAG, "Failure to communication with the server!");
+                    Toast.makeText(context, R.string.validation_connection, Toast.LENGTH_SHORT).show();
+                    Util.moviment.cancelProgressBar();
                 }
             });
         }
@@ -61,6 +68,7 @@ public class RequestEvent
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     Log.e(TAG, "Failure to communication with the server!");
+                    Toast.makeText(context, R.string.validation_connection, Toast.LENGTH_SHORT).show();
                 }
             });
         }

@@ -10,6 +10,5 @@ public class Filter
 {
     public String name;
     public List<String> genres;
-    public DateTimeRange dateTimeRange;
-    public Boolean location;
+    public DateTimeRange dateTimeRange = new DateTimeRange();
 }

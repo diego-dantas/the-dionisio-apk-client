@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
     //This is components this view
-    private ProgressDialog progressLogin;
+    private static ProgressDialog progressLogin;
     private TextInputLayout inputLayoutEmailLogin, inputLayoutPasswordLogin;
     private EditText inputEmailLogin, inputPasswordLogin;
     private TextView txtForgotPassword;
@@ -299,5 +299,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         progressLogin.setTitle(getString(R.string.progress_title));
         progressLogin.setMessage(getString(R.string.progress_message));
         progressLogin.show();
+    }
+
+    public void cancelProgessBar()
+    {
+        progressLogin.dismiss();
     }
 }

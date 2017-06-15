@@ -65,6 +65,7 @@ public class ValidationResponse
                 else
                 {
                     Toast.makeText(context, R.string.validation_login, Toast.LENGTH_SHORT).show();
+                    Util.moviment.cancelProgressBar();
                 }
                 break;
             case 404:

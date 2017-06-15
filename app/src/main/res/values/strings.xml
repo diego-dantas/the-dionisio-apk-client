@@ -54,7 +54,7 @@
     <string name="field_birth">Favor inserir uma data de nascimento válida</string>
     <string name="field_genre">Escolha pelo menos um gosto musical</string>
     <string name="validation_login">Insira um e-mail e uma senha válida.</string>
-    <string name="validation_connection">Verifique sua conexão com a internet.</string>
+    <string name="validation_connection">Falha de comunicação com o servidor.</string>
 
     <!-- Strings for navigation drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>

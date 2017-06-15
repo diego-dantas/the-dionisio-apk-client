@@ -62,11 +62,6 @@ public class FilterAdapter extends BaseExpandableListAdapter
 
         componentsBelongChild(convertView);
 
-        if(edit_childBegin != null)
-        {
-            filterDateBegin = edit_childBegin.getText().toString();
-            filterDateEnd = edit_childEnd.getText().toString();
-        }
         return convertView;
     }
 
@@ -179,7 +174,7 @@ public class FilterAdapter extends BaseExpandableListAdapter
                 {
                     CTRL_BEGIN = false;
                     //sua ação
-                    Toast.makeText(context, edit_childBegin.getText().toString(), Toast.LENGTH_SHORT).show();
+                    filterDateBegin = edit_childBegin.getText().toString();
                 }
 
                 //END
@@ -188,7 +183,7 @@ public class FilterAdapter extends BaseExpandableListAdapter
                 {
                     CTRL_END = false;
                     //sua ação
-                    Toast.makeText(context, edit_childEnd.getText().toString(), Toast.LENGTH_SHORT).show();
+                    filterDateEnd = edit_childEnd.getText().toString();
                 }
 
                  break;

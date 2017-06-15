@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
+import com.the.dionisio.apk.client.model.view.View;
 
 import java.io.Serializable;
 import java.util.List;
@@ -51,5 +52,10 @@ public class MovingActivity
         Intent intent = new Intent(context, classDestiny);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    public void cancelProgressBar()
+    {
+        View.login.cancelProgessBar();
     }
 }

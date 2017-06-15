@@ -2,6 +2,9 @@ package com.the.dionisio.apk.client.dao.api;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.dto.Validation;
@@ -64,6 +67,7 @@ public class RequestPerson
             public void onFailure(Call call, Throwable t)
             {
                 Log.e(TAG, "Failure to communication with the server!");
+                Toast.makeText(context, R.string.validation_connection, Toast.LENGTH_SHORT).show();
             }
         });
     }
