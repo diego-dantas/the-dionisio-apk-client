@@ -307,8 +307,8 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
     {
         Filter filter = new Filter();
         filter.genres = filterGenre;
-        //filter.dateTimeRange.start = filter.dateTimeRange.setStart(filterAdapter.getFieldDateFilter("begin"));
-        //filter.dateTimeRange.end = filter.dateTimeRange.setEnd(filterAdapter.getFieldDateFilter("end"));
+        filter.dateTimeRange.start = filter.dateTimeRange.setStart(filterAdapter.getFieldDateFilter("begin"));
+        filter.dateTimeRange.end = filter.dateTimeRange.setEnd(filterAdapter.getFieldDateFilter("end"));
         filter.name = inputSearchNameEvent.getText().toString();
     }
 

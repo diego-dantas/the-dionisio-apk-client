@@ -27,7 +27,8 @@ public class FilterAdapter extends BaseExpandableListAdapter
     private HashMap<String, List<String>> filter_category;
     private List<String> filter_list;
     private Integer who_parent;
-    public EditText edit_childBegin, edit_childEnd;
+    private EditText edit_childBegin, edit_childEnd;
+    static String filterDateBegin = "", filterDateEnd = "";
     private final String MASK_DATE = "##/##/####";
 
     public FilterAdapter(Context context, HashMap<String, List<String>> filter_category, List<String> filter_list, Integer who_parent)
@@ -61,6 +62,11 @@ public class FilterAdapter extends BaseExpandableListAdapter
 
         componentsBelongChild(convertView);
 
+        if(edit_childBegin != null)
+        {
+            filterDateBegin = edit_childBegin.getText().toString();
+            filterDateEnd = edit_childEnd.getText().toString();
+        }
         return convertView;
     }
 
@@ -164,11 +170,11 @@ public class FilterAdapter extends BaseExpandableListAdapter
     {
         if(date.equals("begin"))
         {
-            return edit_childBegin.getText().toString();
+            return filterDateBegin;
         }
         else if(date.equals("end"))
         {
-            return edit_childEnd.getText().toString();
+            return filterDateEnd;
         }
 
         return null;
