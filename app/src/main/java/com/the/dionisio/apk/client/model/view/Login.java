@@ -62,6 +62,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
     private TextView txtForgotPassword;
     private Button btnLogin;
     private String typeLogin = "";
+    private boolean LOGIN_FB = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +110,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
 
     private  void methodsFacebook()
     {
+
         btnLoginFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>()
         {
             @Override
@@ -119,7 +121,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
                 caso ele já possua um cadastro devo redireciona-lo para a tela principal*/
                 handleFacebookAcessToken(loginResult.getAccessToken());
 
-                goViewMain();
             }
 
             @Override
@@ -144,6 +145,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null)
                 {
+                    if(LOGIN_FB)
+                    {
+                        LOGIN_FB = false;
+                        goViewMain();
+                    }
                     Log.i("LOGIN", "Facebook login is successful!");
                 }
             }
@@ -161,6 +167,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
                     Toast.makeText(getApplicationContext(), "That so bad", Toast.LENGTH_LONG).show();
                 }
             }
+
         });
     }
 
@@ -175,7 +182,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
             String password = user.getUid();
             String picture = user.getPhotoUrl().toString();
             typeLogin = "SOCIAL_NETWORK";
-
             loadProgressBar();
 
             Presenter.loginAction.startLogin(

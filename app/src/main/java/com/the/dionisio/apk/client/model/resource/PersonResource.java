@@ -2,6 +2,8 @@ package com.the.dionisio.apk.client.model.resource;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
 
@@ -16,10 +18,12 @@ public class PersonResource
         if(Presenter.personAction.findByEmailSQLite(person, context))
         {
             Presenter.personAction.createPersonSQLite(person, context);
+            Toast.makeText(context, "Person create sucessfull!", Toast.LENGTH_SHORT).show();
         }
         else
         {
             Presenter.personAction.updatePersonSQLite(person, context);
+            Toast.makeText(context, "Person update sucessfull!", Toast.LENGTH_SHORT).show();
         }
     }
 

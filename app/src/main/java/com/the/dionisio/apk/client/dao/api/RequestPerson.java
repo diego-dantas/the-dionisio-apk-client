@@ -102,9 +102,9 @@ public class RequestPerson
 
     private void isPostOrPut(Response response, Token token, Person person, Person newPerson, Context context, String typeLogin)
     {
-        if(token == null)
+        if(typeLogin == null)
         {
-            Presenter.loginAction.startLogin(newPerson ,Util.setData.setLogin(person.email, person.password), context, typeLogin);
+            Presenter.eventAction.getEvents(token, newPerson, context);
         }
         else
         {

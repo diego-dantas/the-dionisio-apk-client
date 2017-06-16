@@ -25,18 +25,18 @@ public class LoginResource
                 else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
                 break;
             case "post":
-                if(filter != null){
+                if(filter != null)
+                {
                     if (validationParameters(token)) {Presenter.eventAction.getEventsWithFilter(token, person, filter, context);}
                     else { Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
-                }else{
-                    if(validationParameters(token)){
-                        Presenter.ticketAction.getTicket(token, ticket, person, event, context);
-                    }
                 }
-
+                else
+                {
+                    if(validationParameters(token)){Presenter.ticketAction.getTicket(token, ticket, person, event, context);}
+                }
                 break;
             case "put":
-                if (validationParameters(token, person)) {Presenter.personAction.updatePersonApi(token, person, context);}
+                if (validationParameters(token)) {Presenter.personAction.updatePersonApi(token, person, context);}
                 else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
                 break;
             case "delete":
