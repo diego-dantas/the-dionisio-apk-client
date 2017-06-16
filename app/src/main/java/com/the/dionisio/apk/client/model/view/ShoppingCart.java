@@ -183,7 +183,7 @@ public class ShoppingCart extends AppCompatActivity  {
         Log.i(TAG, "Recebi os parametros ");
 
         // Envía para o servidor
-        MerchantServer.createPreference(this, "http://192.168.0.18:4212",
+        MerchantServer.createPreference(this, API_BASE_URL,
                 "/mercado-pago/checkout", preferenceMap, new Callback<CheckoutPreference>() {
 
                     @Override
@@ -226,17 +226,15 @@ public class ShoppingCart extends AppCompatActivity  {
 
                 Payment payment = JsonUtil.getInstance()
                         .fromJson(data.getStringExtra("payment"), Payment.class);
-                TextView results = (TextView) findViewById(R.id.txtTitulo);
-
-                goQRCode();
 
                 if (payment != null) {
-                    results.setText("PaymentID: " + payment.getId() +
-                            " - PaymentStatus: " + payment.getStatus());
-
+                    Toast.makeText(this, "PaymentID: " + payment.getId() +
+                            " - PaymentStatus: " + payment.getStatus(), Toast.LENGTH_LONG).show();
+                    
+                    if(payment.getStatus().equals("approved")) goQRCode();
 
                 } else {
-                    results.setText("Erro Payment");
+                    Toast.makeText(this, "Erro Payment", Toast.LENGTH_LONG).show();
                 }
 
             } else {
