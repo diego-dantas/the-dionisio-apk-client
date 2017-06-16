@@ -8,6 +8,7 @@ import com.the.dionisio.apk.client.model.dto.Filter;
 import com.the.dionisio.apk.client.model.dto.Login;
 import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
+import com.the.dionisio.apk.client.model.dto.Ticket;
 import com.the.dionisio.apk.client.util.Util;
 import java.util.List;
 
@@ -27,11 +28,11 @@ public class LoginPresenter
         Util.moviment.goViewClearWithData(context, Main.class, person, events, token);
     }
 
-    public void refreshTokenApi(Token token, Person person, Filter filter, Context context, String typeMethod)
+    public void refreshTokenApi(Token token, Person person, Ticket ticket, Event event, Filter filter, Context context, String typeMethod)
     {
         if(context != null && typeMethod != null && !typeMethod.isEmpty())
         {
-            Api.requestLogin.refreshToken(token, person, filter, context, typeMethod);
+            Api.requestLogin.refreshToken(token, person, ticket, event, filter, context, typeMethod);
         }
     }
 }

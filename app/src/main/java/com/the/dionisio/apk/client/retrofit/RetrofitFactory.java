@@ -3,6 +3,7 @@ package com.the.dionisio.apk.client.retrofit;
 import com.the.dionisio.apk.client.service.EventService;
 import com.the.dionisio.apk.client.service.LoginService;
 import com.the.dionisio.apk.client.service.PersonService;
+import com.the.dionisio.apk.client.service.TicketService;
 import com.the.dionisio.apk.client.util.Util;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -55,6 +56,18 @@ public class RetrofitFactory
         try
         {
             return retrofit.create(LoginService.class);
+        }
+        catch(Exception error)
+        {
+            return null;
+        }
+    }
+
+    public TicketService getTicketService()
+    {
+        try
+        {
+            return retrofit.create(TicketService.class);
         }
         catch(Exception error)
         {

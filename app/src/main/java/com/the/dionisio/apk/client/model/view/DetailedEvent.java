@@ -14,6 +14,8 @@ import com.bumptech.glide.Glide;
 import com.the.dionisio.apk.client.R;
 import com.the.dionisio.apk.client.model.dto.Batch;
 import com.the.dionisio.apk.client.model.dto.Event;
+import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.util.Util;
 
 import java.io.Serializable;
@@ -23,6 +25,8 @@ import java.util.List;
 public class DetailedEvent extends AppCompatActivity
 {
     private Event event;
+    private Person person;
+    private Token token;
     private TextView txtNameEvent, txtDescriptionEvent, txtDateStartEvent, txtDateEndEvent;
     private ImageView imageBannerEvent;
     private List<Event> listEvent = new ArrayList<Event>();
@@ -40,6 +44,8 @@ public class DetailedEvent extends AppCompatActivity
         imageBannerEvent = (ImageView) findViewById(R.id.imageBannerEvent);
 
         event = (Event) getIntent().getSerializableExtra("EVENT");
+        person = (Person) getIntent().getSerializableExtra("PERSON");
+        token = (Token) getIntent().getSerializableExtra("TOKEN");
         populateEvent();
         listEvent.add(event);
     }
@@ -67,6 +73,8 @@ public class DetailedEvent extends AppCompatActivity
     public void goShoppingCart(View view){
         Intent intent = new Intent(this, ShoppingCart.class);
         intent.putExtra("EVENT", event);
+        intent.putExtra("PERSON", person);
+        intent.putExtra("TOKEN", token);
         startActivity(intent);
     }
 

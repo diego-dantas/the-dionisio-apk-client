@@ -13,11 +13,14 @@ public class Ticket implements Serializable
 
     public String _id;
     public String _idPerson;
-    public String _idBatch;
+    public String _idCompany;
+    public String _idEvent;
+    public Batch  batch;
     public List<Integer> purchaseDate;
     public Price price;
     public OpenBar openBar;
     public Boolean isActive;
+    public String status;
 }
 
 

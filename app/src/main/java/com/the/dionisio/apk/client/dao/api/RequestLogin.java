@@ -2,6 +2,9 @@ package com.the.dionisio.apk.client.dao.api;
 
 import android.content.Context;
 import android.util.Log;
+
+import com.the.dionisio.apk.client.model.dto.Event;
+import com.the.dionisio.apk.client.model.dto.Ticket;
 import com.the.dionisio.apk.client.model.view.View;
 import android.widget.Toast;
 import com.the.dionisio.apk.client.R;
@@ -55,7 +58,7 @@ public class RequestLogin
         }
     }
 
-    public void refreshToken(Token token, final Person person, final Filter filter, final Context context, final String methodHTTP)
+    public void refreshToken(Token token, final Person person, final Ticket ticket, final Event event, final Filter filter, final Context context, final String methodHTTP)
     {
         try
         {
@@ -66,7 +69,7 @@ public class RequestLogin
                 @Override
                 public void onResponse(Call call, Response response)
                 {
-                    validationRefreshToken(response, person, filter, context, methodHTTP);
+                    validationRefreshToken(response, person,  ticket, event, filter, context, methodHTTP);
                 }
 
                 @Override
@@ -98,7 +101,7 @@ public class RequestLogin
                 Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + newPerson.email + " token: " + token.token);
 
                 Util.validationResponse.validationPerson(response.code(), newPerson, context);
-                Resource.loginResource.methodsWithToken(token, newPerson, null, context, Api.METHOD_GET);
+                Resource.loginResource.methodsWithToken(token, newPerson, null, null, null, context, Api.METHOD_GET);
             }
             else
             {
@@ -113,7 +116,7 @@ public class RequestLogin
         }
     }
 
-    public void validationRefreshToken(Response response, Person person, Filter filter, Context context, String methodHTTP)
+    public void validationRefreshToken(Response response, Person person, Ticket ticket, Event event, Filter filter, Context context, String methodHTTP)
     {
         Token newToken = (Token) response.body();
 
@@ -123,7 +126,7 @@ public class RequestLogin
             {
                 Log.i(TAG, "Sucessfull - code: " + response.code() + " token: " + newToken.token);
 
-                Resource.loginResource.methodsWithToken(newToken, person, filter, context, methodHTTP);
+                Resource.loginResource.methodsWithToken(newToken, person, ticket, event, filter, context, methodHTTP);
             }
             else
             {

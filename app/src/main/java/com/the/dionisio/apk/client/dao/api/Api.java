@@ -14,4 +14,5 @@ public interface Api
     RequestPerson requestPerson = new RequestPerson();
     RequestLogin requestLogin = new RequestLogin();
     RequestEvent requestEvent = new RequestEvent();
+    RequestTicket requestTicket = new RequestTicket();
 }

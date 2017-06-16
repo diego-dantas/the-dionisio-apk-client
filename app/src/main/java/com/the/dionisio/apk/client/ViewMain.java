@@ -103,7 +103,7 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
         person.name = "Jonathan Henrique";
         person.email = null;
 
-        Presenter.loginAction.refreshTokenApi(token, person, null, this, Api.METHOD_PUT);
+        Presenter.loginAction.refreshTokenApi(token, person, null, null, null, this, Api.METHOD_PUT);
     }
 
     public void testDeletePerson(View view)
@@ -114,7 +114,7 @@ public class ViewMain extends AppCompatActivity implements GoogleApiClient.OnCon
         person.name = "";
         person.email = null;
 
-        Presenter.loginAction.refreshTokenApi(token, person, null, this, Api.METHOD_PUT);
+        Presenter.loginAction.refreshTokenApi(token, person, null, null, null, this, Api.METHOD_PUT);
     }
 
     @Override

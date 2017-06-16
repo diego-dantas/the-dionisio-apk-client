@@ -2,8 +2,11 @@ package com.the.dionisio.apk.client.model.resource;
 
 import android.content.Context;
 import android.widget.Toast;
+
+import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.dto.Filter;
 import com.the.dionisio.apk.client.model.dto.Person;
+import com.the.dionisio.apk.client.model.dto.Ticket;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
 
@@ -13,7 +16,7 @@ import com.the.dionisio.apk.client.model.presenter.Presenter;
 
 public class LoginResource
 {
-    public void methodsWithToken(Token token, Person person, Filter filter, Context context, String methodHttp)
+    public void methodsWithToken(Token token, Person person, Ticket ticket, Event event, Filter filter, Context context, String methodHttp)
     {
         switch(methodHttp)
         {
@@ -22,8 +25,15 @@ public class LoginResource
                 else {Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
                 break;
             case "post":
-                if (validationParameters(token)) {Presenter.eventAction.getEventsWithFilter(token, person, filter, context);}
-                else { Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
+                if(filter != null){
+                    if (validationParameters(token)) {Presenter.eventAction.getEventsWithFilter(token, person, filter, context);}
+                    else { Toast.makeText(context, "", Toast.LENGTH_SHORT).show();}
+                }else{
+                    if(validationParameters(token)){
+                        Presenter.ticketAction.getTicket(token, ticket, person, event, context);
+                    }
+                }
+
                 break;
             case "put":
                 if (validationParameters(token, person)) {Presenter.personAction.updatePersonApi(token, person, context);}

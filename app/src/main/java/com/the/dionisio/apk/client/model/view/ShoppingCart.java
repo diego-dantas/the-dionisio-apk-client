@@ -28,13 +28,19 @@ import com.mercadopago.model.DecorationPreference;
 import com.mercadopago.model.Payment;
 import com.mercadopago.util.JsonUtil;
 import com.the.dionisio.apk.client.R;
+import com.the.dionisio.apk.client.dao.api.Api;
 import com.the.dionisio.apk.client.model.dto.Batch;
+import com.the.dionisio.apk.client.model.dto.Ticket;
 import com.the.dionisio.apk.client.model.dto.Event;
 import com.the.dionisio.apk.client.model.dto.Items;
 import com.the.dionisio.apk.client.model.dto.Payer;
+import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Preference;
+import com.the.dionisio.apk.client.model.dto.Token;
+import com.the.dionisio.apk.client.model.presenter.Presenter;
 import com.the.dionisio.apk.client.model.view.fragments.EventListAdapter;
 import com.the.dionisio.apk.client.util.Util;
+import com.the.dionisio.apk.client.util.api.AddressAPI;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -46,13 +52,20 @@ public class ShoppingCart extends AppCompatActivity  {
 
     static final String TAG = "mercadopago";
     static final String publicKey = "TEST-e207354b-53a0-4ab9-87ed-3150c598e690";
+    private static final String API_BASE_URL = Util.addressApi.getAddressAPI();
     private Spinner spinnerSector;
     private ArrayAdapter<String> adapterSector;
     Event event = new Event();
+    private Person person;
+    private Token token;
+    Ticket ticket = new Ticket();
 
     private RadioButton rbMan;
     private RadioButton rbWoman;
     private RadioButton rbOther;
+    private TextView txtMan;
+    private TextView txtWoman;
+    private TextView txtOther;
     private Button btnCheckOut;
 
 
@@ -62,13 +75,20 @@ public class ShoppingCart extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bar_shopping_cart);
 
+        event = (Event) getIntent().getSerializableExtra("EVENT");
+        person = (Person) getIntent().getSerializableExtra("PERSON");
+        token = (Token) getIntent().getSerializableExtra("TOKEN");
+
         rbMan = (RadioButton) findViewById(R.id.radioManEvent);
         rbWoman = (RadioButton) findViewById(R.id.radioWomanEvent);
         rbOther = (RadioButton) findViewById(R.id.radioOthersEvent);
+        txtMan = (TextView) findViewById(R.id.txtValueMan);
+        txtWoman = (TextView) findViewById(R.id.txtValueWoman);
+        txtOther = (TextView) findViewById(R.id.txtValueOther);
         btnCheckOut = (Button) findViewById(R.id.btnCheckout);
-        event = (Event) getIntent().getSerializableExtra("EVENT");
-        selectSector();
         rbMan.setChecked(true);
+        selectSector();
+
 
 
 
@@ -84,6 +104,26 @@ public class ShoppingCart extends AppCompatActivity  {
         {
             adapterSector.add(bacth.sector);
         }
+
+        spinnerSector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String posi = spinnerSector.getSelectedItem().toString();
+                for(Batch batch : event.batches){
+
+                    if(batch.sector.toString().equals(posi)){
+                        txtMan.setText("R$: " + batch.price.man.toString());
+                        txtWoman.setText("R$: " + batch.price.woman.toString());
+                        txtOther.setText("R$: " + batch.price.other.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 
@@ -96,19 +136,31 @@ public class ShoppingCart extends AppCompatActivity  {
     public void callCheckout(final View view) {
 
 
+        String posi = spinnerSector.getSelectedItem().toString();
         List<Items> itemses = new ArrayList<>();
         Items items = new Items();
         Payer payer = new Payer();
         Preference preference = new Preference();
 
-        if(rbMan.isChecked()){
-            items.unit_price = event.batches.get(0).toString();
-        }
-        if(rbWoman.isChecked()){
-            items.unit_price = "40";
-        }
-        if(rbOther.isChecked()){
-            items.unit_price = "10";
+        for(Batch batch : event.batches){
+
+            if(batch.sector.toString().equals(posi)){
+
+                if(rbMan.isChecked()){
+                    items.unit_price = batch.price.man.toString();
+                }
+                if(rbWoman.isChecked()){
+                    items.unit_price = batch.price.woman.toString();
+                }
+                if(rbOther.isChecked()){
+                    items.unit_price = batch.price.other.toString();
+                }
+
+                ticket.batch = batch;
+                ticket._idCompany = event._idCompany;
+                ticket._idEvent = event._id;
+                ticket._idPerson = person._id;
+            }
         }
 
 
@@ -117,8 +169,8 @@ public class ShoppingCart extends AppCompatActivity  {
         items.description = event.description;
         items.quantity = "1";
         items.currency_id = "BRL";
-        payer.name = "Dantas";
-        payer.email = "email@thedionisio.com";
+        payer.name = person.name;
+        payer.email = person.email;
 
         itemses.add(items);
         preference.items = itemses;
@@ -131,8 +183,8 @@ public class ShoppingCart extends AppCompatActivity  {
         Log.i(TAG, "Recebi os parametros ");
 
         // Envía para o servidor
-        MerchantServer.createPreference(this, "http://192.168.0.18:8080",
-                "/checkout", preferenceMap, new Callback<CheckoutPreference>() {
+        MerchantServer.createPreference(this, "http://192.168.0.18:4212",
+                "/mercado-pago/checkout", preferenceMap, new Callback<CheckoutPreference>() {
 
                     @Override
                     public void success(CheckoutPreference checkoutPreference) {
@@ -176,12 +228,13 @@ public class ShoppingCart extends AppCompatActivity  {
                         .fromJson(data.getStringExtra("payment"), Payment.class);
                 TextView results = (TextView) findViewById(R.id.txtTitulo);
 
-                Intent intent = new Intent(this, Ticket.class);
-                startActivity(intent);
+                goQRCode();
 
                 if (payment != null) {
                     results.setText("PaymentID: " + payment.getId() +
                             " - PaymentStatus: " + payment.getStatus());
+
+
                 } else {
                     results.setText("Erro Payment");
                 }
@@ -193,6 +246,10 @@ public class ShoppingCart extends AppCompatActivity  {
                 }
             }
         }
+    }
+
+    public void goQRCode(){
+        Presenter.loginAction.refreshTokenApi(token, person, ticket, event, null, this, Api.METHOD_POST);
     }
 
 }

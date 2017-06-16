@@ -196,6 +196,8 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
     {
         Intent intent = new Intent(this, DetailedEvent.class);
         intent.putExtra("EVENT", event);
+        intent.putExtra("PERSON", person);
+        intent.putExtra("TOKEN", token);
         startActivity(intent);
     }
 

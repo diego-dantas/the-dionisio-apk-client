@@ -88,7 +88,7 @@ public class Setting extends AppCompatActivity
     public void putPerson(View view)
     {
         person.name = inputNameSetting.getText().toString();
-        Presenter.loginAction.refreshTokenApi(token, person, null, this, Api.METHOD_PUT);
+        Presenter.loginAction.refreshTokenApi(token, person, null, null, null, this, Api.METHOD_PUT);
     }
 
     public void setLocale(String lang) {
