@@ -9,6 +9,7 @@ import com.the.dionisio.apk.client.model.dto.Person;
 import com.the.dionisio.apk.client.model.dto.Token;
 import com.the.dionisio.apk.client.model.dto.Validation;
 import com.the.dionisio.apk.client.model.presenter.Presenter;
+import com.the.dionisio.apk.client.model.resource.Resource;
 import com.the.dionisio.apk.client.retrofit.RetrofitFactory;
 import com.the.dionisio.apk.client.util.Util;
 import retrofit2.Call;
@@ -81,34 +82,31 @@ public class RequestPerson
             if(response.isSuccessful())
             {
                 Log.i(TAG, "Sucessfull - code: " + response.code() + " description: " + validation.description);
-
                 Person newPerson = validation.additional;
 
-                Util.validationResponse.validationPerson(response.code(), newPerson, context);
+                Util.validationResponse.validationPerson(response.code(), person, newPerson, context);
                 isPostOrPut(response, token, person, newPerson, context, typeLogin);
             }
             else
             {
                 Log.e(TAG, "Failed - code: " + response.code());
-                Util.validationResponse.validationPerson(response.code(), person, context);
             }
         }
         else
         {
             Log.e(TAG, "Failed, the data does not match, code: " + response.code());
-            Util.validationResponse.validationPerson(response.code(), person, context);
         }
     }
 
     private void isPostOrPut(Response response, Token token, Person person, Person newPerson, Context context, String typeLogin)
     {
-        if(typeLogin == null)
+        if(token == null)
         {
-            Presenter.eventAction.getEvents(token, newPerson, context);
+            Presenter.loginAction.startLogin(newPerson, Util.setData.setLogin(newPerson.email, person.password), context, typeLogin);
         }
         else
         {
-            Util.validationResponse.validationLogin(response.code(), newPerson, null, context, token, null);
+            Resource.loginResource.methodsWithToken(token, newPerson, null, null, null, context, Api.METHOD_GET);
         }
     }
 

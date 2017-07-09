@@ -16,7 +16,7 @@ import com.the.dionisio.apk.client.model.presenter.Presenter;
 
 public class LoginResource
 {
-    public void methodsWithToken(Token token, Person person, Ticket ticket, Event event, Filter filter, Context context, String methodHttp)
+    public void  methodsWithToken(Token token, Person person, Ticket ticket, Event event, Filter filter, Context context, String methodHttp)
     {
         switch(methodHttp)
         {

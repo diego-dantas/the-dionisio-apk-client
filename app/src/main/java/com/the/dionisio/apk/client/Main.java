@@ -151,21 +151,29 @@ public class Main extends AppCompatActivity implements GoogleApiClient.OnConnect
 
     private void logOut()
     {
-        FirebaseAuth.getInstance().signOut();
-        LoginManager.getInstance().logOut();
 
-        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
-            @Override
-            public void onResult(@NonNull Status status) {
-                if (status.isSuccess()) {
-                    logOutAccount();
-                } else {
-                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+        try
+        {
+            FirebaseAuth.getInstance().signOut();
+            LoginManager.getInstance().logOut();
+
+            Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+                @Override
+                public void onResult(@NonNull Status status) {
+                    if (status.isSuccess()) {
+                        logOutAccount();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
 
-        logOutAccount();
+            logOutAccount();
+        }
+        catch(Exception error)
+        {
+            logOutAccount();
+        }
     }
 
     private void logOutAccount()

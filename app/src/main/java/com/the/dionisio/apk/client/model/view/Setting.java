@@ -186,11 +186,11 @@ public class Setting extends AppCompatActivity
 
     public void putPerson(View view)
     {
-        Person p = new Person();
-        p._id = person._id;
-        p.name = inputNameSetting.getText().toString();
-        p.genres = genres;
-        Presenter.loginAction.refreshTokenApi(token, p, null, null, null, this, Api.METHOD_PUT);
+        Person person = new Person();
+        person._id = this.person._id;
+        person.name = inputNameSetting.getText().toString();
+        person.genres = genres;
+        Presenter.loginAction.refreshTokenApi(token, person, null, null, null, this, Api.METHOD_PUT);
     }
 
     public void setLocale(String lang) {

@@ -100,7 +100,7 @@ public class RequestLogin
 
                 Log.i(TAG, "Sucessfull - code: " + response.code() + " username: " + newPerson.email + " token: " + token.token);
 
-                Util.validationResponse.validationPerson(response.code(), newPerson, context);
+                Util.validationResponse.validationPerson(response.code(), newPerson, newPerson, context);
                 Resource.loginResource.methodsWithToken(token, newPerson, null, null, null, context, Api.METHOD_GET);
             }
             else

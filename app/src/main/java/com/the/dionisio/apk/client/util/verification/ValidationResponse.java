@@ -18,18 +18,18 @@ import java.util.List;
 
 public class ValidationResponse
 {
-    public void validationPerson(Integer statusCode, Person person, Context context)
+    public void validationPerson(Integer statusCode, Person person, Person newPerson, Context context)
     {
         switch (statusCode)
         {
             case 200:
                 if(Resource.personResource.treatCreate(person))
                 {
-                    Resource.personResource.createPersonOrUpdatePerson(person, context);
+                    Resource.personResource.createPersonOrUpdatePerson(newPerson, context);
                 }
                 else if(Resource.personResource.treatUpdate(person))
                 {
-                    Resource.personResource.createPersonOrUpdatePerson(person, context);
+                    Resource.personResource.createPersonOrUpdatePerson(newPerson, context);
                 }
                 break;
             case 401:

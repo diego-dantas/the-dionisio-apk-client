@@ -31,7 +31,7 @@ public class PersonResource
     {
         try
         {
-            if(person._id != null && person.email != null && person.name != null && person.genres != null)
+            if(person._id == null && person.email != null && person.name != null && person.genres != null)
             {
                 return true;
             }
